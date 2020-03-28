@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8503d6ba-bdc4-444a-82c7-309690025c05" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/negocio/VOAlojamiento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/negocio/Alojamiento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AlohAndes/negocio/AlohAndes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/negocio/AlohAndes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AlohAndes/persistencia/PersistenciaAlohAndes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/persistencia/PersistenciaAlohAndes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AlohAndes/persistencia/SQLAlojamiento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/persistencia/SQLAlojamiento.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -106,7 +103,7 @@
       <workItem from="1585142091707" duration="141000" />
       <workItem from="1585142314723" duration="16080000" />
       <workItem from="1585253092624" duration="1237000" />
-      <workItem from="1585305976723" duration="15075000" />
+      <workItem from="1585305976723" duration="15630000" />
     </task>
     <servers />
   </component>
