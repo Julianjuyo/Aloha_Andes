@@ -3,7 +3,123 @@
   <component name="ChangeListManager">
     <list default="true" id="8503d6ba-bdc4-444a-82c7-309690025c05" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AlohAndes/negocio/VOReserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/negocio/VOReserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/allclasses-noframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-16.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-17.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-18.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/package-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/InterfazAppParranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/InterfazParranderosApp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/PanelDatos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/class-use/InterfazAppParranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/class-use/InterfazParranderosApp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/class-use/PanelDatos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/InterfazDemoParranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/InterfazParranderosDemo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/PanelDatos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/class-use/InterfazDemoParranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/class-use/InterfazParranderosDemo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/class-use/PanelDatos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazDemo/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Bar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Bebedor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Bebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Gustan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Parranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Sirven.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/TipoBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOBar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOBebedor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOGustan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOSirven.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOTipoBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/VOVisitan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/Visitan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Bar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Bebedor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Bebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Gustan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Parranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Sirven.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/TipoBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOBar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOBebedor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOGustan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOSirven.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOTipoBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/VOVisitan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/class-use/Visitan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/negocio/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/PersistenciaParranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLBar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLBebedor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLGustan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLSirven.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLTipoBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/SQLVisitan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/PersistenciaParranderos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLBar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLBebedor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLGustan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLSirven.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLTipoBebida.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/class-use/SQLVisitan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/persistencia/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/ConexionTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/ParranderosTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/TipoBebidaTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/class-use/ConexionTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/class-use/ParranderosTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/class-use/TipoBebidaTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/test/package-use.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +219,8 @@
       <workItem from="1585142091707" duration="141000" />
       <workItem from="1585142314723" duration="16080000" />
       <workItem from="1585253092624" duration="1237000" />
-      <workItem from="1585305976723" duration="15654000" />
+      <workItem from="1585305976723" duration="15769000" />
+      <workItem from="1585362751574" duration="59000" />
     </task>
     <servers />
   </component>
@@ -124,10 +241,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1585346526267" />
-    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1585347736925">
+    <state x="548" y="187" key="FileChooserDialogImpl" timestamp="1585362081125">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585347736925" />
+    <state x="548" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585362081125" />
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1585198370216">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
