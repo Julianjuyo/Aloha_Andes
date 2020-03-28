@@ -1,5 +1,4 @@
 package AlohAndes.negocio;
-import uniandes.isis2304.parranderos.negocio.AlohAndes;
 
 import java.util.Date;
 
