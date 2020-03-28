@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8503d6ba-bdc4-444a-82c7-309690025c05" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/serialized-form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/InterfazParranderosApp.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/InterfazParranderosApp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/class-use/InterfazParranderosApp.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/uniandes/isis2304/parranderos/interfazApp/class-use/InterfazParranderosApp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AlohAndes/interfazApp/InterfazParranderosApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AlohAndes/interfazApp/InterfazAlohAndesApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +106,7 @@
       <workItem from="1585142091707" duration="141000" />
       <workItem from="1585142314723" duration="16080000" />
       <workItem from="1585253092624" duration="1237000" />
-      <workItem from="1585305976723" duration="8958000" />
+      <workItem from="1585305976723" duration="10544000" />
     </task>
     <servers />
   </component>

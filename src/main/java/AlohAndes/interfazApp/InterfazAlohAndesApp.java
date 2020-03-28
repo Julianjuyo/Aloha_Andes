@@ -1,18 +1,3 @@
-/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Universidad	de	los	Andes	(Bogotá	- Colombia)
- * Departamento	de	Ingeniería	de	Sistemas	y	Computación
- * Licenciado	bajo	el	esquema	Academic Free License versión 2.1
- * 		
- * Curso: isis2304 - Sistemas Transaccionales
- * Proyecto: Parranderos Uniandes
- * @version 1.0
- * @author Germán Bravo
- * Julio de 2018
- * 
- * Revisado por: Claudia Jiménez, Christian Ariza
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
 package AlohAndes.interfazApp;
 
 import java.awt.BorderLayout;
@@ -38,6 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
+import AlohAndes.negocio.AlohAndes;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
@@ -48,11 +34,10 @@ import com.google.gson.stream.JsonReader;
 
 /**
  * Clase principal de la interfaz
- * @author Germán Bravo
  */
 @SuppressWarnings("serial")
 
-public class InterfazParranderosApp extends JFrame implements ActionListener
+public class InterfazAlohAndesApp extends JFrame implements ActionListener
 {
 	/* ****************************************************************
 	 * 			Constantes
@@ -60,7 +45,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 	/**
 	 * Logger para escribir la traza de la ejecución
 	 */
-	private static Logger log = Logger.getLogger(InterfazParranderosApp.class.getName());
+	private static Logger log = Logger.getLogger(InterfazAlohAndesApp.class.getName());
 	
 	/**
 	 * Ruta al archivo de configuración de la interfaz
@@ -83,7 +68,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
     /**
      * Asociación a la clase principal del negocio.
      */
-    private Parranderos parranderos;
+    private AlohAndes parranderos;
     
 	/* ****************************************************************
 	 * 			Atributos de interfaz
@@ -110,7 +95,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
      * Construye la ventana principal de la aplicación. <br>
      * <b>post:</b> Todos los componentes de la interfaz fueron inicializados.
      */
-    public InterfazParranderosApp( )
+    public InterfazAlohAndesApp( )
     {
         // Carga la configuración de la interfaz desde un archivo JSON
         guiConfig = openConfig ("Interfaz", CONFIG_INTERFAZ);
@@ -618,7 +603,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
 		String evento = pEvento.getActionCommand( );		
         try 
         {
-			Method req = InterfazParranderosApp.class.getMethod ( evento );			
+			Method req = InterfazAlohAndesApp.class.getMethod ( evento );
 			req.invoke ( this );
 		} 
         catch (Exception e) 
@@ -641,7 +626,7 @@ public class InterfazParranderosApp extends JFrame implements ActionListener
         	
             // Unifica la interfaz para Mac y para Windows.
             UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName( ) );
-            InterfazParranderosApp interfaz = new InterfazParranderosApp( );
+            InterfazAlohAndesApp interfaz = new InterfazAlohAndesApp( );
             interfaz.setVisible( true );
         }
         catch( Exception e )
