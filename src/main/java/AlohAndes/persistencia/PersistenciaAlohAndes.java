@@ -430,4 +430,43 @@ public class PersistenciaAlohAndes
         return (Reserva) sqlReserva.darReservaPorIdAlojamiento (pmf.getPersistenceManager(), idAlojamiento);
     }
 
+    /* ****************************************************************
+     * 			Métodos para manejar los ALOJAMIENTOS
+     *****************************************************************/
+
+    /**
+     * Método que elimina, de manera transaccional, una tupla en la tabla ALOJAMENTO, dado el id del alojamiento. El alojamento no debe estar reservado
+     * Adiciona entradas al log de la aplicación
+     * @param idAlojamiento - El id del alojamiento
+     * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción o el alojamiento está reservado
+     */
+    public long eliminarAlojamiento (long idAlojamiento)
+    {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        Reserva reserva = darReservaPorIdAlojamiento(idAlojamiento);
+        if(reserva != null)
+        {
+            try {
+                tx.begin();
+                long resp = sqlAlojamiento.eliminarAlojamiento(pm, idAlojamiento);
+                tx.commit();
+
+                return resp;
+            } catch (Exception e) {
+//        	e.printStackTrace();
+                log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+                return -1;
+            } finally {
+                if (tx.isActive()) {
+                    tx.rollback();
+                }
+                pm.close();
+            }
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }

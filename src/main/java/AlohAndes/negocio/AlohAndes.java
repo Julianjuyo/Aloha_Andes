@@ -71,7 +71,7 @@ public class AlohAndes
     {
         log.info ("Eliminando reserva por id: " + idReserva);
         long resp = pp.eliminarReservaPorId (idReserva);
-        log.info ("Eliminando eserva por id: " + resp + " tuplas eliminadas");
+        log.info ("Eliminando reserva por id: " + resp + " tuplas eliminadas");
         return resp;
     }
 
@@ -87,5 +87,23 @@ public class AlohAndes
         Reserva reserva = pp.darReservaPorId (idReserva);
         log.info ("Buscando reserva por Id: " + reserva != null ? reserva : "NO EXISTE");
         return reserva;
+    }
+
+    /* ****************************************************************
+     * 			Métodos para manejar los ALOJAMIENTOS
+     *****************************************************************/
+
+    /**
+     * Elimina un alojamiento por su identificador
+     * Adiciona entradas al log de la aplicación
+     * @param idAlojamiento - El id de la reserva
+     * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+     */
+    public long eliminarAlojamiento (long idAlojamiento)
+    {
+        log.info ("Eliminando alojamiento por id: " + idAlojamiento);
+        long resp = pp.eliminarAlojamiento (idAlojamiento);
+        log.info ("Eliminando alojamiento por id: " + resp + " tuplas eliminadas");
+        return resp;
     }
 }
