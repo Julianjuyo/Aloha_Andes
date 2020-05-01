@@ -110,7 +110,7 @@ public class PersistenciaAlohAndes
         //Secuencia de id de los alojamientos
         tablas.add ("ID_ALOJAMIENTO");
         //Secuencia de id de las reservas
-        tablas.add ("ID_RESERVAS");
+        tablas.add ("ID_RESERVA");
         //Tablas de la base de datos
         tablas.add ("OPERADORES");
         tablas.add ("ALOJAMIENTOS");

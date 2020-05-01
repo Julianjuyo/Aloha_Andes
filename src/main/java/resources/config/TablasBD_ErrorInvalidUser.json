@@ -1,0 +1,17 @@
+{
+	"title": "Nombres de las tablas de Parranderos Uniandes para pruebas de la aplicación cuando la base de datos no existe o está caida",
+	"unidadPersistencia": "ParranderosErrorUser",
+	"tablas":
+	[
+		"X_ID_ALOJAMIENTO",
+		"X_ID_RESERVA",
+		"X_OPERADORES",
+		"X_ALOJAMIENTOS",
+		"X_APARTAMENTOS",
+		"X_HABITACIONES",
+		"X_VIVIENDACMUNIDAD",
+		"X_MIEM_CO_UNIV",
+		"X_RESERVAS",
+		"X_SERVICIOS"
+	]
+}

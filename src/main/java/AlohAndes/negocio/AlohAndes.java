@@ -3,6 +3,8 @@ package AlohAndes.negocio;
 import AlohAndes.persistencia.PersistenciaAlohAndes;
 import org.apache.log4j.Logger;
 
+import com.google.gson.JsonObject;
+
 public class AlohAndes
 {
 
@@ -30,9 +32,12 @@ public class AlohAndes
      */
     public AlohAndes ()
     {
-        pp = PersistenciaAlohAndes.getInstance ();
+        pp = PersistenciaAlohAndes.getInstance();
     }
 
+	
+	
+    
     /**
      * Cierra la conexión con la base de datos (Unidad de persistencia)
      */
@@ -40,6 +45,7 @@ public class AlohAndes
     {
         pp.cerrarUnidadPersistencia ();
     }
+    
 
     /* ****************************************************************
      * 			Métodos para manejar las RESERVAS

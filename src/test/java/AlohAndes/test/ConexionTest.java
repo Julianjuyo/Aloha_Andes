@@ -10,6 +10,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import AlohAndes.negocio.AlohAndes;
+
 /**
  * Clase con métodos de prueba de conexión a la base de datos
  * @author Germán Bravo
@@ -56,7 +58,7 @@ public class ConexionTest
 	/**
 	 * La clase que se quiere probar
 	 */
-    private Parranderos parranderos;
+    private AlohAndes parranderos;
 	
 	/* ****************************************************************
 	 * 			Métodos de prueba de acceso a la BD
@@ -70,7 +72,7 @@ public class ConexionTest
   	  	try
 		{
 			log.info ("Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_A));
+			parranderos = new AlohAndes (openConfig (CONFIG_TABLAS_A));
 			log.info ("Conexión realizada correstamente");
 			log.info ("Cerrando la conexión");
 			
@@ -101,7 +103,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con una base de datos que no existe");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_ERR_DS));
+			parranderos = new AlohAndes (openConfig (CONFIG_TABLAS_ERR_DS));
 			fail ("Debería fallar. La base de datos no existe !!");
 		}
 		catch (Exception e)
