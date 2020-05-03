@@ -58,7 +58,7 @@ public class ConexionTest
 	/**
 	 * La clase que se quiere probar
 	 */
-    private AlohAndes parranderos;
+    private AlohAndes alohAndes;
 	
 	/* ****************************************************************
 	 * 			Métodos de prueba de acceso a la BD
@@ -72,11 +72,11 @@ public class ConexionTest
   	  	try
 		{
 			log.info ("Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema");
-			parranderos = new AlohAndes (openConfig (CONFIG_TABLAS_A));
+			alohAndes = new AlohAndes ();
 			log.info ("Conexión realizada correstamente");
 			log.info ("Cerrando la conexión");
 			
-			parranderos.cerrarUnidadPersistencia ();
+			alohAndes.cerrarUnidadPersistencia ();
 			log.info ("Conexión cerrada");
 		}
 		catch (Exception e)
@@ -103,7 +103,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con una base de datos que no existe");
-			parranderos = new AlohAndes (openConfig (CONFIG_TABLAS_ERR_DS));
+			alohAndes = new AlohAndes ();
 			fail ("Debería fallar. La base de datos no existe !!");
 		}
 		catch (Exception e)
@@ -128,7 +128,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con datos de usuario incorrectos");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_ERR_USER));
+			alohAndes = new AlohAndes ();
 			fail ("Debería fallar. Las credenciales del usuario no son válidas");
 		}
 		catch (Exception e)
@@ -154,7 +154,7 @@ public class ConexionTest
 		try
 		{
 	    	log.info ("Probando el acceso a la base de datos con datos de usuario correctos, pero sin crear el esquema");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_B));
+			alohAndes = new AlohAndes();
 		}
 		catch (Exception e)
 		{
@@ -171,7 +171,7 @@ public class ConexionTest
 		// Ahora si se puede probar si la tabla existe o no...
 		try
 		{
-			parranderos.darTiposBebida ();
+			alohAndes.darVOOperador();
 			fail ("Debería fallar. La tabla consultada no existe en la BD");
 		}
 		catch (Exception e)
@@ -186,8 +186,8 @@ public class ConexionTest
 		}
 		finally
 		{
-			parranderos.limpiarParranderos ();
-    		parranderos.cerrarUnidadPersistencia ();    		
+			alohAndes.limpiarAlohAndes();
+    		alohAndes.cerrarUnidadPersistencia ();    		
 		}
     }
 
