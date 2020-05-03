@@ -1,4 +1,4 @@
-package negocio;
+package AlohAndes.negocio;
 
 
 /**

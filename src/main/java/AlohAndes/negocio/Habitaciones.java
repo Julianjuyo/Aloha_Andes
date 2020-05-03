@@ -1,4 +1,4 @@
-package negocio;
+package AlohAndes.negocio;
 
 /**
  * Clase para modelar el concepto HABITACIONES del negocio de los AlohaAndes

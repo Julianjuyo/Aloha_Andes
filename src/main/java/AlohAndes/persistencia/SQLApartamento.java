@@ -7,7 +7,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-public class SQLReserva
+public class SQLApartamento
 {
     /* ****************************************************************
      * 			Constantes
@@ -33,7 +33,7 @@ public class SQLReserva
      * Constructor
      * @param pp - El Manejador de persistencia de la aplicación
      */
-    public SQLReserva (PersistenciaAlohAndes pp)
+    public SQLApartamento (PersistenciaAlohAndes pp)
     {
         this.pp = pp;
     }

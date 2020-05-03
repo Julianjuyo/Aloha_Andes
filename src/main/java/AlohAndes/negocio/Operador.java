@@ -1,10 +1,9 @@
-package negocio;
-
+package AlohAndes.negocio;
 /**
  * Clase para modelar el concepto OPERADORES del negocio de los AlohaAndes
  *
  */
-public class Operadores implements VOOperadores 
+public class Operador implements VOOperador 
 {
 	
 	
@@ -14,7 +13,7 @@ public class Operadores implements VOOperadores
 	/**
 	 * El identificador ÚNICO de los operadores
 	 */
-	private int id;
+	private long id;
 	
 	/**
 	 * El nombre del operador
@@ -50,7 +49,7 @@ public class Operadores implements VOOperadores
     /**
      * Constructor por defecto
      */
-	public Operadores() 
+	public Operador() 
     {
     	this.setId(0);
 		this.nombre = "";
@@ -63,9 +62,9 @@ public class Operadores implements VOOperadores
 	/**
 	 * Constructor con valores
 	 */
-    public Operadores(int id, String nombre, Boolean regCamaraYComercio, Boolean superTurismo, int calidad, String tipooperador) 
+    public Operador(long idOperador, String nombre, Boolean regCamaraYComercio, Boolean superTurismo, int calidad, String tipooperador) 
     {
-    	this.setId(id);
+    	this.setId(idOperador);
 		this.nombre = nombre;
 		this.regCamaraYComercio = regCamaraYComercio;
 		this.superTurismo = superTurismo;
@@ -73,11 +72,11 @@ public class Operadores implements VOOperadores
 		this.tipoOperador = tipooperador ;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

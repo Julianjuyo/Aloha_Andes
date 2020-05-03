@@ -1,11 +1,11 @@
-package negocio;
+package AlohAndes.negocio;
 
 /**
  * Interfaz para los métodos get de OPERADORES.
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  */
-public interface VOOperadores {
+public interface VOOperador {
 	
 
 	/* ****************************************************************
@@ -15,7 +15,7 @@ public interface VOOperadores {
      /**
 	 * @return El id del Operador
 	 */
-	public int getId();
+	public long getId();
 	
 	/**
 	 * @return el nombre del Operador

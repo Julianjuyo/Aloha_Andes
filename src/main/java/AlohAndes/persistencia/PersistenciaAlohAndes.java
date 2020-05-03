@@ -1,5 +1,7 @@
 package AlohAndes.persistencia;
 
+import AlohAndes.negocio.Alojamiento;
+import AlohAndes.negocio.Operador;
 import AlohAndes.negocio.Reserva;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -53,35 +55,35 @@ public class PersistenciaAlohAndes
      */
     private SQLUtil sqlUtil;
 
-//    /**
-//     * Atributo para el acceso a la tabla OPERADORES de la base de datos
-//     */
-//    private SQLOperador sqlOperador;
+    /**
+     * Atributo para el acceso a la tabla OPERADORES de la base de datos
+     */
+    private SQLOperador sqlOperador;
 
     /**
      * Atributo para el acceso a la tabla ALOJAMIENTOS de la base de datos
      */
     private SQLAlojamiento sqlAlojamiento;
 
-//    /**
-//     * Atributo para el acceso a la tabla APARTAMENTOS de la base de datos
-//     */
-//    private SQLApartamento sqlApartamento;
+    /**
+     * Atributo para el acceso a la tabla APARTAMENTOS de la base de datos
+     */
+    private SQLApartamento sqlApartamento;
 
-//    /**
-//     * Atributo para el acceso a la tabla HABITACIONES de la base de datos
-//     */
-//    private SQLHabitacion sqlHabitacion;
+    /**
+     * Atributo para el acceso a la tabla HABITACIONES de la base de datos
+     */
+    private SQLHabitacion sqlHabitacion;
 
-//    /**
-//     * Atributo para el acceso a la tabla VIVIENDACMUNIDAD de la base de datos
-//     */
-//    private SQLViviendaComunidad sqlViviendaComunidad;
+    /**
+     * Atributo para el acceso a la tabla VIVIENDACMUNIDAD de la base de datos
+     */
+    private SQLViviendaComunidad sqlViviendaComunidad;
 
-//    /**
-//     * Atributo para el acceso a la tabla MIEM_CO_UNIV de la base de datos
-//     */
-//    private SQLMiemCoUniv sqlMiemCoUniv;
+    /**
+     * Atributo para el acceso a la tabla MIEM_CO_UNIV de la base de datos
+     */
+    private SQLMiemCoUniv sqlMiemCoUniv;
 
     /**
      * Atributo para el acceso a la tabla RESERVAS de la base de datos
@@ -166,14 +168,14 @@ public class PersistenciaAlohAndes
      */
     private void crearClasesSQL ()
     {
-//        sqlOperador = new SQLOperador(this);
+        sqlOperador = new SQLOperador(this);
         sqlAlojamiento = new SQLAlojamiento(this);
-//        sqlApartamento = new SQLApartamento(this);
-//        sqlHabitacion = new SQLHabitacion(this);
-//        sqlViviendaComunidad = new SQLViviendaComunidad(this);
-//        sqlMiemCoUniv = new SQLMiemCoUniv (this);
+        sqlApartamento = new SQLApartamento(this);
+        sqlHabitacion = new SQLHabitacion(this);
+        sqlViviendaComunidad = new SQLViviendaComunidad(this);
+        sqlMiemCoUniv = new SQLMiemCoUniv (this);
         sqlReserva = new SQLReserva(this);
-//        sqlServicio = new SQLServicio(this);
+        sqlServicio = new SQLServicio(this);
         sqlUtil = new SQLUtil(this);
     }
 
@@ -193,13 +195,13 @@ public class PersistenciaAlohAndes
         return tablas.get (1);
     }
 
-//    /**
-//     * @return La cadena de caracteres con el nombre de la tabla de OPERADORES de AlohAndes
-//     */
-//    public String darTablaOperadores ()
-//    {
-//        return tablas.get (2);
-//    }
+    /**
+     * @return La cadena de caracteres con el nombre de la tabla de OPERADORES de AlohAndes
+     */
+    public String darTablaOperadores ()
+    {
+        return tablas.get (2);
+    }
 
     /**
      * @return La cadena de caracteres con el nombre de la tabla de ALOJAMIENTOS de AlohAndes
@@ -209,37 +211,37 @@ public class PersistenciaAlohAndes
         return tablas.get (3);
     }
 
-//    /**
-//     * @return La cadena de caracteres con el nombre de la tabla de APARTAMENTOS de AlohAndes
-//     */
-//    public String darTablaApartamentos ()
-//    {
-//        return tablas.get (4);
-//    }
+    /**
+     * @return La cadena de caracteres con el nombre de la tabla de APARTAMENTOS de AlohAndes
+     */
+    public String darTablaApartamentos ()
+    {
+        return tablas.get (4);
+    }
 
-//    /**
-//     * @return La cadena de caracteres con el nombre de la tabla de HABITACIONES de AlohAndes
-//     */
-//    public String darTablaHabitaciones ()
-//    {
-//        return tablas.get (5);
-//    }
+    /**
+     * @return La cadena de caracteres con el nombre de la tabla de HABITACIONES de AlohAndes
+     */
+    public String darTablaHabitaciones ()
+    {
+        return tablas.get (5);
+    }
 
-//    /**
-//     * @return La cadena de caracteres con el nombre de la tabla de VIVIENDACOMUNIDAD de AlohAndes
-//     */
-//    public String darTablaViviendaComunidad ()
-//    {
-//        return tablas.get (6);
-//    }
+    /**
+     * @return La cadena de caracteres con el nombre de la tabla de VIVIENDACOMUNIDAD de AlohAndes
+     */
+    public String darTablaViviendaComunidad ()
+    {
+        return tablas.get (6);
+    }
 
-//    /**
-//     * @return La cadena de caracteres con el nombre de la tabla de MIEM_CO_UNIV de AlohAndes
-//     */
-//    public String darTablaMiemCoUniv ()
-//    {
-//        return tablas.get (7);
-//    }
+    /**
+     * @return La cadena de caracteres con el nombre de la tabla de MIEM_CO_UNIV de AlohAndes
+     */
+    public String darTablaMiemCoUniv ()
+    {
+        return tablas.get (7);
+    }
 
     /**
      * @return La cadena de caracteres con el nombre de la tabla de RESERVAS de AlohAndes
@@ -280,6 +282,18 @@ public class PersistenciaAlohAndes
         log.trace ("Generando secuenci idReserva: " + resp);
         return resp;
     }
+    
+    /**
+     * Transacción para el generador de secuencia de Parranderos
+     * Adiciona entradas al log de la aplicación
+     * @return El siguiente número del secuenciador de Parranderos
+     */
+    private long nextval_idOperador()
+    {
+        long resp = sqlUtil.nextval_idReserva (pmf.getPersistenceManager());
+        log.trace ("Generando secuenci idReserva: " + resp);
+        return resp;
+    }
 
     /**
      * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle específico del problema encontrado
@@ -300,35 +314,131 @@ public class PersistenciaAlohAndes
     /* ****************************************************************
      * 			Métodos para manejar los OPERADORES
      *****************************************************************/
-//
-//    /**
-//     * Método que consulta todas las tuplas en la tabla OPERADORES
-//     * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
-//     */
-//    public List<Operador> darOperadores ()
-//    {
-//        return sqlOperador.darOperadores (pmf.getPersistenceManager());
-//    }
-//
+
+    /**
+     * Método que inserta, de manera transaccional, una tupla en la tabla Operadores
+     * Adiciona entradas al log de la aplicación
+     * @param idOperador - El identificador del alojamiento que se desea Operadorr 
+     * @param nombre - El identificador del miembro que desea realizar la Operador 
+     * @param registroDeCamaraYComercio -  si esta subscrito o tiene el certitificado.
+     * @param SuperIntendensiaDeTurismo - si esta subscrito o tiene el certitificado.
+     * @param calidad - La calidad
+     * @param tipoOperador - El tipo operador 
+     * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
+     */
+    public Operador adicionarOperador( String nombre, Boolean  registroDeCamaraYComercio, Boolean SuperIntendensiaDeTurismo, int  calidad, String  tipoOperador)
+    {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+        
+            long idOperador = nextval_idReserva();
+            
+            String registroDeCamaraYComercioCHAR ="";
+            if(registroDeCamaraYComercio== true ){
+             registroDeCamaraYComercioCHAR = "Y";
+            }
+            else{
+            registroDeCamaraYComercioCHAR = "N";	
+            }
+            
+            String SuperIntendensiaDeTurismoChar ="";
+            if(SuperIntendensiaDeTurismo == true ){
+            	SuperIntendensiaDeTurismoChar = "Y";
+            }
+            else{
+            	SuperIntendensiaDeTurismoChar = "N";	
+            }
+            
+            long tuplasInsertadas = sqlOperador.adicionarOperador(pm, idOperador , nombre, registroDeCamaraYComercioCHAR, SuperIntendensiaDeTurismoChar, calidad, tipoOperador);
+            tx.commit();
+
+            log.trace ("Inserción Operador: " + idOperador + ": " + tuplasInsertadas + " tuplas insertadas");
+            return new Operador(idOperador, nombre, registroDeCamaraYComercio, SuperIntendensiaDeTurismo, calidad, tipoOperador);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+            log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+    
+    /**
+     * Método que elimina, de manera transaccional, una tupla en la tabla Operadores, dado el id del operador
+     * Adiciona entradas al log de la aplicación
+     * @param idReserva - El id de la reserva
+     * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
+     */
+    public long eliminarOperadorPorId (long idoperador)
+    {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long resp = sqlOperador.eliminarOperadorPorId(pm, idoperador);
+            tx.commit();
+
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+            log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+    
+    
+    
+    /**
+     * Método que consulta todas las tuplas en la tabla OPERADORES
+     * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
+     */
+    public List<Operador> darOperadores ()
+    {
+        return sqlOperador.darOperadores (pmf.getPersistenceManager());
+    }
+
 //    /**
 //     * Método que consulta todas las tuplas en la tabla OPERADORES que tienen el nombre dado
 //     * @param nombre - El nombre del de operador
 //     * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
 //     */
-//    public List<Operador> darOperadorPorNombre (String nombre)
+//    public Operador darOperadorPorNombre (String nombre)
 //    {
 //        return sqlOperador.darOperadorPorNombre (pmf.getPersistenceManager(), nombre);
 //    }
-//
-//    /**
-//     * Método que consulta todas las tuplas en la tabla OPERADORES con un identificador dado
-//     * @param idOperador - El identificador del operador
-//     * @return El objeto Operador, construido con base en las tuplas de la tabla OPERADORES con el identificador dado
-//     */
-//    public TipoBebida darOperadorPorId (long idOperador)
-//    {
-//        return sqlOperador.darOperadorPorId (pmf.getPersistenceManager(), idTipoBebida);
-//    }
+
+    
+    /**
+     * Método que consulta todas las tuplas en la tabla OPERADORES con un identificador dado
+     * @param idOperador - El identificador del operador
+     * @return El objeto Operador, construido con base en las tuplas de la tabla OPERADORES con el identificador dado
+     */
+    public Operador darOperadorPorId (long idOperador)
+    {
+        return sqlOperador.darOperadorPorId (pmf.getPersistenceManager(), idOperador);
+    }
 
     /* ****************************************************************
      * 			Métodos para manejar las RESERVAS
@@ -409,6 +519,17 @@ public class PersistenciaAlohAndes
             pm.close();
         }
     }
+    
+    
+	/**
+	 * Método que consulta todas las tuplas en la Reserva
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
+	 */
+	public List<Reserva> darReservas ()
+	{
+		return sqlReserva.darReservas (pmf.getPersistenceManager());
+	}
+	
 
     /**
      * Método que consulta la tupla en la tabla RESERVAS que tiene el identificador dado
@@ -434,6 +555,16 @@ public class PersistenciaAlohAndes
      * 			Métodos para manejar los ALOJAMIENTOS
      *****************************************************************/
 
+	/**
+	 * Método que consulta todas las tuplas en la Alojamientos
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla Alojamientos
+	 */
+	public List<Alojamiento> darAlojamientos ()
+	{
+		return sqlAlojamiento.darAlojamientos (pmf.getPersistenceManager());
+	}
+    
+    
     /**
      * Método que elimina, de manera transaccional, una tupla en la tabla ALOJAMENTO, dado el id del alojamiento. El alojamento no debe estar reservado
      * Adiciona entradas al log de la aplicación
@@ -469,4 +600,45 @@ public class PersistenciaAlohAndes
             return -1;
         }
     }
+    
+    
+    
+    
+    
+	/**
+	 * Elimina todas las tuplas de todas las tablas de la base de datos de AlohaAndes
+	 * 
+	 * Crea y ejecuta las sentencias SQL para cada tabla de la base de datos - EL ORDEN ES IMPORTANTE 
+	 * @return Un arreglo con 8 números que indican el número de tuplas borradas en las tablas ALOJAMIENTOS, APARTAMENTOS, HABITACIONES, 
+	 * MIEMBRO COMUNIDAD UNIVERSITARIA, OPERADORES, RESERVA y SERVIVICIOS, VIVIENDA COMUNIDAD, respectivamente
+	 */
+	public long [] limpiarAlohAndes ()
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long [] resp = sqlUtil.limpiarAlohAndes (pm);
+            tx.commit ();
+            log.info ("Borrada la base de datos");
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+        	return new long[] {-1, -1, -1, -1, -1, -1, -1,-1};
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+		
+	}
+    
 }
