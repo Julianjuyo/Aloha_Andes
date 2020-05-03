@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.io.FileReader;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -104,34 +105,35 @@ public class AlojamientoTest
 			List <VOAlojamiento> lista = alohAndes.darVOAlojamiento();
 			assertEquals ("No debe haber Alojamientos creados!!", 0, lista.size ());
 
-			// Lectura de los Alojamientos con un tipo de bebida adicionado
-			String nombreAlojamiento1 = "Vino tinto";
-			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento (nombreAlojamiento1);
-			lista = alohAndes.darVOTiposBebida();
+			
+			
+			// Lectura de los Alojamientos con un alojamineto adicionado
+			Boolean habi = true;
+			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento(habi, null, null);
+			lista = alohAndes.darVOAlojamiento();
 			assertEquals ("Debe haber un tipo de bebida creado !!", 1, lista.size ());
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Alojamiento1, lista.get (0));
 
 			// Lectura de los Alojamientos con dos Alojamientos adicionados
-			String nombreAlojamiento2 = "Cerveza";
-			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento (nombreAlojamiento2);
-			lista = alohAndes.darVOTiposBebida();
+			Boolean habi2 = true;
+			Date f1 = new Date();
+			Date f2 = new Date();
+			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento(habi2, f1, f2);
+			lista = alohAndes.darVOAlojamiento();
 			assertEquals ("Debe haber dos Alojamientos creados !!", 2, lista.size ());
-			assertTrue ("El primer tipo de bebida adicionado debe estar en la tabla", Alojamiento1.equals (lista.get (0)) || Alojamiento1.equals (lista.get (1)));
-			assertTrue ("El segundo tipo de bebida adicionado debe estar en la tabla", Alojamiento2.equals (lista.get (0)) || Alojamiento2.equals (lista.get (1)));
+			
+			assertTrue ("El primer alojamiento adicionado debe estar en la tabla", Alojamiento1.equals (lista.get (0)) || Alojamiento1.equals (lista.get (1)));
+			assertTrue ("El segundo adicionado debe estar en la tabla", Alojamiento2.equals (lista.get (0)) || Alojamiento2.equals (lista.get (1)));
 
 			// Prueba de eliminación de un tipo de bebida, dado su identificador
-			long tbEliminados = alohAndes.eliminarAlojamientoPorId (Alojamiento1.getId ());
+			long tbEliminados = alohAndes.eliminarAlojamientoPorID (Alojamiento1.getId ());
 			assertEquals ("Debe haberse eliminado un tipo de bebida !!", 1, tbEliminados);
-			lista = alohAndes.darVOTiposBebida();
+			lista = alohAndes.darVOAlojamiento();
 			assertEquals ("Debe haber un solo tipo de bebida !!", 1, lista.size ());
 			assertFalse ("El primer tipo de bebida adicionado NO debe estar en la tabla", Alojamiento1.equals (lista.get (0)));
 			assertTrue ("El segundo tipo de bebida adicionado debe estar en la tabla", Alojamiento2.equals (lista.get (0)));
 			
-			// Prueba de eliminación de un tipo de bebida, dado su identificador
-			tbEliminados = alohAndes.eliminarAlojamientoPorNombre (nombreAlojamiento2);
-			assertEquals ("Debe haberse eliminado un tipo de bebida !!", 1, tbEliminados);
-			lista = alohAndes.darVOTiposBebida();
-			assertEquals ("La tabla debió quedar vacía !!", 0, lista.size ());
+
 		}
 		catch (Exception e)
 		{
@@ -144,7 +146,7 @@ public class AlojamientoTest
 		}
 		finally
 		{
-			alohAndes.limpiaralohAndes ();
+			alohAndes.limpiarAlohAndes();
     		alohAndes.cerrarUnidadPersistencia ();    		
 		}
 	}
@@ -159,7 +161,7 @@ public class AlojamientoTest
 		try
 		{
 			log.info ("Probando la restricción de UNICIDAD del nombre del tipo de bebida");
-			alohAndes = new alohAndes (openConfig (CONFIG_TABLAS_A));
+			alohAndes = new AlohAndes ();
 		}
 		catch (Exception e)
 		{
@@ -177,17 +179,22 @@ public class AlojamientoTest
 		try
 		{
 			// Lectura de los Alojamientos con la tabla vacía
-			List <VOAlojamiento> lista = alohAndes.darVOTiposBebida();
+			List <VOAlojamiento> lista = alohAndes.darVOAlojamiento();
 			assertEquals ("No debe haber Alojamientos creados!!", 0, lista.size ());
 
 			// Lectura de los Alojamientos con un tipo de bebida adicionado
-			String nombreAlojamiento1 = "Vino tinto";
-			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento (nombreAlojamiento1);
-			lista = alohAndes.darVOTiposBebida();
+			Boolean habi = true;
+			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento(habi, null, null);
 			assertEquals ("Debe haber un tipo de bebida creado !!", 1, lista.size ());
 
-			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento (nombreAlojamiento1);
-			assertNull ("No puede adicionar dos Alojamientos con el mismo nombre !!", Alojamiento2);
+			Boolean habi2 = true;
+			Date f1 = new Date();
+			Date f2 = new Date();
+			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento(habi2, f1, f2);
+			assertNull ("No puede adicionar dos Alojamientos con el mismo id !!", Alojamiento2);
+			
+			
+			
 		}
 		catch (Exception e)
 		{
@@ -200,7 +207,7 @@ public class AlojamientoTest
 		}    				
 		finally
 		{
-			alohAndes.limpiaralohAndes ();
+			alohAndes.limpiarAlohAndes();
     		alohAndes.cerrarUnidadPersistencia ();    		
 		}
 	}
