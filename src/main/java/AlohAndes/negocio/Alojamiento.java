@@ -1,5 +1,6 @@
 package AlohAndes.negocio;
 
+import java.util.Date;
 
 /**
  * Clase para modelar el concepto ALOJAMIENTO del negocio de los ALOHAANDES
@@ -16,6 +17,23 @@ public class Alojamiento implements VOAlojamiento{
 	 */
 	private int id;
 	
+	/*
+	 * Verifica si esta disponible o no un alojamientos
+	 */
+	private boolean habilitada;
+	
+	
+
+	/*
+	 * En caso de no estar disponible se debe se indica la fecha incial Del periodo de no disponibilidad
+	 */
+	private Date fechaInicioDes;
+
+	/*
+	 * En caso de no estar disponible se debe se indica la fecha incial Del periodo de no disponibilidad
+	 */
+	private Date fechaFinDes;
+	
 	/* ****************************************************************
 	 * 			Métodos 
 	 *****************************************************************/
@@ -26,6 +44,9 @@ public class Alojamiento implements VOAlojamiento{
 	public Alojamiento() 
     {
     	this.setId(0);
+    	this.habilitada=true;
+        this.fechaInicioDes = new Date();
+        this.fechaFinDes = new Date();
 
 	}
 	
@@ -34,9 +55,12 @@ public class Alojamiento implements VOAlojamiento{
 	 * @param id - El id del alojamiento
 
 	 */
-    public Alojamiento(int id) 
+    public Alojamiento(int id, boolean habilitada, Date fechaInicioDes, Date fechaFinDeshabilitada) 
     {
     	this.setId(id);
+    	this.setHabilitada(habilitada);
+    	this.setFechaInicioDeshabilitada(fechaInicioDes);
+    	this.setFechaFinDeshabilitada(fechaFinDeshabilitada);
 
 	}
 
@@ -50,12 +74,36 @@ public class Alojamiento implements VOAlojamiento{
 		this.id = id;
 	}
 	
+	public boolean getHabilitada() {
+		return habilitada;
+	}
+
+	public void setHabilitada(boolean habilitada) {
+		this.habilitada = habilitada;
+	}
+
+	public Date getFechaInicioDeshabilitada() {
+		return fechaInicioDes;
+	}
+
+	public void setFechaInicioDeshabilitada(Date fechaInicioDeshabilitada) {
+		this.fechaInicioDes = fechaInicioDeshabilitada;
+	}
+
+	public Date getFechaFinDeshabilitada() {
+		return fechaFinDes;
+	}
+
+	public void setFechaFinDeshabilitada(Date fechaFinDeshabilitada) {
+		this.fechaFinDes = fechaFinDeshabilitada;
+	}
+	
 	@Override
 	/**
 	 * @return Una cadena de caracteres con todos los atributos del alojamiento
 	 */
 	public String toString() 
 	{
-		return "Alojamientos [id=" + id + "]";
+		return "Alojamiento [id=" + id + ", fechaInicioDes=" + fechaInicioDes + ", fechaFinDes=" + fechaFinDes + "]";
 	}
 }

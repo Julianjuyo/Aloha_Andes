@@ -126,7 +126,7 @@ public class Operador implements VOOperador
 	 */
 	public String toString() 
 	{
-		return "Operadores [id=" + id + ", nombre=" + nombre + ", regCamaraYComercio=" + regCamaraYComercio + ", superTurismo=" + superTurismo
+		return "Operador [id=" + id + ", nombre=" + nombre + ", regCamaraYComercio=" + regCamaraYComercio + ", superTurismo=" + superTurismo
 				+ ", calidad=" + calidad + ", tipoOperador=" +tipoOperador +"]";
 	}
 	

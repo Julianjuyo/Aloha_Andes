@@ -1,5 +1,6 @@
 package AlohAndes.negocio;
 
+import java.util.Date;
 
 /**
  * Interfaz para los métodos get de Alojamientos.
@@ -16,6 +17,21 @@ public interface VOAlojamiento {
 	 */
 	public int getId();
 	
+	/*
+	 * @return si esta disponible o no un alojamientos
+	 */
+	public boolean getHabilitada();
+	
+	
+	/*
+	 * @return la fecha incial Del periodo de no disponibilidad
+	 */
+	public Date getFechaInicioDeshabilitada();
+
+	/*
+	 * @return la fecha incial Del periodo de no disponibilidad
+	 */
+	public Date getFechaFinDeshabilitada();
 
 	@Override
 	/**
