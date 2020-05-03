@@ -15,7 +15,7 @@ public class Alojamiento implements VOAlojamiento{
 	 /**
 	 * El identificador ÚNICO de los alojamientos
 	 */
-	private int id;
+	private long id;
 	
 	/*
 	 * Verifica si esta disponible o no un alojamientos
@@ -40,8 +40,12 @@ public class Alojamiento implements VOAlojamiento{
 
     /**
      * Constructor por defecto
+     * @param fechaFin 
+     * @param fechaInicio 
+     * @param habilitada2 
+     * @param idAlojamiento 
      */
-	public Alojamiento() 
+	public Alojamiento(long idAlojamiento, String habilitada2, Date fechaInicio, Date fechaFin) 
     {
     	this.setId(0);
     	this.habilitada=true;
@@ -55,7 +59,7 @@ public class Alojamiento implements VOAlojamiento{
 	 * @param id - El id del alojamiento
 
 	 */
-    public Alojamiento(int id, boolean habilitada, Date fechaInicioDes, Date fechaFinDeshabilitada) 
+    public Alojamiento(long id, boolean habilitada, Date fechaInicioDes, Date fechaFinDeshabilitada) 
     {
     	this.setId(id);
     	this.setHabilitada(habilitada);
@@ -65,12 +69,12 @@ public class Alojamiento implements VOAlojamiento{
 	}
 
     
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

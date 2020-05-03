@@ -14,7 +14,7 @@ public class MiembroComunidadUniversitaria implements VOMiembroComunidadUniversi
      /**
 	 *  El id del miembro de la comunidad universitaria
 	 */
-	private int id;
+	private long id;
 	
 	/**
 	 *  El tipo de id  de la vivienda de comunidad
@@ -50,7 +50,7 @@ public class MiembroComunidadUniversitaria implements VOMiembroComunidadUniversi
 	/**
 	 * Constructor con valores
 	 */
-    public MiembroComunidadUniversitaria(int id , String tipoId, String nombre, String tipoMiembro )
+    public MiembroComunidadUniversitaria(long id , String tipoId, String nombre, String tipoMiembro )
     {
     	
     	this.setId(id);
@@ -60,11 +60,11 @@ public class MiembroComunidadUniversitaria implements VOMiembroComunidadUniversi
 
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

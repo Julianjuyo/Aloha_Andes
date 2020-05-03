@@ -15,7 +15,7 @@ public interface VOAlojamiento {
      /**
 	 * @return El id del Alojamiento
 	 */
-	public int getId();
+	public long getId();
 	
 	/*
 	 * @return si esta disponible o no un alojamientos

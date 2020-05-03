@@ -1,6 +1,7 @@
 package AlohAndes.persistencia;
 
 import AlohAndes.negocio.Alojamiento;
+import AlohAndes.negocio.MiembroComunidadUniversitaria;
 import AlohAndes.negocio.Operador;
 import AlohAndes.negocio.Reserva;
 import com.google.gson.JsonArray;
@@ -555,6 +556,59 @@ public class PersistenciaAlohAndes
      * 			Métodos para manejar los ALOJAMIENTOS
      *****************************************************************/
 
+    
+    /**
+     * Método que inserta, de manera transaccional, una tupla en la tabla Alojamientos
+     * Adiciona entradas al log de la aplicación
+     * @param idAlojamiento - El identificador del alojamiento que se desea reservar (Debe existir en la tabla ALOJAMIENTOS)
+     * @param idMiembro - El identificador del miembro que desea realizar la reserva (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tipoId - El tipo de identificación del miembro que desea realizar la reserva (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tiempoDias - El número de días que se desea reservar el alojamiento
+     * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
+     */
+    public Alojamiento adicionarAlojamiento(Boolean habilitada, Date  fechaInicio, Date fechaFin)
+    {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            long idAlojamiento = nextval_idAlojamiento();
+            Date date = Calendar.getInstance().getTime();
+            
+
+            String habilitadoString ;
+            if(habilitada == true)
+            {
+            	habilitadoString= "Y";
+            }
+            else
+            {
+            	habilitadoString= "N";
+            }
+            
+            long tuplasInsertadas = sqlAlojamiento.adicionarAlojamiento(pm, idAlojamiento, habilitadoString, fechaInicio, fechaFin);
+            tx.commit();
+
+            log.trace ("Inserción Alojamiento: " + idAlojamiento + ": " + tuplasInsertadas + " tuplas insertadas");
+            return new Alojamiento (idAlojamiento, habilitada, fechaInicio, fechaFin);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+            log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+    
 	/**
 	 * Método que consulta todas las tuplas en la Alojamientos
 	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla Alojamientos
@@ -566,10 +620,10 @@ public class PersistenciaAlohAndes
     
     
     /**
-     * Método que elimina, de manera transaccional, una tupla en la tabla ALOJAMENTO, dado el id del alojamiento. El alojamento no debe estar reservado
+     * Método que elimina, de manera transaccional, una tupla en la tabla ALOJAMENTO, dado el id del alojamiento. El alojamento no debe estar Alojamientodo
      * Adiciona entradas al log de la aplicación
      * @param idAlojamiento - El id del alojamiento
-     * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción o el alojamiento está reservado
+     * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción o el alojamiento está Alojamientodo
      */
     public long eliminarAlojamiento (long idAlojamiento)
     {
@@ -602,8 +656,68 @@ public class PersistenciaAlohAndes
     }
     
     
+    /* ****************************************************************
+     * 			Métodos para manejar los Miembros de la comunidad
+     *****************************************************************/
+    
+    /**
+     * Método que inserta, de manera transaccional, una tupla en la tabla MiembroComunidadUniversitaria
+     * Adiciona entradas al log de la aplicación
+     * @param idAlojamiento - El identificador del alojamiento que se desea reservar (Debe existir en la tabla ALOJAMIENTOS)
+     * @param idMiembro - El identificador del miembro que desea realizar la reserva (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tipoId - El tipo de identificación del miembro que desea realizar la reserva (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tiempoDias - El número de días que se desea reservar el alojamiento
+     * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
+     */
+    public MiembroComunidadUniversitaria adicionarMiembroComunidadUniversitaria(long id, String  tipoID, String nombre, String  tipoMiembroComunidadUniversitaria)
+    {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+          
+            //VERIFICAR LAS REGLAS DE QUE SEA DE TAL TIPO
+            
+            long tuplasInsertadas = sqlMiemCoUniv.adicionarMiembroComunidadUniversitaria(pm, id,tipoID, nombre ,tipoMiembroComunidadUniversitaria);
+            tx.commit();
+
+            log.trace ("Inserción MiembroComunidadUniversitaria: " + id + ": " + tuplasInsertadas + " tuplas insertadas");
+            return new MiembroComunidadUniversitaria (id, tipoID, nombre, tipoMiembroComunidadUniversitaria);
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+            log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
     
     
+	/**
+	 * Método que consulta todas las tuplas en la MiembroComunidadUniversitaria
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
+	 */
+	public List<MiembroComunidadUniversitaria> darMiembrosComunidadUniversitaria ()
+	{
+		return sqlMiemCoUniv.darMiembrosComunidadUniversitaria (pmf.getPersistenceManager());
+	}
+    
+	
+	
+	
+    /* ****************************************************************
+     * 			Método para limpiar la base de datos
+     *****************************************************************/
     
 	/**
 	 * Elimina todas las tuplas de todas las tablas de la base de datos de AlohaAndes

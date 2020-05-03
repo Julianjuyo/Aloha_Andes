@@ -1,5 +1,6 @@
 package AlohAndes.persistencia;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -64,15 +65,15 @@ public class SQLAlojamiento
      * @return EL número de tuplas insertadas
      */
     
- /*
-    public long adicionarAlojamiento (PersistenceManager pm, long idAlojamiento, long idAlojamiento, long idMiembro, String tipoId, String diaAlojamiento, int tiempoDias)
+ 
+    public long adicionarAlojamiento (PersistenceManager pm, long idAlojamiento, String habilitada, Date fechaInicio, Date fechaFin)
     {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(NUMAlojamiento, IDALOJAMIENTO, IDMIEMBRO, TIPOID, DIAAlojamiento, TIEMPODIAS) values (?, ?, ?, ?, ?, ?)");
-        q.setParameters(idAlojamiento, idAlojamiento, idMiembro, tipoId, diaAlojamiento, tiempoDias);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(ID, HABILITADO, FECHAINICIODES, FECHAFINDES) values (?, ?, ?, ?)");
+        q.setParameters(idAlojamiento, habilitada, fechaInicio, fechaFin);
         return (long) q.executeUnique();
     }
     
-  */
+ 
     
     
     

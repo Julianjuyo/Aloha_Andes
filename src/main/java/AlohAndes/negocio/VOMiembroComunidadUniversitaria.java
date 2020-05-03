@@ -17,7 +17,7 @@ public interface VOMiembroComunidadUniversitaria {
      /**
 	 * @return El id del miembro de la comunidad universitaria
 	 */
-	public int getId();
+	public long getId();
 	
 	/**
 	 * @return El tipo de id  de la vivienda de comunidad

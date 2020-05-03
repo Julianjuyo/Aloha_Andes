@@ -2,6 +2,7 @@ package AlohAndes.negocio;
 
 import AlohAndes.persistencia.PersistenciaAlohAndes;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -123,12 +124,33 @@ public class AlohAndes
      *****************************************************************/
 
     /**
+     * Adiciona de manera persistente una Alojamiento
+     * Adiciona entradas al log de la aplicación
+     * @param habilitada - El identificador del alojamiento que se desea Alojamientor 
+     * @param fechaInicio - El identificador del miembro que desea realizar la Alojamiento 
+     * @param fechaFin -  si esta subscrito o tiene el certitificado.
+
+     * @return El objeto Alojamiento adicionado. null si ocurre alguna Excepción
+     */
+    public Alojamiento adicionarAlojamiento (Boolean habilitada, Date  fechaInicio, Date fechaFin ) {
+    	
+        Alojamiento Alojamiento = pp.adicionarAlojamiento(habilitada, fechaInicio, fechaFin);
+        
+        log.info ("Adicionanda Alojamiento: " + Alojamiento);
+        
+      
+        return Alojamiento;
+    }
+	
+	
+    
+    /**
      * Elimina un alojamiento por su identificador
      * Adiciona entradas al log de la aplicación
      * @param idAlojamiento - El id de la reserva
      * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
      */
-    public long eliminarAlojamiento (long idAlojamiento)
+    public long eliminarAlojamientoPorID (long idAlojamiento)
     {
         log.info ("Eliminando alojamiento por id: " + idAlojamiento);
         long resp = pp.eliminarAlojamiento (idAlojamiento);
@@ -223,6 +245,51 @@ public class AlohAndes
         }
         log.info ("Generando los VO de operadors: " + voTipos.size() + " existentes");
         return voTipos;
+	}
+	
+	
+    /* ****************************************************************
+     * 			Métodos para manejar los Miembros de la comunidad
+     *****************************************************************/
+
+    /**
+     * Adiciona de manera persistente una Miembros de la comunidad
+     * Adiciona entradas al log de la aplicación
+     * @param id de la comunidad - El identificador del Miembros de la comunidad que se desea Miembros de la comunidadr 
+     * @param nombre - El identificador del miembro que desea realizar la Miembros de la comunidad 
+     * @param tipoID -  si esta subscrito o tiene el certitificado.
+     * @param tipoMiembroComunidadUniversitaria - si esta subscrito o tiene el certitificado.
+     * @return El objeto Miembros de la comunidad adicionado. null si ocurre alguna Excepción
+     */
+    public MiembroComunidadUniversitaria adicionarMiembroComunidadUniversitaria (long id, String  tipoID, String nombre, String  tipoMiembroComunidadUniversitaria)
+    {
+    	
+        MiembroComunidadUniversitaria miembroComunidadUniversitaria = pp.adicionarMiembroComunidadUniversitaria(id, tipoID, nombre, tipoMiembroComunidadUniversitaria);
+        log.info ("Adicionanda MiembroComunidadUniversitaria: " + miembroComunidadUniversitaria);
+        
+      
+        return miembroComunidadUniversitaria;
+    }
+	
+
+    
+	/**
+	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOReserva
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos VOReserva con todos las reservas que conoce la aplicación, llenos con su información básica
+	 */
+	public List<VOMiembroComunidadUniversitaria> darVOMiembroComunidadUniversitaria ()
+	{
+		log.info ("Generando los VO de miembros");    
+		
+        List<VOMiembroComunidadUniversitaria> voTipo = new LinkedList<VOMiembroComunidadUniversitaria> ();
+        
+        for (MiembroComunidadUniversitaria alo : pp.darMiembrosComunidadUniversitaria() )
+        {
+        	voTipo.add(alo);
+        }
+        log.info ("Generando los VO de MiembroComunidadUniversitarias: " + voTipo.size() + " existentes");
+        return voTipo;
 	}
     
     
