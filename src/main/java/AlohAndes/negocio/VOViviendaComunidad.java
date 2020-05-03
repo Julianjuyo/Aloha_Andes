@@ -15,12 +15,12 @@ public interface VOViviendaComunidad {
      /**
 	 * @return El idAlojamiento de la vivienda de comunidad 
 	 */
-	public int getIdAlojamiento();
+	public long getIdAlojamiento();
 	
 	/**
 	 * @return El idOperador de la vivienda de comunidad
 	 */
-	public int getIdOperador();
+	public long getIdOperador();
 	
 	/**
 	 * @return La direccion de la vivienda de comunidad
@@ -34,7 +34,7 @@ public interface VOViviendaComunidad {
 	
 	/**
 	 * @return El numero de habitaciones de la vivienda de comunidad
-	 */
+	 */	
 	public Integer getNumHabitaciones();
 	
 	/**

@@ -4,7 +4,7 @@ package AlohAndes.negocio;
  * Clase para modelar el concepto  APARTAMENTOS del negocio de los AlohaAndes
  *
  */
-public class Apartamentos implements VOApartamentos {
+public class Apartamento implements VOApartamento {
 	
 	/* ****************************************************************
 	 * 			atributos 
@@ -14,7 +14,7 @@ public class Apartamentos implements VOApartamentos {
     /**
 	 *  El idAlojamiento del apartamento
 	 */
-	private int idAlojamiento;
+	private long idAlojamiento;
 	
 	/**
 	 *  La direccion del apartamento
@@ -30,7 +30,7 @@ public class Apartamentos implements VOApartamentos {
 	/**
 	 *  El dueno del apartamento
 	 */
-	private int dueno;
+	private long dueno;
 	
 	/**
 	 *  El valor de la administracion del apartamento
@@ -49,7 +49,7 @@ public class Apartamentos implements VOApartamentos {
     /**
      * Constructor por defecto
      */
-	public Apartamentos() 
+	public Apartamento() 
     {
     	this.setIdAlojamiento(0);
 		this.direccion = "";
@@ -62,7 +62,7 @@ public class Apartamentos implements VOApartamentos {
 	/**
 	 * Constructor con valores
 	 */
-    public Apartamentos(int idaloja, String direccion, Double precio, int dueno, Double valorAdmin, Boolean amobaldo ) 
+    public Apartamento(long idaloja, String direccion, Double precio, long dueno, Double valorAdmin, Boolean amobaldo ) 
     {
     	this.setIdAlojamiento(idaloja);
 		this.direccion = direccion;
@@ -72,11 +72,11 @@ public class Apartamentos implements VOApartamentos {
 		this.amobaldo = amobaldo ;
 	}
 
-	public int getIdAlojamiento() {
+	public long getIdAlojamiento() {
 		return idAlojamiento;
 	}
 
-	public void setIdAlojamiento(int idAlojamiento) {
+	public void setIdAlojamiento(long idAlojamiento) {
 		this.idAlojamiento = idAlojamiento;
 	}
 
@@ -96,11 +96,11 @@ public class Apartamentos implements VOApartamentos {
 		this.precio = precio;
 	}
 
-	public int getDueno() {
+	public long getDueno() {
 		return dueno;
 	}
 
-	public void setDueno(int dueno) {
+	public void setDueno(long dueno) {
 		this.dueno = dueno;
 	}
 

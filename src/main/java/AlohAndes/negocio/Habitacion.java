@@ -4,7 +4,7 @@ package AlohAndes.negocio;
  * Clase para modelar el concepto HABITACIONES del negocio de los AlohaAndes
  *
  */
-public class Habitaciones implements VOHabitaciones {
+public class Habitacion implements VOHabitacion {
 	
 	/* ****************************************************************
 	 * 			Atributos
@@ -14,12 +14,12 @@ public class Habitaciones implements VOHabitaciones {
     /**
 	 *  El idAlojamiento de la habitaction
 	 */
-	private int idAlojamiento;
+	private long idAlojamiento;
 	
 	/**
 	 *  El idOperador de la habitaction
 	 */
-	private int idOperador;
+	private long idOperador;
 	
 	/**
 	 *  La direccion de la habitaction
@@ -53,7 +53,7 @@ public class Habitaciones implements VOHabitaciones {
     /**
      * Constructor por defecto
      */
-	public Habitaciones() 
+	public Habitacion() 
     {
     	this.setIdAlojamiento(0);
 		this.idOperador = 0;
@@ -67,7 +67,7 @@ public class Habitaciones implements VOHabitaciones {
 	/**
 	 * Constructor con valores
 	 */
-    public Habitaciones(int idaloja, int idOperador, String direccion, Double precio, String numHabitacion, String tipoHabitacion, String tipoOperadorHabitacion ) 
+    public Habitacion(long idaloja, long idOperador, String direccion, Double precio, String numHabitacion, String tipoHabitacion, String tipoOperadorHabitacion ) 
     {
     	this.setIdAlojamiento(idaloja);
 		this.idOperador = idOperador;
@@ -78,19 +78,19 @@ public class Habitaciones implements VOHabitaciones {
 		this.tipoOperadorHabitacion = tipoOperadorHabitacion;
 	}
 
-	public int getIdAlojamiento() {
+	public long getIdAlojamiento() {
 		return idAlojamiento;
 	}
 
-	public void setIdAlojamiento(int idAlojamiento) {
+	public void setIdAlojamiento(long idAlojamiento) {
 		this.idAlojamiento = idAlojamiento;
 	}
 
-	public int getIdOperador() {
+	public long getIdOperador() {
 		return idOperador;
 	}
 
-	public void setIdOperador(int idOperador) {
+	public void setIdOperador(long idOperador) {
 		this.idOperador = idOperador;
 	}
 

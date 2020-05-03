@@ -109,5 +109,92 @@ public class SQLReserva
 		q.setResultClass(Reserva.class);
 		return (List<Reserva>) q.executeList();
 	}
+	
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar las 20 ofertas mas pupulares
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC2 (PersistenceManager pm)
+	{
+        String sql = "SELECT r.idalojamiento , COUNT(*) as numreservas";
+        sql += " FROM " + pp.darTablaReservas();
+       	sql	+= " GROUP BY IDALOJAMIENTO";
+       	sql += " ORDER BY idalojamiento DESC";
+       	sql += " fetch first 20 rows only;";
+		Query q = pm.newQuery(SQL, sql);
+		return q.executeList();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar cuanto gana un provedor de alojamiento
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un operador,
+	 * 	el segundo elemento representa el número de dinero ganado
+	 */
+	public List<Object []> darRFC1paraHabitaciones (PersistenceManager pm)
+	{
+        String sql = "SELECT op.id,  sum(habi.precio * re.tiempodias) AS dinero_Recibido";
+        sql += "FROM"; 
+        sql += pp.darTablaHabitaciones() +"habi, ";
+        sql += pp.darTablaReservas() +"re,";
+        sql += pp.darTablaOperadores()+" op" ;
+       	sql	+= "WHERE";
+       	sql += "op.id = habi.idalojamiento";
+       	sql += "AND habi.idalojamiento= re.idalojamiento";
+       	sql += "GROUP by op.id, op.nombre;";
+       	
+		Query q = pm.newQuery(SQL, sql);
+		return q.executeList();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar cuanto gana un provedor de alojamiento
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un operador,
+	 * 	el segundo elemento representa el número de dinero ganado
+	 */
+	public List<Object []> darRFC1paraApartamentos (PersistenceManager pm)
+	{
+        String sql = "SELECT op.id,  sum(habi.precio * re.tiempodias) AS dinero_Recibido";
+        sql += "FROM"; 
+        sql += pp.darTablaApartamentos() +"ap, ";
+        sql += pp.darTablaReservas() +"re,";
+        sql += pp.darTablaOperadores()+" op" ;
+       	sql	+= "WHERE";
+       	sql += "op.id = ap.dueno";
+       	sql += "AND ap.idalojamiento= re.idalojamiento";
+       	sql += "GROUP by op.id, op.nombre;";
+       	
+		Query q = pm.newQuery(SQL, sql);
+		return q.executeList();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar cuanto gana un provedor de alojamiento
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un operador,
+	 * 	el segundo elemento representa el número de dinero ganado
+	 */
+	public List<Object []> darRFC1paraViviendaComunidad (PersistenceManager pm)
+	{
+        String sql = "SELECT op.id,  sum(vi.precio * re.tiempodias) AS dinero_Recibido";
+        sql += "FROM"; 
+        sql += pp.darTablaViviendaComunidad() +"vi, ";
+        sql += pp.darTablaReservas() +"re,";
+        sql += pp.darTablaOperadores()+" op" ;
+       	sql	+= "WHERE";
+       	sql += "op.id = vi.dueno";
+       	sql += "AND vi.idalojamiento= re.idalojamiento";
+       	sql += "GROUP by op.id, op.nombre;";
+       	
+		Query q = pm.newQuery(SQL, sql);
+		return q.executeList();
+	}
+	
+	
+	
     
 }

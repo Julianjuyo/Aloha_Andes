@@ -5,7 +5,7 @@ package AlohAndes.negocio;
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  */
-public interface VOApartamentos {
+public interface VOApartamento {
 
 	
 	/* ****************************************************************
@@ -15,7 +15,7 @@ public interface VOApartamentos {
      /**
 	 * @return El idAlojamiento del apartamento
 	 */
-	public int getIdAlojamiento();
+	public long getIdAlojamiento();
 	
 	/**
 	 * @return La direccion del apartamento
@@ -31,7 +31,7 @@ public interface VOApartamentos {
 	/**
 	 * @return El dueno del apartamento
 	 */
-	public int getDueno();
+	public long getDueno();
 	
 	/**
 	 * @return El valor de la administracion del apartamento

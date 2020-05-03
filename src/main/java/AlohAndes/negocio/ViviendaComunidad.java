@@ -13,12 +13,12 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 	/**
 	 *  El idAlojamiento de la vivienda de comunidad
 	 */
-	private int idAlojamiento;
+	private long idAlojamiento;
 	
 	/**
 	 *  El idOperador de la vivienda de comunidad
 	 */
-	private int idOperador;
+	private long idOperador;
 	
 	/**
 	 *  La direccion de la vivienda de comunidad
@@ -73,7 +73,7 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 	/**
 	 * Constructor con valores
 	 */
-    public ViviendaComunidad(int idaloja, int idOperador, String direccion, Double precio, int numHabitaciones, Boolean menaje, Boolean seguroArrendatario, String caractSeguro ) 
+    public ViviendaComunidad(long idaloja, long idOperador, String direccion, Double precio, int numHabitaciones, Boolean menaje, Boolean seguroArrendatario, String caractSeguro ) 
     {
     	this.setIdAlojamiento(idaloja);
 		this.idOperador = idOperador;
@@ -85,19 +85,19 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 		this.caractSeguro = caractSeguro;
 	}
 
-	public int getIdAlojamiento() {
+	public long getIdAlojamiento() {
 		return idAlojamiento;
 	}
 
-	public void setIdAlojamiento(int idAlojamiento) {
+	public void setIdAlojamiento(long idAlojamiento) {
 		this.idAlojamiento = idAlojamiento;
 	}
 
-	public int getIdOperador() {
+	public long getIdOperador() {
 		return idOperador;
 	}
 
-	public void setIdOperador(int idOperador) {
+	public void setIdOperador(long idOperador) {
 		this.idOperador = idOperador;
 	}
 

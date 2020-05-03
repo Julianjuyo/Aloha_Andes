@@ -1,9 +1,9 @@
---RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
+--RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL Aï¿½O ACTUAL Y EL Aï¿½O CORRIDO
 
 
 SELECT op.id, op.nombre , sum(ap.precio * re.tiempodias) AS dinero_Recibido
 FROM  APARTAMENTOS ap,  RESERVAS re, OPERADORES op
-WHERE op.id = ap.dueño
+WHERE op.id = ap.dueno
 AND ap.idalojamiento= re.idalojamiento
 group by op.id, op.nombre;
 
