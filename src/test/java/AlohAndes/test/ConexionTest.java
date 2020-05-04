@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
 
+import AlohAndes.negocio.AlohAndes;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import com.google.gson.Gson;
@@ -56,7 +57,7 @@ public class ConexionTest
 	/**
 	 * La clase que se quiere probar
 	 */
-    private Parranderos parranderos;
+    private AlohAndes parranderos;
 	
 	/* ****************************************************************
 	 * 			Métodos de prueba de acceso a la BD
@@ -70,7 +71,7 @@ public class ConexionTest
   	  	try
 		{
 			log.info ("Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema");
-			parranderos = new Parranderos (openConfig (CONFIG_TABLAS_A));
+			parranderos = new AlohAndes ();
 			log.info ("Conexión realizada correstamente");
 			log.info ("Cerrando la conexión");
 			
