@@ -7,7 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import AlohAndes.negocio.Alojamiento;
-import AlohAndes.negocio.Reserva;
+
 
 public class SQLAlojamiento
 {
@@ -89,5 +89,32 @@ public class SQLAlojamiento
 		q.setResultClass(Alojamiento.class);
 		return (List<Alojamiento>) q.executeList();
 	}
+
+	    /**
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Alojamiento de la
+     * base de datos de AlohAndes, por su identificador
+     * @param pm - El manejador de persistencia
+     * @param idAlojamiento - El identificador de la Alojamiento
+     * @return El objeto Alojamiento que tiene el identificador dado
+     */
+    public Alojamiento darAlojamientoPorId (PersistenceManager pm, long idAlojamiento)
+    {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAlojamientos() + " WHERE ID = ?");
+        q.setResultClass(Alojamiento.class);
+        q.setParameters(idAlojamiento);
+        return (Alojamiento) q.executeUnique();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	
 }

@@ -69,20 +69,20 @@ public class SQLViviendaComunidad
         return (long) q.executeUnique();
     }
 
-//    /**
-//     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA ViviendaComunidad de la
-//     * base de datos de AlohAndes, por su identificador
-//     * @param pm - El manejador de persistencia
-//     * @param idViviendaComunidad - El identificador de la ViviendaComunidad
-//     * @return El objeto ViviendaComunidad que tiene el identificador dado
-//     */
-//    public ViviendaComunidad darViviendaComunidadPorId (PersistenceManager pm, long idViviendaComunidad)
-//    {
-//        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaViviendaComunidades () + " WHERE NUMViviendaComunidad = ?");
-//        q.setResultClass(ViviendaComunidad.class);
-//        q.setParameters(idViviendaComunidad);
-//        return (ViviendaComunidad) q.executeUnique();
-//    }
+    /**
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA ViviendaComunidad de la
+     * base de datos de AlohAndes, por su identificador
+     * @param pm - El manejador de persistencia
+     * @param idViviendaComunidad - El identificador de la ViviendaComunidad
+     * @return El objeto ViviendaComunidad que tiene el identificador dado
+     */
+    public ViviendaComunidad darViviendaComunidadPorId (PersistenceManager pm, long idViviendaComunidad)
+    {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaViviendaComunidad() + " WHERE IDALOJAMIENTO = ?");
+        q.setResultClass(ViviendaComunidad.class);
+        q.setParameters(idViviendaComunidad);
+        return (ViviendaComunidad) q.executeUnique();
+    }
 
 //    /**
 //     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA RESERVA de la

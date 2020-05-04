@@ -1,11 +1,15 @@
 package AlohAndes.negocio;
 
 import AlohAndes.persistencia.PersistenciaAlohAndes;
+import sun.util.BuddhistCalendar;
 
 import java.sql.Array;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 import org.apache.log4j.Logger;
 
@@ -51,12 +55,293 @@ public class AlohAndes
 	{
 		pp.cerrarUnidadPersistencia ();
 	}
+	
+	/* ****************************************************************
+	 * 			Métodos para manejar las Desabilitaciones de Alojamiento
+	 *****************************************************************/
+	
+	
+	public void DeshabilitarAlojamiento( long idAlojamiento)
+	{
+		
+		
+		
+	}
+	
+	
+	public void habilitarAlojamiento( long idAlojamiento)
+	{
+		Al pp.darAlojamientos();
+		
+		
+	}
+	
+	
+	public ProcesoDeRelocalizacion ()
+	{
+		
+	}
+	
+	
+	
+	
+	
+	
 
 
 	/* ****************************************************************
 	 * 			Métodos para manejar las RESERVAS COLECTIVAS
 	 *****************************************************************/
+
+
+	/**
+	 * Este metodo lo que hace es dar el numero de la habitaciones ocupadas
+	 * @param tipoDeAlojamiento
+	 * @return
+	 */
+	public int numerDeOcupadas(String tipoDeAlojamiento )
+	{
+
+		List<Reserva> listaReservas= pp.darReservas();
+
+		int num= 0;
+
+		if(tipoDeAlojamiento.equals("Hotel")){
+
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(j).getIdAlojamiento() == actual && hab.get(j).getTipoHabitacion().equals("Hotel")){
+						num++;
+					}
+
+				}
+			}
+		}
+
+		else if(tipoDeAlojamiento.equals("Hostal")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual&& hab.get(j).getTipoHabitacion().equals("Hostal")){
+						num++;
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("ViviendaUniv")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual&&hab.get(j).getTipoHabitacion().equals("ViviendaUniv")){
+						num++;
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("PersonaNatural")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual&&hab.get(j).getTipoHabitacion().equals("PersonaNatural")){
+						num++;
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("Apartamento")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Apartamento> hab = pp.darApartamentoes();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual ){
+						num++;
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("ViviendaComunidad")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<ViviendaComunidad> hab = pp.darViviendaComunidades();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual ){
+						num++;
+					}
+
+				}
+			}
+
+		}
+
+
+		return num;
+	}
 	
+	
+	/**
+	 * Verifica que idAlojamientos estan disponibles
+	 * @param tipo
+	 * @return
+	 */
+	public LinkedList idDisponibles(String tipoDeAlojamiento){
+		
+		List<Reserva> listaReservas= pp.darReservas();
+
+		
+		LinkedList<Integer> ids = new LinkedList<Integer>();
+			
+
+		if(tipoDeAlojamiento.equals("Hotel")){
+
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(j).getIdAlojamiento() == actual && hab.get(j).getTipoHabitacion().equals("Hotel")){
+					}
+					else {
+						ids.add((int) hab.get(i).getIdAlojamiento());
+					}
+
+				}
+			}
+		}
+
+		else if(tipoDeAlojamiento.equals("Hostal")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual&& hab.get(j).getTipoHabitacion().equals("Hostal")){
+						
+					}
+					else {
+						ids.add((int) hab.get(i).getIdAlojamiento());
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("ViviendaUniv")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual&&hab.get(j).getTipoHabitacion().equals("ViviendaUniv")){
+						
+					}
+					else {
+						ids.add((int) hab.get(i).getIdAlojamiento());
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("PersonaNatural")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Habitacion> hab = pp.darHabitaciones();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual&&hab.get(j).getTipoHabitacion().equals("PersonaNatural")){
+						
+					}
+					else {
+						ids.add((int) hab.get(i).getIdAlojamiento());
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("Apartamento")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<Apartamento> hab = pp.darApartamentoes();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual ){
+						
+					}
+					else {
+						ids.add((int) hab.get(i).getIdAlojamiento());
+					}
+
+				}
+			}
+
+		}
+		else if(tipoDeAlojamiento.equals("ViviendaComunidad")) {
+			for (int i = 0; i < listaReservas.size(); i++){
+
+				long actual = listaReservas.get(i).getIdAlojamiento();
+				List<ViviendaComunidad> hab = pp.darViviendaComunidades();
+
+				for (int j = 0; j < hab.size(); j++){
+
+					if(hab.get(i).getIdAlojamiento()== actual ){
+						
+					}
+					else {
+						ids.add((int) hab.get(i).getIdAlojamiento());
+					}
+
+				}
+			}
+
+		}
+
+
+		return ids;
+		
+	}
+
 	/**
 	 * Adiciona de manera persistente las reservas colectivas.
 	 * Adiciona entradas al log de la aplicación
@@ -65,54 +350,162 @@ public class AlohAndes
 	 * @param servicios - Los servicios que se desean t realizar en la reserva (Debe existir en la tabla Servicios)
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public Array adicionarReservaColectiva (String tipoDeAlojamiento, int cantidadDeAlojamientos, String[] servicios, long  idMiembro,String tipoId,int tiempoDias )
+	public LinkedList<Integer> adicionarReservaColectiva (String tipoDeAlojamiento, int cantidadDeAlojamientos, String[] servicios, long  idMiembro,String tipoId,int tiempoDias )
 	{
 		log.info ("Verificando si se puede satisfacer la solicitud ");   
-		boolean SiHayCapacidad = false;
-		
-		for (int i = 0; i < cantidadDeAlojamientos; i++) 
-		{
-			 pp.darAlojamientos();
-			
-		}
-		
-		 
+		int num = numerDeOcupadas(tipoDeAlojamiento);
 
-		List<VOReserva> voTipos = new LinkedList<VOReserva> ();
+		
 
-		for (Reserva tb : pp.darReservas() )
-		{
-			voTipos.add (tb);
+		if(tipoDeAlojamiento.equals("Hotel") ){
+
+			List<Habitacion> lista =  pp.darHabitaciones();
+
+			int disponibles = lista.size()- num;
+			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
+				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
+				for (int i = 0; i < cantidadDeAlojamientos; i++) {
+					int idAlojamiento = ids.get(i);	
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);		
+				}			
+				return ids;
+			}
+			else {
+				return null;
+			}
 		}
-		
-		
-		log.info ("Adicionando Reserva del alojamiento: " );
-		Reserva reserva = pp.adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-		log.info ("Adicionanda reserva: " + reserva);
-		return reserva;
+
+		else if(tipoDeAlojamiento.equals("Hostal")) {
+			List<Habitacion> lista =  pp.darHabitaciones();
+
+			int disponibles = lista.size()- num;
+			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
+				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
+				for (int i = 0; i < cantidadDeAlojamientos; i++) {
+					int idAlojamiento = ids.get(i);	
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+					
+				}
+				return ids;
+			}
+			else {
+				return null;
+			}
+
+		}
+
+		else if(tipoDeAlojamiento.equals("ViviendaUniv")) {
+			List<Habitacion> lista =  pp.darHabitaciones();
+
+			int disponibles = lista.size()- num;
+			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
+				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
+				for (int i = 0; i < cantidadDeAlojamientos; i++) {
+					int idAlojamiento = ids.get(i);	
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+					
+				}
+				return ids;
+			}
+			else {
+				return null;
+			}
+
+		}
+
+		else if(tipoDeAlojamiento.equals("PersonaNatural")) {
+			List<Habitacion> lista =  pp.darHabitaciones();
+
+			int disponibles = lista.size()- num;
+			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
+				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
+				for (int i = 0; i < cantidadDeAlojamientos; i++) {
+					int idAlojamiento = ids.get(i);	
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+					
+				}
+				return ids;
+			}
+			else {
+				return null;
+			}
+
+		}
+
+		else if(tipoDeAlojamiento.equals("Apartamento")) {
+			List<Apartamento> lista =  pp.darApartamentoes();
+
+			int disponibles = lista.size()- num;
+			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
+				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
+				for (int i = 0; i < cantidadDeAlojamientos; i++) {
+					int idAlojamiento = ids.get(i);	
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+					
+				}
+				return ids;
+			}
+			else {
+				return null;
+			}
+
+		}
+
+		else if(tipoDeAlojamiento.equals("ViviendaComunidad")) {
+			List<ViviendaComunidad> lista =  pp.darViviendaComunidades();
+
+			int disponibles = lista.size()- num;
+			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
+				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
+				for (int i = 0; i < cantidadDeAlojamientos; i++) {
+					int idAlojamiento = ids.get(i);	
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+					
+				}
+				return ids;
+			}
+			else {
+				return null;
+			}
+		}
+		else {
+			return null;
+		}
 	}
 	
+
 	/**
 	 * Elimina una reserva Colectiva por su identificador
 	 * Adiciona entradas al log de la aplicación
 	 * @param idReserva - El id de la reserva
 	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción
 	 */
-	public long eliminarReservaColectiva (long idReservaColectiva)
+	public double eliminarReservaColectiva (LinkedList<Integer> idReservasColectiva)
 	{
+
+		double precioPenalizacion =0;
+
 		
+		for (int i = 0; i < idReservasColectiva.size(); i++) 
+		{
+			long id = idReservasColectiva.get(i);
+			log.info ("Eliminando reserva por id: " + id);
+			
+			long resp = pp.eliminarReservaPorId (id);
+			
+			precioPenalizacion += 20000;
+			
+			log.info ("Eliminando reserva por id: " + id + " tuplas eliminadas");
+		}
 		
-		log.info ("Eliminando reserva por id: " + idReservaColectiva);
-		long resp = pp.eliminarReservaPorId (idReservaColectiva);
-		log.info ("Eliminando reserva por id: " + resp + " tuplas eliminadas");
-		return resp;
+		return precioPenalizacion;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	/* ****************************************************************
 	 * 			Métodos para manejar las RESERVAS
 	 *****************************************************************/
@@ -372,7 +765,7 @@ public class AlohAndes
 		log.info ("Listando Alojamientos y cuantas veces ha sido reservado: Listo!");
 		return tuplas;
 	}
-	
+
 	/**
 	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
 	 *  
@@ -386,7 +779,7 @@ public class AlohAndes
 		log.info ("Listando Alojamientos y cuantas veces ha sido reservado: Listo!");
 		return tuplas;
 	}
-	
+
 	/**
 	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
 	 *  
@@ -417,70 +810,70 @@ public class AlohAndes
 		return tuplas;
 	}
 
-//	/*
-//	 * RFC3- MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS OFERTAS DE ALOJAMIENTO REGISTRADAS
-//	 */
-//	public double RFC3 ()
-//	{
-//
-//	}
-//
-//	/*
-//	 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
-//	 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
-//	 */
-//	public VOAlojamiento RFC4 ()
-//	{
-//
-//	}
-//
-//	/*
-//	 * RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
-//	 */
-//	public double RFC5 ()
-//	{
-//
-//	}
-//
-//	/*
-//	 * RFC6- MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO (NÚMERO DE NOCHES O MESES CONTRATADOS, CARACTERÍSTICAS DEL ALOJAMIENTO UTILIZADO, DINERO PAGADO.
-//	 */
-//	public double RFC6 ()
-//	{
-//
-//	}
-//
-//	/*
-//	 * RFC7- ANALIZAR LA OPERACIÓN DE ALOHANDES
-//	 * Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo el tiempo de operación de AloHandes, 
-//	 * indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
-//	 * las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
-//	 */
-//	public double RFC7 ()
-//	{
-//
-//	}
-//
-//	/*
-//	 * RFC8- ENCONTRAR LOS CLIENTES FRECUENTES
-//		Para un alojamiento dado, encontrar la información de sus clientes frecuentes. 
-//		se considera frecuente a un cliente si ha utilizado (o tiene reservado) 
-//		ese alojamiento por lo menos en tres ocasiones o por lo menos 15 noches, durante todo el periodo de operación de AlohAndes.
-//	 */
-//	public double RFC8 ()
-//	{
-//
-//	}
-//
-//	/*
-//	 * RFC9- ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
-//	 * 	Encontrar las ofertas de alojamiento que no han recibido clientes en periodos superiores a 
-//	 * 1 mes, durante todo el periodo de operación de AlohAndes.
-//	 */
-//	public double RFC9 ()
-//	{
-//
-//	}
+	//	/*
+	//	 * RFC3- MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS OFERTAS DE ALOJAMIENTO REGISTRADAS
+	//	 */
+	//	public double RFC3 ()
+	//	{
+	//
+	//	}
+	//
+	//	/*
+	//	 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
+	//	 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
+	//	 */
+	//	public VOAlojamiento RFC4 ()
+	//	{
+	//
+	//	}
+	//
+	//	/*
+	//	 * RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
+	//	 */
+	//	public double RFC5 ()
+	//	{
+	//
+	//	}
+	//
+	//	/*
+	//	 * RFC6- MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO (NÚMERO DE NOCHES O MESES CONTRATADOS, CARACTERÍSTICAS DEL ALOJAMIENTO UTILIZADO, DINERO PAGADO.
+	//	 */
+	//	public double RFC6 ()
+	//	{
+	//
+	//	}
+	//
+	//	/*
+	//	 * RFC7- ANALIZAR LA OPERACIÓN DE ALOHANDES
+	//	 * Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo el tiempo de operación de AloHandes, 
+	//	 * indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
+	//	 * las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
+	//	 */
+	//	public double RFC7 ()
+	//	{
+	//
+	//	}
+	//
+	//	/*
+	//	 * RFC8- ENCONTRAR LOS CLIENTES FRECUENTES
+	//		Para un alojamiento dado, encontrar la información de sus clientes frecuentes. 
+	//		se considera frecuente a un cliente si ha utilizado (o tiene reservado) 
+	//		ese alojamiento por lo menos en tres ocasiones o por lo menos 15 noches, durante todo el periodo de operación de AlohAndes.
+	//	 */
+	//	public double RFC8 ()
+	//	{
+	//
+	//	}
+	//
+	//	/*
+	//	 * RFC9- ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	//	 * 	Encontrar las ofertas de alojamiento que no han recibido clientes en periodos superiores a 
+	//	 * 1 mes, durante todo el periodo de operación de AlohAndes.
+	//	 */
+	//	public double RFC9 ()
+	//	{
+	//
+	//	}
 
 
 

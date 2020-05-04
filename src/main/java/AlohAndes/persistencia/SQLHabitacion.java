@@ -69,20 +69,20 @@ public class SQLHabitacion
         return (long) q.executeUnique();
     }
 
-//    /**
-//     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Habitacion de la
-//     * base de datos de AlohAndes, por su identificador
-//     * @param pm - El manejador de persistencia
-//     * @param idHabitacion - El identificador de la Habitacion
-//     * @return El objeto Habitacion que tiene el identificador dado
-//     */
-//    public Habitacion darHabitacionPorId (PersistenceManager pm, long idHabitacion)
-//    {
-//        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaHabitaciones () + " WHERE NUMHabitacion = ?");
-//        q.setResultClass(Habitacion.class);
-//        q.setParameters(idHabitacion);
-//        return (Habitacion) q.executeUnique();
-//    }
+    /**
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Habitacion de la
+     * base de datos de AlohAndes, por su identificador
+     * @param pm - El manejador de persistencia
+     * @param idHabitacion - El identificador de la Habitacion
+     * @return El objeto Habitacion que tiene el identificador dado
+     */
+    public Habitacion darHabitacionPorId (PersistenceManager pm, long idHabitacion)
+    {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaHabitaciones () + " WHERE IDALOJAMIENTO = ?");
+        q.setResultClass(Habitacion.class);
+        q.setParameters(idHabitacion);
+        return (Habitacion) q.executeUnique();
+    }
 
 //    /**
 //     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA RESERVA de la

@@ -69,20 +69,20 @@ public class SQLApartamento
         return (long) q.executeUnique();
     }
 
-//    /**
-//     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Apartamento de la
-//     * base de datos de AlohAndes, por su identificador
-//     * @param pm - El manejador de persistencia
-//     * @param idApartamento - El identificador de la Apartamento
-//     * @return El objeto Apartamento que tiene el identificador dado
-//     */
-//    public Apartamento darApartamentoPorId (PersistenceManager pm, long idApartamento)
-//    {
-//        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaApartamentoes () + " WHERE NUMApartamento = ?");
-//        q.setResultClass(Apartamento.class);
-//        q.setParameters(idApartamento);
-//        return (Apartamento) q.executeUnique();
-//    }
+    /**
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Apartamento de la
+     * base de datos de AlohAndes, por su identificador
+     * @param pm - El manejador de persistencia
+     * @param idApartamento - El identificador de la Apartamento
+     * @return El objeto Apartamento que tiene el identificador dado
+     */
+    public Apartamento darApartamentoPorId (PersistenceManager pm, long idApartamento)
+    {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaApartamentos() + " WHERE IDALOJAMIENTO = ?");
+        q.setResultClass(Apartamento.class);
+        q.setParameters(idApartamento);
+        return (Apartamento) q.executeUnique();
+    }
 
 //    /**
 //     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA RESERVA de la

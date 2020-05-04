@@ -623,6 +623,16 @@ public class PersistenciaAlohAndes
 	{
 		return sqlAlojamiento.darAlojamientos (pmf.getPersistenceManager());
 	}
+	
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 * @param idReserva - El identificador de la Alojamiento
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public Alojamiento darAlojamientoPorId (long idAlojamiento)
+	{
+		return (Alojamiento) sqlAlojamiento.darAlojamientoPorId(pmf.getPersistenceManager(), idAlojamiento);
+	}
 
 
 	/**
@@ -822,6 +832,16 @@ public class PersistenciaAlohAndes
 	{
 		return sqlHabitacion.darHabitaciones(pmf.getPersistenceManager());
 	}
+	
+	/**
+	 * Método que consulta la tupla en la tabla Habitacion que tiene el identificador dado
+	 * @param idReserva - El identificador de la Habitacion
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public Habitacion darHabitacionPorId (long idHabitacion)
+	{
+		return (Habitacion) sqlHabitacion.darHabitacionPorId(pmf.getPersistenceManager(), idHabitacion);
+	}
 
 
 	/* ****************************************************************
@@ -829,6 +849,7 @@ public class PersistenciaAlohAndes
 	 *****************************************************************/
 
 
+	
 	/**
 	 * Método que inserta, de manera transaccional, una tupla en la tabla ViviendaComunidad
 	 * Adiciona entradas al log de la aplicación
@@ -938,6 +959,15 @@ public class PersistenciaAlohAndes
 		return sqlViviendaComunidad.darViviendaComunidades(pmf.getPersistenceManager());
 	}
 
+	/**
+	 * Método que consulta la tupla en la tabla ViviendaComunidad que tiene el identificador dado
+	 * @param idReserva - El identificador de la ViviendaComunidad
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public ViviendaComunidad darViviendaComunidadPorId (long idViviendaComunidad)
+	{
+		return (ViviendaComunidad) sqlViviendaComunidad.darViviendaComunidadPorId(pmf.getPersistenceManager(), idViviendaComunidad);
+	}
 
 
 
@@ -1047,6 +1077,16 @@ public class PersistenciaAlohAndes
 	public List<Apartamento> darApartamentoes ()
 	{
 		return sqlApartamento.darApartamentos(pmf.getPersistenceManager());
+	}
+	
+	/**
+	 * Método que consulta la tupla en la tabla Apartamento que tiene el identificador dado
+	 * @param idReserva - El identificador de la Apartamento
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public Apartamento darApartamentoPorId (long idApartamento)
+	{
+		return (Apartamento) sqlApartamento.darApartamentoPorId(pmf.getPersistenceManager(), idApartamento);
 	}
 
 
