@@ -44,7 +44,6 @@ public class AlohAndes
     /* ****************************************************************
      * 			Métodos para manejar las RESERVAS
      *****************************************************************/
-
     /**
      * Adiciona de manera persistente una reserva
      * Adiciona entradas al log de la aplicación
