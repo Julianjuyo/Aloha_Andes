@@ -1,7 +1,6 @@
 package AlohAndes.negocio;
 
 import AlohAndes.persistencia.PersistenciaAlohAndes;
-import sun.util.BuddhistCalendar;
 
 import java.sql.Array;
 import java.util.Collection;
@@ -61,26 +60,60 @@ public class AlohAndes
 	 *****************************************************************/
 	
 	
-	public void DeshabilitarAlojamiento( long idAlojamiento)
+	public void DeshabilitarAlojamiento( long idAlojamiento, Date fechaInicio, Date fechaFin)
 	{
 		
+		String habilitado ="N";
+		pp.ActualizarAlojamientoPorId(idAlojamiento, habilitado, fechaInicio, fechaFin);
 		
 		
+		
+	}
+	
+	/**
+	 * Me retorna el tipo del alojamientos
+	 * @param id
+	 * @return
+	 */
+	public String tipo (long id){
+		String t =" ";
+		
+		if(pp.darHabitacionPorId(id).getTipoOperadorHabitacion()== "Hotel" ) {
+			t= "Hotel";
+		}
+		else if(pp.darHabitacionPorId(id).getTipoOperadorHabitacion()== "Hostal" ) {
+			t= "Hostal";
+		}
+		else if(pp.darHabitacionPorId(id).getTipoOperadorHabitacion()== "ViviendaUniv" ) 
+		{
+			t = "ViviendaUniv";
+		}
+		else if(pp.darHabitacionPorId(id).getTipoOperadorHabitacion()== "PersonaNatural" ) {
+			t= "PersonaNatural";
+		}
+		else if(pp.darViviendaComunidadPorId(id).getIdAlojamiento()== id ) {
+			t= "ViviendaComunidad";
+		}
+		else if(pp.darApartamentoPorId(id).getIdAlojamiento() ==id ) {
+			t= "Apartamento";
+		}
+		return t;
 	}
 	
 	
 	public void habilitarAlojamiento( long idAlojamiento)
 	{
-		Al pp.darAlojamientos();
+		String habilitado ="Y";
+		pp.ActualizarAlojamientoPorId(idAlojamiento, habilitado, null, null);
 		
 		
 	}
+
 	
-	
-	public ProcesoDeRelocalizacion ()
-	{
-		
-	}
+//	public ProcesoDeRelocalizacion ()
+//	{
+//		
+//	}
 	
 	
 	
@@ -175,7 +208,7 @@ public class AlohAndes
 			for (int i = 0; i < listaReservas.size(); i++){
 
 				long actual = listaReservas.get(i).getIdAlojamiento();
-				List<Apartamento> hab = pp.darApartamentoes();
+				List<Apartamento> hab = pp.darApartamentos();
 
 				for (int j = 0; j < hab.size(); j++){
 
@@ -302,7 +335,7 @@ public class AlohAndes
 			for (int i = 0; i < listaReservas.size(); i++){
 
 				long actual = listaReservas.get(i).getIdAlojamiento();
-				List<Apartamento> hab = pp.darApartamentoes();
+				List<Apartamento> hab = pp.darApartamentos();
 
 				for (int j = 0; j < hab.size(); j++){
 
@@ -433,7 +466,7 @@ public class AlohAndes
 		}
 
 		else if(tipoDeAlojamiento.equals("Apartamento")) {
-			List<Apartamento> lista =  pp.darApartamentoes();
+			List<Apartamento> lista =  pp.darApartamentos();
 
 			int disponibles = lista.size()- num;
 			if(disponibles>cantidadDeAlojamientos||disponibles==cantidadDeAlojamientos){
@@ -745,6 +778,80 @@ public class AlohAndes
 		log.info ("Generando los VO de MiembroComunidadUniversitarias: " + voTipo.size() + " existentes");
 		return voTipo;
 	}
+	
+	
+	/* ****************************************************************
+	 * 		Meotodos para la clase de Habitacion
+	 *****************************************************************/
+	
+	/**
+	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOHabitacion
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos VOHabitacion con todos las reservas que conoce la aplicación, llenos con su información básica
+	 */
+	public List<VOHabitacion> darVOHabitacion ()
+	{
+		log.info ("Generando los VO de reserva");    
+
+		List<VOHabitacion> voTipos = new LinkedList<VOHabitacion> ();
+
+		for (Habitacion tb : pp.darHabitaciones() )
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+	
+	/* ****************************************************************
+	 * 		Meotodos para la clase de Vivienda comunidad
+	 *****************************************************************/
+	
+	/**
+	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOViviendaComunidad
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos VOViviendaUniversitaria con todos las reservas que conoce la aplicación, llenos con su información básica
+	 */
+	public List<VOViviendaComunidad> darVOViviendaComunidad ()
+	{
+		log.info ("Generando los VO de reserva");    
+
+		List<VOViviendaComunidad> voTipos = new LinkedList<VOViviendaComunidad> ();
+
+		for (ViviendaComunidad tb : pp.darViviendaComunidades() )
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+	
+	
+	
+	/* ****************************************************************
+	 * 		Meotodos para la clase de Apartamentos
+	 *****************************************************************/
+	
+	/**
+	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOApartamento
+	 * Adiciona entradas al log de la aplicación
+	 * @return Una lista de objetos VOViviendaUniversitaria con todos las reservas que conoce la aplicación, llenos con su información básica
+	 */
+	public List<VOApartamento> darVOApartamento ()
+	{
+		log.info ("Generando los VO de reserva");    
+
+		List<VOApartamento> voTipos = new LinkedList<VOApartamento> ();
+
+		for (Apartamento tb : pp.darApartamentos() )
+		{
+			voTipos.add (tb);
+		}
+		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
+		return voTipos;
+	}
+	
+	
 
 
 	/* ****************************************************************
@@ -896,5 +1003,8 @@ public class AlohAndes
 		log.info ("Limpiando la BD de ALOHAANDES: Listo!");
 		return borrrados;
 	}
+
+
+
 
 }

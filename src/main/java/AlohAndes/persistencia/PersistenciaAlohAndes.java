@@ -11,6 +11,8 @@ import AlohAndes.negocio.ViviendaComunidad;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+
 import org.apache.log4j.Logger;
 
 import javax.jdo.*;
@@ -633,6 +635,17 @@ public class PersistenciaAlohAndes
 	{
 		return (Alojamiento) sqlAlojamiento.darAlojamientoPorId(pmf.getPersistenceManager(), idAlojamiento);
 	}
+	
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 * @param idReserva - El identificador de la Alojamiento
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public void ActualizarAlojamientoPorId (long idAlojamiento,  String habilitado, Date  fechaInicio, Date fechaFin )
+	{
+		
+		sqlAlojamiento.darAlojamientoPorId(pmf.getPersistenceManager(), idAlojamiento);
+	}
 
 
 	/**
@@ -1074,7 +1087,7 @@ public class PersistenciaAlohAndes
 	 * Método que consulta todas las tuplas en la habiutaciones
 	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
 	 */
-	public List<Apartamento> darApartamentoes ()
+	public List<Apartamento> darApartamentos ()
 	{
 		return sqlApartamento.darApartamentos(pmf.getPersistenceManager());
 	}
