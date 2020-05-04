@@ -3,13 +3,15 @@
 	"unidadPersistencia": "ParranderosErrorDS",
 	"tablas":
 	[
-		"Parranderos_sequence",
-		"X_TIPOBEBIDA",
-		"X_BEBIDA",
-		"X_BAR",
-		"X_BEBEDOR",
-		"X_GUSTAN",
-		"X_SIRVEN",
-		"X_VISITAN"
+		"ID_ALOJAMIENTO",
+		"ID_RESERVA",
+		"OPERADORES",
+		"ALOJAMIENTOS",
+		"APARTAMENTOS",
+		"HABITACIONES",
+		"VIVIENDACMUNIDAD",
+		"MIEM_CO_UNIV",
+		"RESERVAS",
+		"SERVICIOS"
 	]
 }

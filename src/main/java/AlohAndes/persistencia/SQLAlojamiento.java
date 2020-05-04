@@ -1,7 +1,13 @@
 package AlohAndes.persistencia;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+
+import AlohAndes.negocio.Alojamiento;
+import AlohAndes.negocio.Reserva;
 
 public class SQLAlojamiento
 {
@@ -47,4 +53,41 @@ public class SQLAlojamiento
         q.setParameters(idAlojamiento);
         return (long) q.executeUnique();
     }
+    
+
+    /**
+     * Crea y ejecuta la sentencia SQL para adicionar una Alojamiento a la base de datos de AlohAndes
+     * @param pm - El manejador de persistencia
+     * @param idAlojamiento - El identificador del alojamiento que se desea Alojamientor (Debe existir en la tabla ALOJAMIENTOS)
+     * @param idMiembro - El identificador del miembro que desea realizar la Alojamiento (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tipoId - El tipo de identificación del miembro que desea realizar la Alojamiento (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tiempoDias - El número de días que se desea Alojamientor el alojamiento
+     * @return EL número de tuplas insertadas
+     */
+    
+ 
+    public long adicionarAlojamiento (PersistenceManager pm, long idAlojamiento, String habilitada, Date fechaInicio, Date fechaFin)
+    {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(ID, HABILITADO, FECHAINICIODES, FECHAFINDES) values (?, ?, ?, ?)");
+        q.setParameters(idAlojamiento, habilitada, fechaInicio, fechaFin);
+        return (long) q.executeUnique();
+    }
+    
+ 
+    
+    
+    
+	/**
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LOS Alojamientos de la 
+	 * base de datos de Alohaandes
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de objetos Alojamientos
+	 */
+	public List<Alojamiento> darAlojamientos (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaAlojamientos());
+		q.setResultClass(Alojamiento.class);
+		return (List<Alojamiento>) q.executeList();
+	}
+	
 }

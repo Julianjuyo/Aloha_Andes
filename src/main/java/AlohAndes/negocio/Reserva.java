@@ -127,7 +127,7 @@ public class Reserva implements VOReserva
      */
     public String toString()
     {
-        return "Reservas [numeroReserva=" + numReserva + ", idAlojamiento=" + idAlojamiento + ", idMiembro=" + idMiembro + ", tipoID=" + tipoID
+        return "Reserva [numeroReserva=" + numReserva + ", idAlojamiento=" + idAlojamiento + ", idMiembro=" + idMiembro + ", tipoID=" + tipoID
                 + ", diaReserva=" + diaReserva + ", tiempoDias=" + tiempoDias +"]";
     }
 }
