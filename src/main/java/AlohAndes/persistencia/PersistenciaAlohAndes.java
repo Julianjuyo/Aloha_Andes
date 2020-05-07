@@ -416,7 +416,27 @@ public class PersistenciaAlohAndes
 			pm.close();
 		}
 	}
+	
+	/**
+	 * Método que consulta todas las tuplas en la tabla OPERADORES con un identificador dado
+	 * @param idOperador - El identificador del operador
+	 * @return El objeto Operador, construido con base en las tuplas de la tabla OPERADORES con el identificador dado
+	 */
+	public Operador darOperadorPorId (long idOperador)
+	{
+		return sqlOperador.darOperadorPorId (pmf.getPersistenceManager(), idOperador);
+	}
 
+    /**
+     * Método que consulta todas las tuplas en la tabla OPERADORES que tienen el nombre dado
+     * @param nombre - El nombre del de operador
+     * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
+     */
+    public Operador darOperadorPorNombre (String nombre)
+    {
+        return sqlOperador.darOperadorPorNombre (pmf.getPersistenceManager(), nombre);
+    }
+    
 
 
 	/**
@@ -428,26 +448,10 @@ public class PersistenciaAlohAndes
 		return sqlOperador.darOperadores (pmf.getPersistenceManager());
 	}
 
-	//    /**
-	//     * Método que consulta todas las tuplas en la tabla OPERADORES que tienen el nombre dado
-	//     * @param nombre - El nombre del de operador
-	//     * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
-	//     */
-	//    public Operador darOperadorPorNombre (String nombre)
-	//    {
-	//        return sqlOperador.darOperadorPorNombre (pmf.getPersistenceManager(), nombre);
-	//    }
 
 
-	/**
-	 * Método que consulta todas las tuplas en la tabla OPERADORES con un identificador dado
-	 * @param idOperador - El identificador del operador
-	 * @return El objeto Operador, construido con base en las tuplas de la tabla OPERADORES con el identificador dado
-	 */
-	public Operador darOperadorPorId (long idOperador)
-	{
-		return sqlOperador.darOperadorPorId (pmf.getPersistenceManager(), idOperador);
-	}
+
+
 
 	/* ****************************************************************
 	 * 			Métodos para manejar las RESERVAS
@@ -529,17 +533,6 @@ public class PersistenciaAlohAndes
 		}
 	}
 
-
-	/**
-	 * Método que consulta todas las tuplas en la Reserva
-	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
-	 */
-	public List<Reserva> darReservas ()
-	{
-		return sqlReserva.darReservas (pmf.getPersistenceManager());
-	}
-
-
 	/**
 	 * Método que consulta la tupla en la tabla RESERVAS que tiene el identificador dado
 	 * @param idReserva - El identificador de la reserva
@@ -559,6 +552,61 @@ public class PersistenciaAlohAndes
 	{
 		return (Reserva) sqlReserva.darReservaPorIdAlojamiento (pmf.getPersistenceManager(), idAlojamiento);
 	}
+
+	/**
+	 * Método que consulta todas las tuplas en la Reserva
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla TIPOBEBIDA
+	 */
+	public List<Reserva> darReservas ()
+	{
+		return sqlReserva.darReservas (pmf.getPersistenceManager());
+	}
+	
+	/**
+	 * Método que actualiza, de manera transaccional una  Reserva
+	 * 
+	 * @param idReserva el id de l reseva a modificiar 
+	 * @param idAlojamiento el id del alojamiento que se tiene
+	 * @param idMiembro id de la persona que reservo
+	 * @param tipoId el tipo id de la persona que reservo
+	 * @param diaReserva el nuevo dia de la reserva
+	 * @param tiempoDias el tiempo de hospejade.
+	 * @return El número de tuplas modificadas. -1 si ocurre alguna Excepción
+	 */
+	public long cambiarCiudadBebedor (long idReserva, long idAlojamiento, long idMiembro, String tipoId, Date diaReserva, int tiempoDias)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx=pm.currentTransaction();
+        try
+        {
+            tx.begin();
+            
+			Date date = diaReserva;
+			DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+			String diaReserva1 = dateFormat.format(date);
+			
+            long resp = sqlReserva.cambiarUnaReserva(pm, idReserva, idAlojamiento, idMiembro, tipoId, diaReserva1, tiempoDias);
+            tx.commit();
+            return resp;
+        }
+        catch (Exception e)
+        {
+//        	e.printStackTrace();
+        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+            return -1;
+        }
+        finally
+        {
+            if (tx.isActive())
+            {
+                tx.rollback();
+            }
+            pm.close();
+        }
+	}
+
+
+
 
 	/* ****************************************************************
 	 * 			Métodos para manejar los ALOJAMIENTOS
