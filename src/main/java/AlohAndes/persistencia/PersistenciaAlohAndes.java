@@ -663,7 +663,7 @@ public class PersistenciaAlohAndes
 		{
 			try {
 				tx.begin();
-				long resp = sqlAlojamiento.eliminarAlojamiento(pm, idAlojamiento);
+				long resp = sqlAlojamiento.eliminarAlojamientoPorId(pm, idAlojamiento);
 				tx.commit();
 
 				return resp;

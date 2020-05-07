@@ -1,8 +1,9 @@
 package AlohAndes.persistencia;
 
 import AlohAndes.negocio.MiembroComunidadUniversitaria;
-import AlohAndes.negocio.Reserva;
+import AlohAndes.negocio.MiembroComunidadUniversitaria;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -54,48 +55,65 @@ public class SQLMiemCoUniv
         return (long) q.executeUnique();
     }
 
-//    /**
-//     * Crea y ejecuta la sentencia SQL para eliminar UNA RESERVA de la base de datos de AlohAndes, por su identificador
-//     * @param pm - El manejador de persistencia
-//     * @param idReserva - El id de la reserva
-//     * @return EL número de tuplas eliminadas
-//     */
-//    public long eliminarReservaPorId (PersistenceManager pm, long idReserva)
-//    {
-//        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaReservas () + " WHERE NUMRESERVA = ?");
-//        q.setParameters(idReserva);
-//        return (long) q.executeUnique();
-//    }
+    /**
+     * Crea y ejecuta la sentencia SQL para eliminar UNA MiembroComunidadUniversitaria de la base de datos de AlohAndes, por su identificador
+     * @param pm - El manejador de persistencia
+     * @param idMiembroComunidadUniversitaria - El id de la MiembroComunidadUniversitaria
+     * @return EL número de tuplas eliminadas
+     */
+    public long eliminarMiembroComunidadUniversitariaPorId (PersistenceManager pm, long idMiembroComunidadUniversitaria)
+    {
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaMiemCoUniv() + " WHERE ID = ?");
+        q.setParameters(idMiembroComunidadUniversitaria);
+        return (long) q.executeUnique();
+    }
 
-//    /**
-//     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA RESERVA de la
-//     * base de datos de AlohAndes, por su identificador
-//     * @param pm - El manejador de persistencia
-//     * @param idReserva - El identificador de la reserva
-//     * @return El objeto RESERVA que tiene el identificador dado
-//     */
-//    public Reserva darReservaPorId (PersistenceManager pm, long idReserva)
-//    {
-//        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservas () + " WHERE NUMRESERVA = ?");
-//        q.setResultClass(Reserva.class);
-//        q.setParameters(idReserva);
-//        return (Reserva) q.executeUnique();
-//    }
+    /**
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA MiembroComunidadUniversitaria de la
+     * base de datos de AlohAndes, por su identificador
+     * @param pm - El manejador de persistencia
+     * @param idMiembroComunidadUniversitaria - El identificador de la MiembroComunidadUniversitaria
+     * @return El objeto MiembroComunidadUniversitaria que tiene el identificador dado
+     */
+    public MiembroComunidadUniversitaria darMiembroComunidadUniversitariaPorId (PersistenceManager pm, long idMiembroComunidadUniversitaria)
+    {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaMiemCoUniv () + " WHERE ID = ?");
+        q.setResultClass(MiembroComunidadUniversitaria.class);
+        q.setParameters(idMiembroComunidadUniversitaria);
+        return (MiembroComunidadUniversitaria) q.executeUnique();
+    }
 
-    
     
     
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de LAS RESERVAS de la 
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LAS MiembroComunidadUniversitariaS de la 
 	 * base de datos de Alohaandes
 	 * @param pm - El manejador de persistencia
-	 * @return Una lista de objetos Reserva
+	 * @return Una lista de objetos MiembroComunidadUniversitaria
 	 */
 	public List<MiembroComunidadUniversitaria> darMiembrosComunidadUniversitaria (PersistenceManager pm)
 	{
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaMiemCoUniv() );
-		q.setResultClass(Reserva.class);
+		q.setResultClass(MiembroComunidadUniversitaria.class);
 		return (List<MiembroComunidadUniversitaria>) q.executeList();
+	}
+	
+	
+	/**
+	 * 
+	 * Crea y ejecuta la sentencia SQL para cambiar el nomnbre de un mien=mbro en la 
+	 * base de datos de alohaandes
+	 * @param pm - El manejador de persistencia
+	 * @param idMiembroComunidadUniversitaria - El identificador del miembro
+	 * @param tipoMiembro - La nueva habilitado del miembro
+	 * @return El número de tuplas modificadas
+	 */
+	public long cambiarElTipoMiembro (PersistenceManager pm, long idMiembroComunidadUniversitaria, String tipoMiembro) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET TIPOMIEMBRO = ? WHERE ID = ?");
+	     q.setParameters( tipoMiembro, idMiembroComunidadUniversitaria);
+	     return (long) q.executeUnique();      
+	     
 	}
     
 }

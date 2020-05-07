@@ -5,7 +5,7 @@ package AlohAndes.negocio;
  * Clase para modelar el concepto servicios del negocio de los AlohaAndes
  *
  */
-public class Servicios implements VOServicios{
+public class Servicio implements VOServicios{
 	
 	
 	/* ****************************************************************
@@ -51,7 +51,7 @@ public class Servicios implements VOServicios{
     /**
      * Constructor por defecto
      */
-	public Servicios() 
+	public Servicio() 
     {
     	this.setId(0);
 		this.idAlojamiento = 0;
@@ -64,7 +64,7 @@ public class Servicios implements VOServicios{
 	/**
 	 * Constructor con valores
 	 */
-    public Servicios(int id, int idAlojamiento, String descripcion, String nombre, Double precio, Boolean tomaServicio) 
+    public Servicio(int id, int idAlojamiento, String descripcion, String nombre, Double precio, Boolean tomaServicio) 
     {
     	this.setId(id);
 		this.idAlojamiento = idAlojamiento;

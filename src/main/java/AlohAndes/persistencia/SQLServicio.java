@@ -5,7 +5,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import AlohAndes.negocio.Reserva;
+import AlohAndes.negocio.Servicio;
+import AlohAndes.negocio.Servicio;
 
 public class SQLServicio
 {
@@ -40,75 +41,126 @@ public class SQLServicio
     }
 
     /**
-     * Crea y ejecuta la sentencia SQL para adicionar una RESERVA a la base de datos de AlohAndes
+     * Crea y ejecuta la sentencia SQL para adicionar una Servicio a la base de datos de AlohAndes
      * @param pm - El manejador de persistencia
-     * @param idAlojamiento - El identificador del alojamiento que se desea reservar (Debe existir en la tabla ALOJAMIENTOS)
-     * @param idMiembro - El identificador del miembro que desea realizar la reserva (Debe existir en la tabla MIEM_CO_UNIV)
-     * @param tipoId - El tipo de identificación del miembro que desea realizar la reserva (Debe existir en la tabla MIEM_CO_UNIV)
-     * @param tiempoDias - El número de días que se desea reservar el alojamiento
+     * @param idAlojamiento - El identificador del alojamiento que se desea Servicior (Debe existir en la tabla ALOJAMIENTOS)
+     * @param idMiembro - El identificador del miembro que desea realizar la Servicio (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tipoId - El tipo de identificación del miembro que desea realizar la Servicio (Debe existir en la tabla MIEM_CO_UNIV)
+     * @param tiempoDias - El número de días que se desea Servicior el alojamiento
      * @return EL número de tuplas insertadas
      */
-    public long adicionarReserva (PersistenceManager pm, long idReserva, long idAlojamiento, long idMiembro, String tipoId, String diaReserva, int tiempoDias)
+    public long adicionarServicio (PersistenceManager pm, long idServicio, long idAlojamiento, String Descripcion, String nombre, String TomaServicio)
     {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdReserva () + "(NUMRESERVA, IDALOJAMIENTO, IDMIEMBRO, TIPOID, DIARESERVA, TIEMPODIAS) values (?, ?, ?, ?, ?, ?)");
-        q.setParameters(idReserva, idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicios () + "(id, IDALOJAMIENTO, DESCRIPCION, NOMBRE, PRECIO, TOMASERVICIO) values (?, ?, ?, ?, ?, ?)");
+        q.setParameters(idServicio, idAlojamiento, Descripcion, nombre, TomaServicio);
         return (long) q.executeUnique();
     }
 
     /**
-     * Crea y ejecuta la sentencia SQL para eliminar UNA RESERVA de la base de datos de AlohAndes, por su identificador
+     * Crea y ejecuta la sentencia SQL para eliminar UNA Servicio de la base de datos de AlohAndes, por su identificador
      * @param pm - El manejador de persistencia
-     * @param idReserva - El id de la reserva
+     * @param idServicio - El id de la Servicio
      * @return EL número de tuplas eliminadas
      */
-    public long eliminarReservaPorId (PersistenceManager pm, long idReserva)
+    public long eliminarServicioPorId (PersistenceManager pm, long idServicio)
     {
-        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaReservas () + " WHERE NUMRESERVA = ?");
-        q.setParameters(idReserva);
+        Query q = pm.newQuery(SQL, "DELETE FROM " + pp.darTablaServicios () + " WHERE id = ?");
+        q.setParameters(idServicio);
         return (long) q.executeUnique();
     }
 
     /**
-     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA RESERVA de la
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Servicio de la
      * base de datos de AlohAndes, por su identificador
      * @param pm - El manejador de persistencia
-     * @param idReserva - El identificador de la reserva
-     * @return El objeto RESERVA que tiene el identificador dado
+     * @param idServicio - El identificador de la Servicio
+     * @return El objeto Servicio que tiene el identificador dado
      */
-    public Reserva darReservaPorId (PersistenceManager pm, long idReserva)
+    public Servicio darServicioPorId (PersistenceManager pm, long idServicio)
     {
-        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservas () + " WHERE NUMRESERVA = ?");
-        q.setResultClass(Reserva.class);
-        q.setParameters(idReserva);
-        return (Reserva) q.executeUnique();
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicios () + " WHERE id = ?");
+        q.setResultClass(Servicio.class);
+        q.setParameters(idServicio);
+        return (Servicio) q.executeUnique();
     }
 
     /**
-     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA RESERVA de la
+     * Crea y ejecuta la sentencia SQL para encontrar la información de UNA Servicio de la
      * base de datos de AlohAndes, por su alojamiento asociado
      * @param pm - El manejador de persistencia
      * @param idAlojamiento - El identificador del alojamiento asociado
-     * @return El objeto RESERVA que tiene el alojamiento asociado
+     * @return El objeto Servicio que tiene el alojamiento asociado
      */
-    public Reserva darReservaPorIdAlojamiento (PersistenceManager pm, long idAlojamiento)
+    public Servicio darLosServiciosDeUnIdAlojamiento (PersistenceManager pm, long idAlojamiento)
     {
-        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservas () + " WHERE IDALOJAMIENTO = ?");
-        q.setResultClass(Reserva.class);
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicios () + " WHERE IDALOJAMIENTO = ?");
+        q.setResultClass(Servicio.class);
         q.setParameters(idAlojamiento);
-        return (Reserva) q.executeUnique();
+        return (Servicio) q.executeUnique();
     }
     
 	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar la información de LAS RESERVAS de la 
+	 * Crea y ejecuta la sentencia SQL para encontrar la información de LAS ServicioS de la 
 	 * base de datos de Alohaandes
 	 * @param pm - El manejador de persistencia
-	 * @return Una lista de objetos Reserva
+	 * @return Una lista de objetos Servicio
 	 */
-	public List<Reserva> darReservas (PersistenceManager pm)
+	public List<Servicio> darServicios (PersistenceManager pm)
 	{
-		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservas  ());
-		q.setResultClass(Reserva.class);
-		return (List<Reserva>) q.executeList();
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicios  ());
+		q.setResultClass(Servicio.class);
+		return (List<Servicio>) q.executeList();
+	}
+	
+	/**
+	 * 
+	 * Crea y ejecuta la sentencia SQL para cambiar el Descripcion de un Servicio en la 
+	 * base de datos de alohaandes
+	 * @param pm - El manejador de persistencia
+	 * @param idServicio - El identificador del miembro
+	 * @param Descripcion - La nueva habilitado del miembro
+	 * @return El número de tuplas modificadas
+	 */
+	public long cambiarLaDescripcionDeUnServicio (PersistenceManager pm, long idServicio, String Descripcion) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET DESCRIPCION = ? WHERE ID = ?");
+	     q.setParameters( Descripcion, idServicio);
+	     return (long) q.executeUnique();      
+	     
+	}
+	
+	/**
+	 * 
+	 * Crea y ejecuta la sentencia SQL para cambiar el Precio de un Servicio en la 
+	 * base de datos de alohaandes
+	 * @param pm - El manejador de persistencia
+	 * @param idServicio - El identificador del miembro
+	 * @param precio - La nueva habilitado del miembro
+	 * @return El número de tuplas modificadas
+	 */
+	public long cambiarElPrecioDeUnServicio (PersistenceManager pm, long idServicio, String precio) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET PRECIO = ? WHERE ID = ?");
+	     q.setParameters( precio, idServicio);
+	     return (long) q.executeUnique();      
+	     
+	}
+	
+	/**
+	 * 
+	 * Crea y ejecuta la sentencia SQL para cambiar el TomaServicio de un Servicio en la 
+	 * base de datos de alohaandes
+	 * @param pm - El manejador de persistencia
+	 * @param idServicio - El identificador del miembro
+	 * @param TomaServicio - La nueva habilitado del miembro
+	 * @return El número de tuplas modificadas
+	 */
+	public long cambiarTomaServicioDeUnServicio (PersistenceManager pm, long idServicio, String TomaServicio) 
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET TOMASERVICIO = ? WHERE ID = ?");
+	     q.setParameters( TomaServicio, idServicio);
+	     return (long) q.executeUnique();      
+	     
 	}
 
 }

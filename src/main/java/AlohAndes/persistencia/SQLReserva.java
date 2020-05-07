@@ -2,6 +2,7 @@ package AlohAndes.persistencia;
 
 import AlohAndes.negocio.Reserva;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -108,6 +109,23 @@ public class SQLReserva
 		Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservas  ());
 		q.setResultClass(Reserva.class);
 		return (List<Reserva>) q.executeList();
+	}
+	
+	/**
+	 * 
+	 * Crea y ejecuta la sentencia SQL para cambiar la habilitado de un Reserva en la 
+	 * base de datos de AlohaAndes
+	 * @param pm - El manejador de persistencia
+	 * @param idBebedor - El identificador del bebedor
+	 * @param habilitado - La nueva habilitado del bebedor
+	 * @return El número de tuplas modificadas
+	 */
+	public long cambiarUnaReserva (PersistenceManager pm, long idReserva, long idAlojamiento, long idMiembro, String tipoId, String diaReserva, int tiempoDias)
+	{
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaReservas() + " SET IDALOJAMIENTO = ?, IDMIEMBRO= ?, TIPOID= ? , DIARESERVA= ? , TIEMPODIAS= ? WHERE NUMRESERVA = ?");
+	     q.setParameters(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias, idReserva);
+	     return (long) q.executeUnique();      
+	     
 	}
 	
 	
