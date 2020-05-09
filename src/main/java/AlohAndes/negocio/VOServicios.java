@@ -16,12 +16,12 @@ public interface VOServicios {
 	/**
 	 * @return El id del Servicio
 	 */
-	public int getId();
+	public long getId();
 
 	/**
 	 * @return el idAlojamiento del Servicio
 	 */
-	public int getIdAlojamiento();
+	public long getIdAlojamiento();
 
 	/**
 	 * @return la Descripcion del Servicio

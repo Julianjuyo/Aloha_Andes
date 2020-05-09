@@ -109,14 +109,16 @@ public class SQLAlojamiento
 	 * Crea y ejecuta la sentencia SQL para cambiar la habilitado de un alojamiento en la 
 	 * base de datos de AlohaAndes
 	 * @param pm - El manejador de persistencia
-	 * @param idBebedor - El identificador del bebedor
-	 * @param habilitado - La nueva habilitado del bebedor
+	 * @param idAlojamiento id del alojmienrto
+	 * @param habilitado fecha de habiliatdo 
+	 * @param fechaInicio fecha iniciap habilitados
+	 * @param fechaFin fecha fin habilitado
 	 * @return El número de tuplas modificadas
 	 */
-	public long cambiarhabilitadoDeUnAlojamiento (PersistenceManager pm, long idBebedor, String habilitado, Date fechaInicio, Date fechafin) 
+	public long cambiarhabilitadoDeUnAlojamiento (PersistenceManager pm, long id, String habilitado, Date fechaInicio, Date fechafin) 
 	{
 		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET HABILITADO = ?, FECHAINICIODES= ?, FECHAFINDES= ? WHERE ID = ?");
-	     q.setParameters(habilitado, fechaInicio, fechafin, idBebedor);
+	     q.setParameters(habilitado, fechaInicio, fechafin, id);
 	     return (long) q.executeUnique();      
 	     
 	}

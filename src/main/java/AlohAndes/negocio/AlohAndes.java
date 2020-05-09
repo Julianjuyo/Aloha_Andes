@@ -3,6 +3,7 @@ package AlohAndes.negocio;
 import AlohAndes.persistencia.PersistenciaAlohAndes;
 
 import java.sql.Array;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -54,30 +55,48 @@ public class AlohAndes
 	{
 		pp.cerrarUnidadPersistencia ();
 	}
-	
+
 	/* ****************************************************************
 	 * 			Métodos para manejar las Desabilitaciones de Alojamiento
 	 *****************************************************************/
-	
-	
+
+
 	public void DeshabilitarAlojamiento( long idAlojamiento, Date fechaInicio, Date fechaFin)
 	{
-		
+
 		String habilitado ="N";
-		pp.ActualizarAlojamientoPorId(idAlojamiento, habilitado, fechaInicio, fechaFin);
+		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, habilitado, fechaInicio, fechaFin);
 		
+		
+		List<Reserva> reAntigua = pp.darReservasPorIdAlojamiento(idAlojamiento);
+		
+		for (int i = 0; i < reAntigua.size(); i++) {
+
+			
+			Date FechaInicioYAHecha = reAntigua.get(i).getDiaReserva();
+			Date FechaFinYAHecha = pp.sumarDiasFecha(FechaInicioYAHecha, reAntigua.get(i).getTiempoDias());
+			
+			if(fechaInicio.after(FechaFinYAHecha) || fechaFin.before(FechaInicioYAHecha)){ 
+				log.info ("Esta reserva no se vio afectada");  
+			}
+			else {
+				
+				ProcesoDeRelocalizacion(reAntigua.get(i));
+				
+			}
+		}
 		
 		
 	}
-	
+
 	/**
 	 * Me retorna el tipo del alojamientos
 	 * @param id
 	 * @return
 	 */
-	public String tipo (long id){
+	public String darTipo (long id){
 		String t =" ";
-		
+
 		if(pp.darHabitacionPorId(id).getTipoOperadorHabitacion()== "Hotel" ) {
 			t= "Hotel";
 		}
@@ -99,27 +118,36 @@ public class AlohAndes
 		}
 		return t;
 	}
-	
-	
+
+
 	public void habilitarAlojamiento( long idAlojamiento)
 	{
 		String habilitado ="Y";
-		pp.ActualizarAlojamientoPorId(idAlojamiento, habilitado, null, null);
-		
-		
+		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, habilitado, null, null);
+
+
 	}
 
-	
-//	public ProcesoDeRelocalizacion ()
-//	{
-//		
-//	}
-	
-	
-	
-	
-	
-	
+
+		public void  ProcesoDeRelocalizacion (Reserva re)
+		{
+			String tipo=  darTipo(re.getIdAlojamiento());
+			
+			LinkedList<Integer> ids =  idDisponibles(tipo);
+			
+			long idNuevo = ids.getFirst();
+			
+			adicionarReserva(idNuevo , re.getIdMiembro(), re.getTipoID(), re.getDiaReserva(), re.getTiempoDias());
+			
+			eliminarReservaPorId(re.getIdAlojamiento());
+			
+		}
+
+
+
+
+
+
 
 
 	/* ****************************************************************
@@ -240,20 +268,20 @@ public class AlohAndes
 
 		return num;
 	}
-	
-	
+
+
 	/**
 	 * Verifica que idAlojamientos estan disponibles
 	 * @param tipo
 	 * @return
 	 */
 	public LinkedList idDisponibles(String tipoDeAlojamiento){
-		
+
 		List<Reserva> listaReservas= pp.darReservas();
 
-		
+
 		LinkedList<Integer> ids = new LinkedList<Integer>();
-			
+
 
 		if(tipoDeAlojamiento.equals("Hotel")){
 
@@ -283,7 +311,7 @@ public class AlohAndes
 				for (int j = 0; j < hab.size(); j++){
 
 					if(hab.get(i).getIdAlojamiento()== actual&& hab.get(j).getTipoHabitacion().equals("Hostal")){
-						
+
 					}
 					else {
 						ids.add((int) hab.get(i).getIdAlojamiento());
@@ -302,7 +330,7 @@ public class AlohAndes
 				for (int j = 0; j < hab.size(); j++){
 
 					if(hab.get(i).getIdAlojamiento()== actual&&hab.get(j).getTipoHabitacion().equals("ViviendaUniv")){
-						
+
 					}
 					else {
 						ids.add((int) hab.get(i).getIdAlojamiento());
@@ -321,7 +349,7 @@ public class AlohAndes
 				for (int j = 0; j < hab.size(); j++){
 
 					if(hab.get(i).getIdAlojamiento()== actual&&hab.get(j).getTipoHabitacion().equals("PersonaNatural")){
-						
+
 					}
 					else {
 						ids.add((int) hab.get(i).getIdAlojamiento());
@@ -340,7 +368,7 @@ public class AlohAndes
 				for (int j = 0; j < hab.size(); j++){
 
 					if(hab.get(i).getIdAlojamiento()== actual ){
-						
+
 					}
 					else {
 						ids.add((int) hab.get(i).getIdAlojamiento());
@@ -359,7 +387,7 @@ public class AlohAndes
 				for (int j = 0; j < hab.size(); j++){
 
 					if(hab.get(i).getIdAlojamiento()== actual ){
-						
+
 					}
 					else {
 						ids.add((int) hab.get(i).getIdAlojamiento());
@@ -372,7 +400,7 @@ public class AlohAndes
 
 
 		return ids;
-		
+
 	}
 
 	/**
@@ -383,12 +411,12 @@ public class AlohAndes
 	 * @param servicios - Los servicios que se desean t realizar en la reserva (Debe existir en la tabla Servicios)
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public LinkedList<Integer> adicionarReservaColectiva (String tipoDeAlojamiento, int cantidadDeAlojamientos, String[] servicios, long  idMiembro,String tipoId,int tiempoDias )
+	public LinkedList<Integer> adicionarReservaColectiva (String tipoDeAlojamiento, int cantidadDeAlojamientos, String[] servicios, Date diaReserva, long  idMiembro,String tipoId,int tiempoDias )
 	{
 		log.info ("Verificando si se puede satisfacer la solicitud ");   
 		int num = numerDeOcupadas(tipoDeAlojamiento);
 
-		
+
 
 		if(tipoDeAlojamiento.equals("Hotel") ){
 
@@ -399,7 +427,7 @@ public class AlohAndes
 				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
 				for (int i = 0; i < cantidadDeAlojamientos; i++) {
 					int idAlojamiento = ids.get(i);	
-					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);		
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);		
 				}			
 				return ids;
 			}
@@ -416,8 +444,8 @@ public class AlohAndes
 				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
 				for (int i = 0; i < cantidadDeAlojamientos; i++) {
 					int idAlojamiento = ids.get(i);	
-					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-					
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);		
+
 				}
 				return ids;
 			}
@@ -435,8 +463,8 @@ public class AlohAndes
 				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
 				for (int i = 0; i < cantidadDeAlojamientos; i++) {
 					int idAlojamiento = ids.get(i);	
-					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-					
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);		
+
 				}
 				return ids;
 			}
@@ -454,8 +482,8 @@ public class AlohAndes
 				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
 				for (int i = 0; i < cantidadDeAlojamientos; i++) {
 					int idAlojamiento = ids.get(i);	
-					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-					
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);		
+
 				}
 				return ids;
 			}
@@ -473,8 +501,8 @@ public class AlohAndes
 				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
 				for (int i = 0; i < cantidadDeAlojamientos; i++) {
 					int idAlojamiento = ids.get(i);	
-					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-					
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);		
+
 				}
 				return ids;
 			}
@@ -492,8 +520,8 @@ public class AlohAndes
 				LinkedList<Integer> ids = idDisponibles(tipoDeAlojamiento);
 				for (int i = 0; i < cantidadDeAlojamientos; i++) {
 					int idAlojamiento = ids.get(i);	
-					adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-					
+					adicionarReserva(idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);		
+
 				}
 				return ids;
 			}
@@ -505,7 +533,7 @@ public class AlohAndes
 			return null;
 		}
 	}
-	
+
 
 	/**
 	 * Elimina una reserva Colectiva por su identificador
@@ -518,21 +546,22 @@ public class AlohAndes
 
 		double precioPenalizacion =0;
 
-		
+
 		for (int i = 0; i < idReservasColectiva.size(); i++) 
 		{
 			long id = idReservasColectiva.get(i);
 			log.info ("Eliminando reserva por id: " + id);
-			
+
 			long resp = pp.eliminarReservaPorId (id);
-			
+
 			precioPenalizacion += 20000;
-			
+
 			log.info ("Eliminando reserva por id: " + id + " tuplas eliminadas");
 		}
-		
+
 		return precioPenalizacion;
 	}
+
 
 
 
@@ -551,10 +580,10 @@ public class AlohAndes
 	 * @param tiempoDias - El número de días que se desea reservar el alojamiento
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public Reserva adicionarReserva (long idAlojamiento, long idMiembro, String tipoId, int tiempoDias)
+	public Reserva adicionarReserva (long idAlojamiento, long idMiembro, String tipoId, Date diaReserva, int tiempoDias)
 	{
 		log.info ("Adicionando Reserva del alojamiento: " + idAlojamiento);
-		Reserva reserva = pp.adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+		Reserva reserva = pp.adicionarReserva(idAlojamiento, idMiembro, tipoId,  diaReserva, tiempoDias);
 		log.info ("Adicionanda reserva: " + reserva);
 		return reserva;
 	}
@@ -778,12 +807,12 @@ public class AlohAndes
 		log.info ("Generando los VO de MiembroComunidadUniversitarias: " + voTipo.size() + " existentes");
 		return voTipo;
 	}
-	
-	
+
+
 	/* ****************************************************************
 	 * 		Meotodos para la clase de Habitacion
 	 *****************************************************************/
-	
+
 	/**
 	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOHabitacion
 	 * Adiciona entradas al log de la aplicación
@@ -802,11 +831,11 @@ public class AlohAndes
 		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
+
 	/* ****************************************************************
 	 * 		Meotodos para la clase de Vivienda comunidad
 	 *****************************************************************/
-	
+
 	/**
 	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOViviendaComunidad
 	 * Adiciona entradas al log de la aplicación
@@ -825,13 +854,13 @@ public class AlohAndes
 		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
-	
-	
+
+
+
 	/* ****************************************************************
 	 * 		Meotodos para la clase de Apartamentos
 	 *****************************************************************/
-	
+
 	/**
 	 * Encuentra todos las reservas en AlohAndes y los devuelve como una lista de VOApartamento
 	 * Adiciona entradas al log de la aplicación
@@ -850,8 +879,8 @@ public class AlohAndes
 		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
-	
+
+
 
 
 	/* ****************************************************************

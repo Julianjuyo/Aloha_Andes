@@ -90,12 +90,12 @@ public class SQLReserva
      * @param idAlojamiento - El identificador del alojamiento asociado
      * @return El objeto RESERVA que tiene el alojamiento asociado
      */
-    public Reserva darReservaPorIdAlojamiento (PersistenceManager pm, long idAlojamiento)
+    public List<Reserva> darReservaPorIdAlojamiento (PersistenceManager pm, long idAlojamiento)
     {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaReservas () + " WHERE IDALOJAMIENTO = ?");
         q.setResultClass(Reserva.class);
         q.setParameters(idAlojamiento);
-        return (Reserva) q.executeUnique();
+        return (List<Reserva>) q.executeUnique();
     }
     
 	/**

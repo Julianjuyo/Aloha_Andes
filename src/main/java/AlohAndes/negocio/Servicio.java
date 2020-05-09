@@ -14,12 +14,12 @@ public class Servicio implements VOServicios{
 	/**
 	 * El identificador ÚNICO de los Servico
 	 */
-	private int id;
+	private long id;
 	
 	/**
 	 * el idAlojamiento del Servicio
 	 */
-	private int idAlojamiento;
+	private long idAlojamiento;
 	
 	/**
 	 * la Descripcion del Servicio
@@ -64,7 +64,7 @@ public class Servicio implements VOServicios{
 	/**
 	 * Constructor con valores
 	 */
-    public Servicio(int id, int idAlojamiento, String descripcion, String nombre, Double precio, Boolean tomaServicio) 
+    public Servicio(long id, long idAlojamiento, String descripcion, String nombre, Double precio, Boolean tomaServicio) 
     {
     	this.setId(id);
 		this.idAlojamiento = idAlojamiento;
@@ -74,19 +74,19 @@ public class Servicio implements VOServicios{
 		this.tomaServicio = false;
 	}
     
-    public int getId() {
+    public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public int getIdAlojamiento() {
+	public long getIdAlojamiento() {
 		return idAlojamiento;
 	}
 
-	public void setIdAlojamiento(int idAlojamiento) {
+	public void setIdAlojamiento(long idAlojamiento) {
 		this.idAlojamiento = idAlojamiento;
 	}
 

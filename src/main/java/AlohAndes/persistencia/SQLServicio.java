@@ -43,16 +43,17 @@ public class SQLServicio
     /**
      * Crea y ejecuta la sentencia SQL para adicionar una Servicio a la base de datos de AlohAndes
      * @param pm - El manejador de persistencia
-     * @param idAlojamiento - El identificador del alojamiento que se desea Servicior (Debe existir en la tabla ALOJAMIENTOS)
-     * @param idMiembro - El identificador del miembro que desea realizar la Servicio (Debe existir en la tabla MIEM_CO_UNIV)
-     * @param tipoId - El tipo de identificación del miembro que desea realizar la Servicio (Debe existir en la tabla MIEM_CO_UNIV)
-     * @param tiempoDias - El número de días que se desea Servicior el alojamiento
+	 * @param idAlojamiento id del alojamiento
+	 * @param descripcion descripcion del servicio
+	 * @param nombre nombre que tiene el servicio 
+	 * @param precio El precio del servicio puede ser 0
+	 * @param TomaServicio Indica si se toma o no el sercio
      * @return EL número de tuplas insertadas
      */
-    public long adicionarServicio (PersistenceManager pm, long idServicio, long idAlojamiento, String Descripcion, String nombre, String TomaServicio)
+    public long adicionarServicio (PersistenceManager pm, long idServicio, long idAlojamiento, String Descripcion, String nombre, Double precio, String TomaServicio)
     {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaServicios () + "(id, IDALOJAMIENTO, DESCRIPCION, NOMBRE, PRECIO, TOMASERVICIO) values (?, ?, ?, ?, ?, ?)");
-        q.setParameters(idServicio, idAlojamiento, Descripcion, nombre, TomaServicio);
+        q.setParameters(idServicio, idAlojamiento, Descripcion, nombre, precio, TomaServicio);
         return (long) q.executeUnique();
     }
 
@@ -91,12 +92,12 @@ public class SQLServicio
      * @param idAlojamiento - El identificador del alojamiento asociado
      * @return El objeto Servicio que tiene el alojamiento asociado
      */
-    public Servicio darLosServiciosDeUnIdAlojamiento (PersistenceManager pm, long idAlojamiento)
+    public List<Servicio> darLosServiciosDeUnIdAlojamiento (PersistenceManager pm, long idAlojamiento)
     {
         Query q = pm.newQuery(SQL, "SELECT * FROM " + pp.darTablaServicios () + " WHERE IDALOJAMIENTO = ?");
         q.setResultClass(Servicio.class);
         q.setParameters(idAlojamiento);
-        return (Servicio) q.executeUnique();
+        return (List<Servicio>) q.executeUnique();
     }
     
 	/**
@@ -138,7 +139,7 @@ public class SQLServicio
 	 * @param precio - La nueva habilitado del miembro
 	 * @return El número de tuplas modificadas
 	 */
-	public long cambiarElPrecioDeUnServicio (PersistenceManager pm, long idServicio, String precio) 
+	public long cambiarElPrecioDeUnServicio (PersistenceManager pm, long idServicio, Double precio) 
 	{
 		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET PRECIO = ? WHERE ID = ?");
 	     q.setParameters( precio, idServicio);

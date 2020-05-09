@@ -6,6 +6,7 @@ import AlohAndes.negocio.Habitacion;
 import AlohAndes.negocio.MiembroComunidadUniversitaria;
 import AlohAndes.negocio.Operador;
 import AlohAndes.negocio.Reserva;
+import AlohAndes.negocio.Servicio;
 import AlohAndes.negocio.ViviendaComunidad;
 
 import com.google.gson.JsonArray;
@@ -22,6 +23,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -122,6 +124,8 @@ public class PersistenciaAlohAndes
 		tablas.add ("ID_ALOJAMIENTO");
 		//Secuencia de id de las reservas
 		tablas.add ("ID_RESERVA");
+		//Secuencia de id de las reservas
+		tablas.add ("ID_SERVICIO");
 		//Tablas de la base de datos
 		tablas.add ("OPERADORES");
 		tablas.add ("ALOJAMIENTOS");
@@ -131,6 +135,7 @@ public class PersistenciaAlohAndes
 		tablas.add ("MIEM_CO_UNIV");
 		tablas.add ("RESERVAS");
 		tablas.add("SERVICIOS");
+
 	}
 
 	/**
@@ -205,11 +210,19 @@ public class PersistenciaAlohAndes
 	}
 
 	/**
+	 * @return La cadena de caracteres con el nombre del secuenciador de idServicio
+	 */
+	public String darSeqIdServicio ()
+	{
+		return tablas.get (2);
+	}
+
+	/**
 	 * @return La cadena de caracteres con el nombre de la tabla de OPERADORES de AlohAndes
 	 */
 	public String darTablaOperadores ()
 	{
-		return tablas.get (2);
+		return tablas.get (3);
 	}
 
 	/**
@@ -217,7 +230,7 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaAlojamientos ()
 	{
-		return tablas.get (3);
+		return tablas.get (4);
 	}
 
 	/**
@@ -225,7 +238,7 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaApartamentos ()
 	{
-		return tablas.get (4);
+		return tablas.get (5);
 	}
 
 	/**
@@ -233,7 +246,7 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaHabitaciones ()
 	{
-		return tablas.get (5);
+		return tablas.get (6);
 	}
 
 	/**
@@ -241,7 +254,7 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaViviendaComunidad ()
 	{
-		return tablas.get (6);
+		return tablas.get (7);
 	}
 
 	/**
@@ -249,7 +262,7 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaMiemCoUniv ()
 	{
-		return tablas.get (7);
+		return tablas.get (8);
 	}
 
 	/**
@@ -257,7 +270,7 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaReservas ()
 	{
-		return tablas.get (8);
+		return tablas.get (9);
 	}
 
 	/**
@@ -265,8 +278,10 @@ public class PersistenciaAlohAndes
 	 */
 	public String darTablaServicios ()
 	{
-		return tablas.get (9);
+		return tablas.get (10);
 	}
+
+
 
 	/**
 	 * Transacción para el generador de secuencia de idAlojamiento
@@ -289,6 +304,18 @@ public class PersistenciaAlohAndes
 	{
 		long resp = sqlUtil.nextval_idReserva (pmf.getPersistenceManager());
 		log.trace ("Generando secuenci idReserva: " + resp);
+		return resp;
+	}
+
+	/**
+	 * Transacción para el generador de secuencia de Parranderos
+	 * Adiciona entradas al log de la aplicación
+	 * @return El siguiente número del secuenciador de Parranderos
+	 */
+	private long nextval_idServicio()
+	{
+		long resp = sqlUtil.nextval_idServicio (pmf.getPersistenceManager());
+		log.trace ("Generando secuenci ideServicio: " + resp);
 		return resp;
 	}
 
@@ -416,7 +443,7 @@ public class PersistenciaAlohAndes
 			pm.close();
 		}
 	}
-	
+
 	/**
 	 * Método que consulta todas las tuplas en la tabla OPERADORES con un identificador dado
 	 * @param idOperador - El identificador del operador
@@ -427,16 +454,16 @@ public class PersistenciaAlohAndes
 		return sqlOperador.darOperadorPorId (pmf.getPersistenceManager(), idOperador);
 	}
 
-    /**
-     * Método que consulta todas las tuplas en la tabla OPERADORES que tienen el nombre dado
-     * @param nombre - El nombre del de operador
-     * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
-     */
-    public Operador darOperadorPorNombre (String nombre)
-    {
-        return sqlOperador.darOperadorPorNombre (pmf.getPersistenceManager(), nombre);
-    }
-    
+	/**
+	 * Método que consulta todas las tuplas en la tabla OPERADORES que tienen el nombre dado
+	 * @param nombre - El nombre del de operador
+	 * @return La lista de objetos Operador, construidos con base en las tuplas de la tabla OPERADORES
+	 */
+	public Operador darOperadorPorNombre (String nombre)
+	{
+		return sqlOperador.darOperadorPorNombre (pmf.getPersistenceManager(), nombre);
+	}
+
 
 
 	/**
@@ -448,6 +475,21 @@ public class PersistenciaAlohAndes
 		return sqlOperador.darOperadores (pmf.getPersistenceManager());
 	}
 
+	/**
+	 *  Suma los días recibidos a la fecha  
+	 * 
+	 * @param fecha
+	 * @param dias
+	 * @return
+	 */
+	public Date sumarDiasFecha(Date fecha, int dias){	
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(fecha); // Configuramos la fecha que se recibe
+		calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+		return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+
+	}
 
 
 
@@ -466,22 +508,52 @@ public class PersistenciaAlohAndes
 	 * @param tiempoDias - El número de días que se desea reservar el alojamiento
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public Reserva adicionarReserva(long idAlojamiento, long idMiembro, String tipoId, int tiempoDias)
+	public Reserva adicionarReserva(long idAlojamiento, long idMiembro, String tipoId, Date diaReserva, int tiempoDias)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			long idReserva = nextval_idReserva();
-			Date date = Calendar.getInstance().getTime();
-			DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-			String diaReserva = dateFormat.format(date);
-			long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);
-			tx.commit();
-
-			log.trace ("Inserción reserva: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
-			return new Reserva (idReserva,idAlojamiento, idMiembro, tipoId, date, tiempoDias);
+			
+			List<Reserva> reAntigua = darReservasPorIdAlojamiento(idAlojamiento);
+			Boolean Si = null;
+			
+			for (int i = 0; i < reAntigua.size(); i++) {
+				
+				Date FechaFinActual = sumarDiasFecha(diaReserva, tiempoDias);
+				
+				Date FechaInicioYAHecha = reAntigua.get(i).getDiaReserva();
+				Date FechaFinYAHecha = sumarDiasFecha(FechaInicioYAHecha, tiempoDias);
+				
+				if(diaReserva.after(FechaFinYAHecha) || FechaFinActual.before(FechaInicioYAHecha)){
+					Si = false;
+				}
+				else
+				{
+					Si= true;
+				}	
+			}
+			
+			if(Si && darAlojamientoPorId(idAlojamiento).getHabilitada())
+			{
+				long idReserva = nextval_idReserva();
+				//Date date = Calendar.getInstance().getTime();
+				
+				
+				DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+				String diaReserv = dateFormat.format(diaReserva);
+				
+				long tuplasInsertadas = sqlReserva.adicionarReserva(pm, idReserva, idAlojamiento, idMiembro, tipoId, diaReserv, tiempoDias);
+				tx.commit();
+				
+				log.trace ("Inserción reserva: " + idReserva + ": " + tuplasInsertadas + " tuplas insertadas");
+				return new Reserva (idReserva,idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);
+			}
+			else
+			{
+				return null;
+			}
 		}
 		catch (Exception e)
 		{
@@ -548,9 +620,9 @@ public class PersistenciaAlohAndes
 	 * @param idAlojamiento - El identificador del alojamiento
 	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
 	 */
-	public Reserva darReservaPorIdAlojamiento (long idAlojamiento)
+	public List<Reserva> darReservasPorIdAlojamiento (long idAlojamiento)
 	{
-		return (Reserva) sqlReserva.darReservaPorIdAlojamiento (pmf.getPersistenceManager(), idAlojamiento);
+		return sqlReserva.darReservaPorIdAlojamiento (pmf.getPersistenceManager(), idAlojamiento);
 	}
 
 	/**
@@ -561,7 +633,7 @@ public class PersistenciaAlohAndes
 	{
 		return sqlReserva.darReservas (pmf.getPersistenceManager());
 	}
-	
+
 	/**
 	 * Método que actualiza, de manera transaccional una  Reserva
 	 * 
@@ -573,36 +645,36 @@ public class PersistenciaAlohAndes
 	 * @param tiempoDias el tiempo de hospejade.
 	 * @return El número de tuplas modificadas. -1 si ocurre alguna Excepción
 	 */
-	public long cambiarCiudadBebedor (long idReserva, long idAlojamiento, long idMiembro, String tipoId, Date diaReserva, int tiempoDias)
+	public long cambiarUnaReserva (long idReserva, long idAlojamiento, long idMiembro, String tipoId, Date diaReserva, int tiempoDias)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
-        try
-        {
-            tx.begin();
-            
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
 			Date date = diaReserva;
 			DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
 			String diaReserva1 = dateFormat.format(date);
-			
-            long resp = sqlReserva.cambiarUnaReserva(pm, idReserva, idAlojamiento, idMiembro, tipoId, diaReserva1, tiempoDias);
-            tx.commit();
-            return resp;
-        }
-        catch (Exception e)
-        {
-//        	e.printStackTrace();
-        	log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
-            return -1;
-        }
-        finally
-        {
-            if (tx.isActive())
-            {
-                tx.rollback();
-            }
-            pm.close();
-        }
+
+			long resp = sqlReserva.cambiarUnaReserva(pm, idReserva, idAlojamiento, idMiembro, tipoId, diaReserva1, tiempoDias);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
 	}
 
 
@@ -630,7 +702,7 @@ public class PersistenciaAlohAndes
 		{
 			tx.begin();
 			long idAlojamiento = nextval_idAlojamiento();
-			Date date = Calendar.getInstance().getTime();
+			//Date date = Calendar.getInstance().getTime();
 
 
 			String habilitadoString ;
@@ -666,37 +738,6 @@ public class PersistenciaAlohAndes
 	}
 
 	/**
-	 * Método que consulta todas las tuplas en la Alojamientos
-	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla Alojamientos
-	 */
-	public List<Alojamiento> darAlojamientos ()
-	{
-		return sqlAlojamiento.darAlojamientos (pmf.getPersistenceManager());
-	}
-	
-	/**
-	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
-	 * @param idReserva - El identificador de la Alojamiento
-	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
-	 */
-	public Alojamiento darAlojamientoPorId (long idAlojamiento)
-	{
-		return (Alojamiento) sqlAlojamiento.darAlojamientoPorId(pmf.getPersistenceManager(), idAlojamiento);
-	}
-	
-	/**
-	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
-	 * @param idReserva - El identificador de la Alojamiento
-	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
-	 */
-	public void ActualizarAlojamientoPorId (long idAlojamiento,  String habilitado, Date  fechaInicio, Date fechaFin )
-	{
-		
-		sqlAlojamiento.darAlojamientoPorId(pmf.getPersistenceManager(), idAlojamiento);
-	}
-
-
-	/**
 	 * Método que elimina, de manera transaccional, una tupla en la tabla ALOJAMENTO, dado el id del alojamiento. El alojamento no debe estar Alojamientodo
 	 * Adiciona entradas al log de la aplicación
 	 * @param idAlojamiento - El id del alojamiento
@@ -706,8 +747,10 @@ public class PersistenciaAlohAndes
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
-		Reserva reserva = darReservaPorIdAlojamiento(idAlojamiento);
-		if(reserva != null)
+		
+		List<Reserva>  reserva = darReservasPorIdAlojamiento(idAlojamiento);
+		
+		if(reserva == null)
 		{
 			try {
 				tx.begin();
@@ -731,6 +774,71 @@ public class PersistenciaAlohAndes
 			return -1;
 		}
 	}
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 * @param idReserva - El identificador de la Alojamiento
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public Alojamiento darAlojamientoPorId (long idAlojamiento)
+	{
+		return (Alojamiento) sqlAlojamiento.darAlojamientoPorId(pmf.getPersistenceManager(), idAlojamiento);
+	}
+
+	/**
+	 * Método que consulta todas las tuplas en la Alojamientos
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla Alojamientos
+	 */
+	public List<Alojamiento> darAlojamientos ()
+	{
+		return sqlAlojamiento.darAlojamientos (pmf.getPersistenceManager());
+	}
+
+
+
+
+
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 *  
+	 * @param idAlojamiento id del alojmienrto
+	 * @param habilitado fecha de habiliatdo 
+	 * @param fechaInicio fecha iniciap habilitados
+	 * @param fechaFin fecha fin habilitado
+	 * @return numero de tuplas modificadas
+	 */
+	public long cambiarhabilitadoDeUnAlojamiento (long idAlojamiento,  String habilitado, Date  fechaInicio, Date fechaFin )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			//			Date date = diaReserva;
+			//			DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+			//			String diaReserva1 = dateFormat.format(date);
+
+			long resp = sqlAlojamiento.cambiarhabilitadoDeUnAlojamiento(pm, idAlojamiento, habilitado, fechaInicio, fechaFin);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+
 
 
 	/* ****************************************************************
@@ -779,6 +887,51 @@ public class PersistenciaAlohAndes
 	}
 
 
+	/**
+	 * Método que elimina, de manera transaccional, una tupla en la tabla MiembroComunidadUniversitaria, dado el id del MiembroComunidadUniversitaria. El MiembroComunidadUniversitaria no debe estar MiembroComunidadUniversitariado
+	 * Adiciona entradas al log de la aplicación
+	 * @param idMiembroComunidadUniversitaria - El id del MiembroComunidadUniversitaria
+	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción o el MiembroComunidadUniversitaria está MiembroComunidadUniversitariado
+	 */
+	public long eliminarMiembroComunidadUniversitaria (long idMiembroComunidadUniversitaria)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		MiembroComunidadUniversitaria miem = darMiembroComunidadUniversitariaPorId(idMiembroComunidadUniversitaria);
+		if(miem != null)
+		{
+			try {
+				tx.begin();
+				long resp = sqlMiemCoUniv.eliminarMiembroComunidadUniversitariaPorId(pm, idMiembroComunidadUniversitaria);
+				tx.commit();
+
+				return resp;
+			} catch (Exception e) {
+				//        	e.printStackTrace();
+				log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+				return -1;
+			} finally {
+				if (tx.isActive()) {
+					tx.rollback();
+				}
+				pm.close();
+			}
+		}
+		else
+		{
+			return -1;
+		}
+	}
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 * @param idReserva - El identificador de la MiembroComunidadUniversitaria
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public MiembroComunidadUniversitaria darMiembroComunidadUniversitariaPorId (long idMiembroComunidadUniversitaria)
+	{
+		return (MiembroComunidadUniversitaria) sqlMiemCoUniv.darMiembroComunidadUniversitariaPorId(pmf.getPersistenceManager(), idMiembroComunidadUniversitaria);
+	}
+
 
 	/**
 	 * Método que consulta todas las tuplas en la MiembroComunidadUniversitaria
@@ -788,6 +941,54 @@ public class PersistenciaAlohAndes
 	{
 		return sqlMiemCoUniv.darMiembrosComunidadUniversitaria (pmf.getPersistenceManager());
 	}
+
+
+
+
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 *  
+	 * @param idMiembroComunidadUniversitaria id del alojmienrto
+	 * @param habilitado fecha de habiliatdo 
+	 * @param fechaInicio fecha iniciap habilitados
+	 * @param fechaFin fecha fin habilitado
+	 * @return numero de tuplas modificadas
+	 */
+	public long cambiarIdDeUnMiembroComunidadUniversitaria (long idMiembroComunidadUniversitaria,  String id)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			//			Date date = diaReserva;
+			//			DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+			//			String diaReserva1 = dateFormat.format(date);
+
+			long resp = sqlMiemCoUniv.cambiarElTipoMiembro(pm, idMiembroComunidadUniversitaria, id);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+
+
+
 
 
 
@@ -864,7 +1065,7 @@ public class PersistenciaAlohAndes
 		{
 			tx.begin();
 			long eliminar = eliminarAlojamiento(idAlojaHabitacion);
-			
+
 			long resp = sqlHabitacion.eliminarHabitacionPorId (pm, eliminar);
 			tx.commit();
 			return resp;
@@ -893,7 +1094,7 @@ public class PersistenciaAlohAndes
 	{
 		return sqlHabitacion.darHabitaciones(pmf.getPersistenceManager());
 	}
-	
+
 	/**
 	 * Método que consulta la tupla en la tabla Habitacion que tiene el identificador dado
 	 * @param idReserva - El identificador de la Habitacion
@@ -910,7 +1111,7 @@ public class PersistenciaAlohAndes
 	 *****************************************************************/
 
 
-	
+
 	/**
 	 * Método que inserta, de manera transaccional, una tupla en la tabla ViviendaComunidad
 	 * Adiciona entradas al log de la aplicación
@@ -944,7 +1145,7 @@ public class PersistenciaAlohAndes
 					seguroArrendatarioString= "Y";}
 				else{
 					seguroArrendatarioString= "N";}
-				
+
 				long tuplasInsertadas = sqlViviendaComunidad.adicionarViviendaComunidad(pm, Alojamiento1.getId(), idOperador, direccion, precio, numHabitaciones, menajeString, seguroArrendatarioString, caractSeguro);
 				tx.commit();
 
@@ -989,9 +1190,9 @@ public class PersistenciaAlohAndes
 		{
 			tx.begin();
 			long eliminar = eliminarAlojamiento(idAlojaViviendaComunidad);
-			
+
 			long resp = sqlViviendaComunidad.eliminarViviendaComunidadPorId(pm, eliminar);
-			
+
 			tx.commit();
 			return resp;
 		}
@@ -1064,13 +1265,13 @@ public class PersistenciaAlohAndes
 				else{
 					menajeString= "N";}
 
-				
+
 				long tuplasInsertadas = sqlApartamento.adicionarApartamento(pm, Alojamiento1.getId(), direccion, precio, dueno, valorAdmin, amobaldo);
 				tx.commit();
 
 				log.trace ("Inserción Apartamento: " + Alojamiento1.getId() + ": " + tuplasInsertadas + " tuplas insertadas");
 				return new Apartamento(Alojamiento1.getId(), direccion, precio, dueno, valorAdmin, amobaldo);
-						
+
 			}
 			else {
 				return null;
@@ -1110,7 +1311,7 @@ public class PersistenciaAlohAndes
 		{
 			tx.begin();
 			long eliminar = eliminarAlojamiento(idAlojaApartamento);
-			
+
 			long resp = sqlApartamento.eliminarApartamentoPorId (pm, eliminar);
 			tx.commit();
 			return resp;
@@ -1139,7 +1340,7 @@ public class PersistenciaAlohAndes
 	{
 		return sqlApartamento.darApartamentos(pmf.getPersistenceManager());
 	}
-	
+
 	/**
 	 * Método que consulta la tupla en la tabla Apartamento que tiene el identificador dado
 	 * @param idReserva - El identificador de la Apartamento
@@ -1149,6 +1350,243 @@ public class PersistenciaAlohAndes
 	{
 		return (Apartamento) sqlApartamento.darApartamentoPorId(pmf.getPersistenceManager(), idApartamento);
 	}
+
+
+	/* ****************************************************************
+	 * 			Métodos para manejar los servicios 
+	 *****************************************************************/
+
+
+	/**
+	 * Método que inserta, de manera transaccional, una tupla en la tabla Servicios
+	 * Adiciona entradas al log de la aplicación
+	 * @param idAlojamiento id del alojamiento
+	 * @param descripcion descripcion del servicio
+	 * @param nombre nombre que tiene el servicio 
+	 * @param precio El precio del servicio puede ser 0
+	 * @param TomaServicio Indica si se toma o no el sercio
+	 * @return
+	 */
+	public Servicio adicionarServicio (long idAlojamiento, String descripcion, String nombre, Double precio,  Boolean TomaServicio)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idServicio = nextval_idServicio();
+			//Date date = Calendar.getInstance().getTime();
+
+
+			String TomaString ;
+
+			if(TomaServicio == true)
+			{
+				TomaString= "Y";
+			}
+			else
+			{
+				TomaString= "N";
+			}
+
+			long tuplasInsertadas = sqlServicio.adicionarServicio(pm, idServicio, idAlojamiento, descripcion, nombre, precio, TomaString);
+			tx.commit();
+
+			log.trace ("Inserción Servicio: " + idServicio + ": " + tuplasInsertadas + " tuplas insertadas");
+			return new Servicio(idServicio, idAlojamiento, descripcion, nombre, precio, TomaServicio);
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	/**
+	 * Método que elimina, de manera transaccional, una tupla en la tabla ALOJAMENTO, dado el id del Servicio. El alojamento no debe estar Serviciodo
+	 * Adiciona entradas al log de la aplicación
+	 * @param idServicio - El id del Servicio
+	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción o el Servicio está Serviciodo
+	 */
+	public long eliminarServicio (long idServicio)
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+
+
+		try {
+			tx.begin();
+			long resp = sqlServicio.eliminarServicioPorId(pm, idServicio);
+			tx.commit();
+
+			return resp;
+		} catch (Exception e) {
+			//        	e.printStackTrace();
+			log.error("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		} finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+
+
+	}
+	/**
+	 * Método que consulta la tupla en la tabla Aloajmiento que tiene el identificador dado
+	 * @param idReserva - El identificador de la Servicio
+	 * @return La lista de objetos Bebida, construidos con base en las tuplas de la tabla BEBIDA
+	 */
+	public Servicio darServicioPorId (long idServicio)
+	{
+		return (Servicio) sqlServicio.darServicioPorId(pmf.getPersistenceManager(), idServicio);
+	}
+	
+	
+	/**
+	 * Método que consulta todas las tuplas en la Servicios
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla Servicios
+	 */
+	public List<Servicio> darLosServiciosDeUnIdAlojamiento (long idAlojamiento )
+	{
+		return sqlServicio.darLosServiciosDeUnIdAlojamiento(pmf.getPersistenceManager(), idAlojamiento);
+	}
+
+	/**
+	 * Método que consulta todas las tuplas en la Servicios
+	 * @return La lista de objetos TipoBebida, construidos con base en las tuplas de la tabla Servicios
+	 */
+	public List<Servicio> darServicios ()
+	{
+		return sqlServicio.darServicios (pmf.getPersistenceManager());
+	}
+
+
+	/**
+	 * Metodo que modifica la descripcion de un servicio
+	 * @param idServicio ide del servicio
+	 * @param Descripcion nueva descripcion a agregar
+	 * @return
+	 */
+	public long cambiarLaDescripcionDeUnServicio (long idServicio,  String Descripcion )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			long resp = sqlServicio.cambiarLaDescripcionDeUnServicio(pm, idServicio, Descripcion);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+
+	/**
+	 * Metodo que modifica el precio de un servicio
+	 * @param idServicio ide del servicio
+	 * @param Descripcion nueva descripcion a agregar
+	 * @return
+	 */
+	public long cambiarElPrecioDeUnServicio (long idServicio,  Double precio )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+
+			long resp = sqlServicio.cambiarElPrecioDeUnServicio(pm, idServicio, precio);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+
+	/**
+	 * Metodo que modifica la descripcion de un servicio
+	 * @param idServicio ide del servicio
+	 * @param TomaServicio nuevo estado del servicio a agregar
+	 * @return
+	 */
+	public long cambiarTomaServicio (long idServicio,  Boolean TomaServicio )
+	{
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			
+			String TomaString ;
+
+			if(TomaServicio == true)
+			{
+				TomaString= "Y";
+			}
+			else
+			{
+				TomaString= "N";
+			}
+
+			long resp = sqlServicio.cambiarTomaServicioDeUnServicio(pm, idServicio, TomaString);
+			tx.commit();
+			return resp;
+		}
+		catch (Exception e)
+		{
+			//        	e.printStackTrace();
+			log.error ("Exception : " + e.getMessage() + "\n" + darDetalleException(e));
+			return -1;
+		}
+		finally
+		{
+			if (tx.isActive())
+			{
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
 
 
 
@@ -1215,8 +1653,6 @@ public class PersistenciaAlohAndes
 		}
 		return resp;
 	}
-
-
 
 
 

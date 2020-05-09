@@ -61,6 +61,19 @@ class SQLUtil
 		return resp;
 	}
 	
+	/**
+	 * Crea y ejecuta la sentencia SQL para obtener un nuevo número de secuencia
+	 * @param pm - El manejador de persistencia
+	 * @return El número de secuencia generado
+	 */
+	public long nextval_idServicio (PersistenceManager pm)
+	{
+		Query q = pm.newQuery(SQL, "SELECT "+ pp.darSeqIdServicio() + ".nextval FROM DUAL");
+		q.setResultClass(Long.class);
+		long resp = (long) q.executeUnique();
+		return resp;
+	}
+	
 	
 	
 	/**
