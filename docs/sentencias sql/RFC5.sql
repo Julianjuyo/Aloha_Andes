@@ -1,0 +1,6 @@
+--RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
+
+SELECT miem.tipomiembro , COUNT(*)
+FROM MIEM_CO_UNIV miem, RESERVAS re
+WHERE miem.id = re.idmiembro
+GROUP BY miem.tipomiembro ;
