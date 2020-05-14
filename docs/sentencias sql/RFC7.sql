@@ -4,4 +4,6 @@
 --considerando todo el tiempo de operación de AloHandes, indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
 --las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
 
-
+SELECT * 
+FROM RESERVAS r, ALOJAMIENTOS a, OPERADORES o
+WHERE r.idalojamiento = a.id;
