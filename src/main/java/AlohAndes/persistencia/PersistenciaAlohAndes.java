@@ -1417,7 +1417,7 @@ public class PersistenciaAlohAndes
 	 * @param idServicio - El id del Servicio
 	 * @return El número de tuplas eliminadas. -1 si ocurre alguna Excepción o el Servicio está Serviciodo
 	 */
-	public long eliminarServicio (long idServicio)
+	public long eliminarServicioPorId (long idServicio)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -1741,6 +1741,9 @@ public class PersistenciaAlohAndes
 	//	{
 	//
 	//	}
+	
+	
+	
 
 
 

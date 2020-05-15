@@ -6,7 +6,7 @@ package AlohAndes.negocio;
  * Sirve para proteger la información del negocio de posibles manipulaciones desde la interfaz 
  * 
  */
-public interface VOServicios {
+public interface VOServicio {
 
 
 	/* ****************************************************************

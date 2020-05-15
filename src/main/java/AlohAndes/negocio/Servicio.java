@@ -5,7 +5,7 @@ package AlohAndes.negocio;
  * Clase para modelar el concepto servicios del negocio de los AlohaAndes
  *
  */
-public class Servicio implements VOServicios{
+public class Servicio implements VOServicio{
 	
 	
 	/* ****************************************************************
