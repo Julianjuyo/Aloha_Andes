@@ -403,6 +403,7 @@ public class AlohAndes
 
 	}
 
+	
 	/**
 	 * Adiciona de manera persistente las reservas colectivas.
 	 * Adiciona entradas al log de la aplicación

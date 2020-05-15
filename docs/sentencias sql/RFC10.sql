@@ -1,23 +1,13 @@
-SELECT t1 OfertaAlojamiento, NVL(((totales/reservados)*100), 0) IndiceOcupacion
-FROM (SELECT h.tipoophab t1, count(h.idalojamiento) totales
-    FROM ALOJAMIENTOS a, HABITACIONES h
-    WHERE a.id = h.idalojamiento
-    GROUP BY h.tipoophab) LEFT JOIN (SELECT h.tipoophab t2, count(h.idalojamiento) reservados
-                                        FROM ALOJAMIENTOS a, HABITACIONES h, RESERVAS r
-                                        WHERE a.id = h.idalojamiento AND r.idalojamiento = h.idalojamiento
-                                        GROUP BY h.tipoophab)
-ON t1 = t2;                                    
+/*
+CONSULTAR CONSUMO EN ALOHANDES
 
-SELECT COUNT(*)
-FROM APARTAMENTOS;
+Se quiere conocer la información de los usuarios que realizaron al menos una reserva de una determinada oferta de alojamiento en un rango de fechas. 
+Los resultados deben ser clasificados según un criterio deseado por quien realiza la consulta. 
+En la clasificación debe ofrecerse la posibilidad de agrupamiento 
+y ordenamiento de las respuestas según los intereses del usuario que consulta como, 
+por ejemplo, por los datos del cliente, por oferta de alojamiento y por tipo de alojamiento.
 
-SELECT COUNT(*)
-FROM APARTAMENTOS a LEFT JOIN RESERVAS r
-ON a.idalojamiento = r.idalojamiento;
+NOTA: Respetando la privacidad de los clientes, cuando un cliente proveedor hace esta consulta obtiene la información de su propia actividad, 
+mientras que el administrador obtiene toda la información de cualquiera de los clientes. Ver RNF1.
 
-SELECT COUNT(*)
-FROM VIVIENDACOMUNIDAD;
-
-SELECT COUNT(*)
-FROM VIVIENDACOMUNIDAD v LEFT JOIN RESERVAS r
-ON v.idalojamiento = r.idalojamiento;
+*/

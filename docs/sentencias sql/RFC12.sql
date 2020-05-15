@@ -1,7 +1,8 @@
-SELECT *
-FROM  ALOJAMIENTOS a , RESERVAS r , SERVICIOS s
-WHERE r.idalojamiento = a.id
-AND  a.id= s.idalojamiento
-AND r.diareserva BETWEEN TO_DATE ('01/02/20')AND TO_DATE ('01/10/20')
-AND s.nombre ='Jacuzzi'
-AND s.tomaservicio = 'Y' ;
+/*
+RFC12 - CONSULTAR FUNCIONAMIENTO
+
+Muestra, para cada semana del año, la oferta de alojamiento con más ocupación, la oferta de alojamiento con menos ocupación, 
+los operadores más solicitados y los operadores menos solicitados. Las respuestas deben ser sustentadas por el detalle de las ofertas de alojamiento 
+y operadores correspondientes. Esta operación es realizada el gerente general de AlohAndes.
+
+*/

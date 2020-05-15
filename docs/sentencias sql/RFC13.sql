@@ -1,7 +1,10 @@
-SELECT *
-FROM  ALOJAMIENTOS a , RESERVAS r , SERVICIOS s
-WHERE r.idalojamiento = a.id
-AND  a.id= s.idalojamiento
-AND r.diareserva BETWEEN TO_DATE ('01/02/20')AND TO_DATE ('01/10/20')
-AND s.nombre ='Jacuzzi'
-AND s.tomaservicio = 'Y' ;
+/*
+
+RFC13 - CONSULTAR LOS BUENOS CLIENTES
+
+Los buenos clientes son de tres tipos: aquellos que hacen reservas en AlohAndes al menos una vez al mes, aquellos que siempre reservan alojamientos costosos 
+(Entiéndase costoso, por ejemplo, como mayor a USD 150 por noche) y aquellos que siempre reservan suites. 
+Esta consulta retorna toda la información de dichos clientes, incluyendo la que justifica su calificación como buenos clientes. 
+Esta operación es realizada únicamente por el gerente general de AlohAndes
+
+*/
