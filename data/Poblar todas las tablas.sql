@@ -64,6 +64,8 @@ INSERT INTO OPERADORES VALUES (15983982, 'Marcos', 'N', 'N', 2.5, 'MiembroComuni
 INSERT INTO OPERADORES VALUES (3949843, 'Izan', 'N', 'N', 3.9, 'MiembroComunidad');
 INSERT INTO OPERADORES VALUES (12659984, 'Ana', 'N', 'N', 4, 'MiembroComunidad');
 
+
+
 --Poblado de tabla Alojamientos--
 INSERT INTO ALOJAMIENTOS VALUES (ID_ALOJAMIENTO.NEXTVAL,'Y',null,null);
 INSERT INTO ALOJAMIENTOS VALUES (ID_ALOJAMIENTO.NEXTVAL,'Y',null,null);
@@ -278,7 +280,7 @@ INSERT INTO ALOJAMIENTOS VALUES (ID_ALOJAMIENTO.NEXTVAL,'Y',null,null);
 
 
 --MIEMBROS DE LA COMUNIDAD 
-DELETE FROM MIEM_CO_UNIV  WHERE id = 1012654987;
+
 
 INSERT INTO MIEM_CO_UNIV VALUES (1012654987, 'CC' , 'Claudia', 'Estudiante');
 INSERT INTO MIEM_CO_UNIV VALUES (20163126, 'CC' , 'Maria', 'Egresado');
@@ -378,17 +380,16 @@ INSERT INTO MIEM_CO_UNIV VALUES (6365763, 'CC' , 'Martin', 'ProfesorInvitado');
 INSERT INTO MIEM_CO_UNIV VALUES (4792764, 'CC' , 'Alfonzo', 'ProfesorInvitado');
 
 
-
-
 --Poblado de tabla HABITACIONES--
 
 SELECT * 
 FROM SERVICIOS  
 WHERE IDALOJAMIENTO = 1 ;
 
+10 * (50*5)
 
 --Hotel 1--
-INSERT INTO HABITACIONES VALUES (1, 1, 'Carrera 4 #16-03', 80000, 1001, 'Semisuite', 'Hotel');
+INSERT INTO HABITACIONES VALUES (1comu, 1, 'Carrera 4 #16-03', 80000, 1001, 'Semisuite', 'Hotel');
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 1, 'Aumenta dependiendo del numero de personas', 'Capadidad del servicio', 40000,'N');
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 1, 'Trae una bañera', 'Bañera',15000 ,'Y');
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 1, 'El jacuzzi para ,mejor relajacion', 'Jacuzzi',40000 ,'Y');
@@ -408,6 +409,9 @@ INSERT INTO HABITACIONES VALUES (3, 1, 'Carrera 4 #16-03', 80000, 1003, 'Semisui
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 3, 'La sala para poder conversar', 'Sala',10000 ,'Y');
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 3, 'con el obetivo de cocinar propios platos', 'Cocineta',40000 ,'Y');
 INSERT INTO HABITACIONES VALUES (4, 1, 'Carrera 4 #16-03', 80000, 1004, 'Semisuite', 'Hotel');
+    INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 4, 'El jacuzzi para ,mejor relajacion', 'Jacuzzi',40000 ,'Y');
+    INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 4, 'La sala para poder conversar', 'Sala',10000 ,'Y');
+    INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 4, 'con el obetivo de cocinar propios platos', 'Cocineta',40000 ,'Y');
 INSERT INTO HABITACIONES VALUES (5, 1, 'Carrera 4 #16-03', 80000, 1005, 'Semisuite', 'Hotel');
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 5, 'Aumenta dependiendo del numero de personas', 'Capadidad del servicio', 40000,'N');
     INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, 5, 'Trae una bañera', 'Bañera',15000 ,'Y');

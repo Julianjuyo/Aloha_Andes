@@ -22,7 +22,7 @@ INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'depende', 'A
 INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'Sobre el baño que tendra', 'Baño privado', 0,'N');
 INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'Sobre el baño que tendra', 'Baño compartido', 0,'N');
 INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'Los muebles que trae', 'Esquema',0 ,'N');
-INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'los servicios a pagar son luz, teléfono, agua, TV cable y servicio de internet)', 'servicios',60000 ,'N');
+INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'los servicios a pagar son luz, teléfono, agua, TV cable y servicio de internet', 'servicios',60000 ,'N');
 
 --Renta del apartamento
 INSERT INTO SERVICIOS VALUES(ID_SERVICIOS.NEXTVAL, id_alojamiento, 'cuenta con sillas, sala y comedor', 'amoblado',0 ,'N');

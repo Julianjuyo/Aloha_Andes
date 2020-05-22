@@ -9,3 +9,27 @@ NOTA: Respetando la privacidad de los clientes, cuando un cliente proveedor hace
 mientras que el administrador obtiene toda la información de cualquiera de los clientes. Ver RNF1.
 
 */
+
+
+SELECT count(*) Numreservas, mi.id
+FROM MIEM_CO_UNIV mi  JOIN RESERVAS r ON mi.id = r.idmiembro
+WHERE  r.diareserva NOT BETWEEN '03-02-20' AND  '15-02-20'
+AND r.idalojamiento =1
+GROUP BY mi.id
+ORDER BY mi.id;
+
+SELECT count(*) Numreservas, r.numreserva
+FROM MIEM_CO_UNIV mi  JOIN RESERVAS r ON mi.id = r.idmiembro
+WHERE  r.diareserva NOT BETWEEN '03-02-20' AND  '15-02-20'
+AND r.idalojamiento =1
+GROUP BY r.numreserva
+ORDER BY r.numreserva;
+
+SELECT count(*) Numreservas, mi.id
+FROM MIEM_CO_UNIV mi  JOIN RESERVAS r ON mi.id = r.idmiembro
+WHERE  r.diareserva NOT BETWEEN '03-02-20' AND  '15-02-20'
+GROUP BY mi.id
+ORDER BY mi.id;
+
+
+
