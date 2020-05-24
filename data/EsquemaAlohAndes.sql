@@ -220,3 +220,7 @@ ENABLE;
 
 COMMIT;
 
+
+SELECT count(*) FROM MIEM_CO_UNIV m
+WHERE m.TIPOMIEMBRO = 'Egresado';
+

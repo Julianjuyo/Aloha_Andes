@@ -29,42 +29,6 @@ INSERT INTO OPERADORES VALUES (22, 'Hostel Mola', 'Y', 'Y', 4.2, 'Hostal');
 --Vivienda Universitaria--
 INSERT INTO OPERADORES VALUES (23, 'CityU', 'Y', 'Y', 4.6, 'empViniendaUniv');
 
---Personas Naturales--
-INSERT INTO OPERADORES VALUES (3565984, 'Marcela', 'N', 'N', 4.3, 'PersonaNatural');
-INSERT INTO OPERADORES VALUES (12545686, 'German', 'N', 'N', 4.3, 'PersonaNatural');
-INSERT INTO OPERADORES VALUES (2356897, 'Santiago', 'N', 'N', 4.3, 'PersonaNatural');
-INSERT INTO OPERADORES VALUES (1235648, 'Dario', 'N', 'N', 4.3, 'PersonaNatural');
-INSERT INTO OPERADORES VALUES (1245863, 'Blanca', 'N', 'N', 4.3, 'PersonaNatural');
-
-
---Miembro Comunidad--
-INSERT INTO OPERADORES VALUES (1012654987, 'Claudia', 'N', 'N', 4.3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (20163126, 'Maria', 'N', 'N', 4.3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (15962598, 'Esteban', 'N', 'N', 4.3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (32658912, 'Carlos', 'N', 'N', 4.3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (1265987, 'Blanca', 'N', 'N', 4.3, 'MiembroComunidad');
-
-INSERT INTO OPERADORES VALUES (7848651, 'Alberto', 'N', 'N', 4.9, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (7373311, 'Luis', 'N', 'N', 4, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (9673262, 'Adolfo', 'N', 'N', 3.3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (6365763, 'Martin', 'N', 'N', 5, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (4792764, 'Alfonzo', 'N', 'N', 4.7, 'MiembroComunidad');
-
-
---Miembro dueño de apartamento
-INSERT INTO OPERADORES VALUES (10554987, 'Andres', 'N', 'N', 4.6, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (205763, 'Hugo', 'N', 'N', 4.8, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (738723, 'Lucas', 'N', 'N', 3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (3221912, 'Lucia', 'N', 'N', 3.5, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (891783, 'Sofia', 'N', 'N', 5, 'MiembroComunidad');
-
-INSERT INTO OPERADORES VALUES (1893289, 'Valeria', 'N', 'N', 4.3, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (232326, 'Valentina', 'N', 'N', 4.9, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (15983982, 'Marcos', 'N', 'N', 2.5, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (3949843, 'Izan', 'N', 'N', 3.9, 'MiembroComunidad');
-INSERT INTO OPERADORES VALUES (12659984, 'Ana', 'N', 'N', 4, 'MiembroComunidad');
-
-
 
 --Poblado de tabla Alojamientos--
 INSERT INTO ALOJAMIENTOS VALUES (ID_ALOJAMIENTO.NEXTVAL,'Y',null,null);

@@ -23,4 +23,3 @@ FROM VIVIENDACOMUNIDAD v LEFT JOIN RESERVAS r
 ON v.idalojamiento = r.idalojamiento;
 
 
-select * from table(dbms_xplan.display);
