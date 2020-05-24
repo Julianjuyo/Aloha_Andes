@@ -17,21 +17,13 @@ public interface VOHabitacion {
 	 */
 	public long getIdAlojamiento();
 	
-	/**
-	 * @return El idOperador de la habitaction
-	 */
-	public long getIdOperador();
-	
+
 	/**
 	 * @return La direccion de la habitaction
 	 */
 	public String getDireccion();
 	
-	/**
-	 * @return El precio de la habitaction
-	 */
-	public Double getPrecio();
-	
+
 	/**
 	 * @return El numero de habitacion de la habitaction
 	 */

@@ -64,8 +64,8 @@ public class AlohAndes
 	public void DeshabilitarAlojamiento( long idAlojamiento, Date fechaInicio, Date fechaFin)
 	{
 
-		String habilitado ="N";
-		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, habilitado, fechaInicio, fechaFin);
+		
+		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, fechaInicio, fechaFin);
 		
 		
 		List<Reserva> reAntigua = pp.darReservasPorIdAlojamiento(idAlojamiento);
@@ -122,8 +122,8 @@ public class AlohAndes
 
 	public void habilitarAlojamiento( long idAlojamiento)
 	{
-		String habilitado ="Y";
-		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, habilitado, null, null);
+		
+		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, null, null);
 
 
 	}
@@ -786,6 +786,7 @@ public class AlohAndes
 	 * 			Métodos para manejar los ALOJAMIENTOS
 	 *****************************************************************/
 
+
 	/**
 	 * Adiciona de manera persistente una Alojamiento
 	 * Adiciona entradas al log de la aplicación
@@ -795,9 +796,9 @@ public class AlohAndes
 
 	 * @return El objeto Alojamiento adicionado. null si ocurre alguna Excepción
 	 */
-	public Alojamiento adicionarAlojamiento (Boolean habilitada, Date  fechaInicio, Date fechaFin ) {
+	public Alojamiento adicionarAlojamiento (long Opreador, Double precio, Date  fechaInicio, Date fechaFin ) {
 
-		Alojamiento Alojamiento = pp.adicionarAlojamiento(habilitada, fechaInicio, fechaFin);
+		Alojamiento Alojamiento = pp.adicionarAlojamiento(Opreador,precio, fechaInicio, fechaFin);
 
 		log.info ("Adicionanda Alojamiento: " + Alojamiento);
 
@@ -864,12 +865,14 @@ public class AlohAndes
 	 * @param tiempoDias el tiempo de hospejade.
 	 * @return El número de tuplas modificadas: 1 o 0. 0 significa que una Alojamiento con ese identificador no existe
 	 */
-	public long cambiarUnaAlojamiento ( long idAlojamiento, String habilitado ,  Date  fechaInicio, Date fechaFin)
+	public long cambiarUnaAlojamiento ( long idAlojamiento,  Date  fechaInicio, Date fechaFin)
 	{
         log.info ("Cambiando Alojamiento numero: " + idAlojamiento );
-        long cambios = pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, habilitado, fechaInicio, fechaFin);
+        long cambios = pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, fechaInicio, fechaFin);
         return cambios;
 	}
+	
+
 	
 	
 

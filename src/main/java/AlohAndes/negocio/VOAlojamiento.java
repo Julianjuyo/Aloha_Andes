@@ -17,11 +17,18 @@ public interface VOAlojamiento {
 	 */
 	public long getId();
 	
-	/*
-	 * @return si esta disponible o no un alojamientos
+	/**
+	 * @return El operador del alojamiento
 	 */
-	public boolean getHabilitada();
+	public long getIdOperador();
 	
+	/**
+	 * @return El precio del alojamiento
+	 */
+	public Double getPrecio();
+	
+	
+
 	
 	/*
 	 * @return la fecha incial Del periodo de no disponibilidad

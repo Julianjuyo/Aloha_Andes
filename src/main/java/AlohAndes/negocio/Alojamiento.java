@@ -17,10 +17,17 @@ public class Alojamiento implements VOAlojamiento{
 	 */
 	private long id;
 	
-	/*
-	 * Verifica si esta disponible o no un alojamientos
+	/**
+	 *  El idOperador de la vivienda de comunidad
 	 */
-	private boolean habilitada;
+	private long idOperador;
+	
+
+
+	/**
+	 *  El precio del apartamento
+	 */
+	private Double precio;
 	
 	
 
@@ -45,10 +52,11 @@ public class Alojamiento implements VOAlojamiento{
      * @param habilitada2 
      * @param idAlojamiento 
      */
-	public Alojamiento(long idAlojamiento, String habilitada2, Date fechaInicio, Date fechaFin) 
+	public Alojamiento() 
     {
     	this.setId(0);
-    	this.habilitada=true;
+    	this.idOperador = 0;
+    	this.precio = 0.0;
         this.fechaInicioDes = new Date();
         this.fechaFinDes = new Date();
 
@@ -59,10 +67,11 @@ public class Alojamiento implements VOAlojamiento{
 	 * @param id - El id del alojamiento
 
 	 */
-    public Alojamiento(long id, boolean habilitada, Date fechaInicioDes, Date fechaFinDeshabilitada) 
+    public Alojamiento(long id, long idOperador,   Double precio,  Date fechaInicioDes, Date fechaFinDeshabilitada) 
     {
     	this.setId(id);
-    	this.setHabilitada(habilitada);
+    	this.setIdOperador(idOperador);
+    	this.setPrecio(precio);
     	this.setFechaInicioDeshabilitada(fechaInicioDes);
     	this.setFechaFinDeshabilitada(fechaFinDeshabilitada);
 
@@ -78,13 +87,23 @@ public class Alojamiento implements VOAlojamiento{
 		this.id = id;
 	}
 	
-	public boolean getHabilitada() {
-		return habilitada;
+	public long getIdOperador() {
+		return idOperador;
 	}
 
-	public void setHabilitada(boolean habilitada) {
-		this.habilitada = habilitada;
+	public void setIdOperador(long idOperador) {
+		this.idOperador = idOperador;
 	}
+
+	public Double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	
+
 
 	public Date getFechaInicioDeshabilitada() {
 		return fechaInicioDes;
@@ -108,6 +127,7 @@ public class Alojamiento implements VOAlojamiento{
 	 */
 	public String toString() 
 	{
-		return "Alojamiento [id=" + id + ", fechaInicioDes=" + fechaInicioDes + ", fechaFinDes=" + fechaFinDes + "]";
+		return "Alojamiento [id=" + id +", idOperador=" + idOperador +", precio=" + precio
+				+ ", fechaInicioDes=" + fechaInicioDes + ", fechaFinDes=" + fechaFinDes + "]";
 	}
 }

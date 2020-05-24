@@ -48,11 +48,11 @@ public class SQLHabitacion
      * @param tiempoDias - El número de días que se desea Habitacionr el alojamiento
      * @return EL número de tuplas insertadas
      */
-    public long adicionarHabitacion (PersistenceManager pm, long idAlojamietno, long idOperador, String direccion, Double precio, String numHabitacion, String tipoHabitacion, String tipoOperadorHabitacion)
+    public long adicionarHabitacion (PersistenceManager pm, long idAlojamietno, String direccion, String numHabitacion, String tipoHabitacion, String tipoOperadorHabitacion)
 
     {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHabitaciones() + "(IDALOJAMIENTO, IDOPERADOR, DIRECCION, PRECIO, NUMHABITACION, TIPOHABITACION, TIPOOPHAB ) values (?, ?, ?, ?, ?, ?,?)");
-        q.setParameters(idAlojamietno, idOperador, direccion, precio, numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaHabitaciones() + "(IDALOJAMIENTO, DIRECCION, NUMHABITACION, TIPOHABITACION, TIPOOPHAB ) values (?, ?, ?, ?,?)");
+        q.setParameters(idAlojamietno, direccion, numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
         return (long) q.executeUnique();
     }
 

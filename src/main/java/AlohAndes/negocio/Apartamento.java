@@ -21,16 +21,7 @@ public class Apartamento implements VOApartamento {
 	 */
 	private String direccion;
 	
-	/**
-	 *  El precio del apartamento
-	 */
-	private Double precio;
-	
-	
-	/**
-	 *  El dueno del apartamento
-	 */
-	private long dueno;
+
 	
 	/**
 	 *  El valor de la administracion del apartamento
@@ -53,8 +44,7 @@ public class Apartamento implements VOApartamento {
     {
     	this.setIdAlojamiento(0);
 		this.direccion = "";
-		this.precio = 0.0;
-		this.dueno = 0;
+
 		this.valorAdmin = 0.0;
 		this.amobaldo = false ;
 	}
@@ -62,12 +52,11 @@ public class Apartamento implements VOApartamento {
 	/**
 	 * Constructor con valores
 	 */
-    public Apartamento(long idaloja, String direccion, Double precio, long dueno, Double valorAdmin, Boolean amobaldo ) 
+    public Apartamento(long idaloja, String direccion,  Double valorAdmin, Boolean amobaldo ) 
     {
     	this.setIdAlojamiento(idaloja);
 		this.direccion = direccion;
-		this.precio = precio;
-		this.dueno = dueno;
+
 		this.valorAdmin = valorAdmin;
 		this.amobaldo = amobaldo ;
 	}
@@ -88,21 +77,7 @@ public class Apartamento implements VOApartamento {
 		this.direccion = direccion;
 	}
 
-	public Double getPrecio() {
-		return precio;
-	}
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
-
-	public long getDueno() {
-		return dueno;
-	}
-
-	public void setDueno(long dueno) {
-		this.dueno = dueno;
-	}
 
 	public Double getValorAdmin() {
 		return valorAdmin;
@@ -126,8 +101,7 @@ public class Apartamento implements VOApartamento {
 	 */
 	public String toString() 
 	{
-		return "Apartamentos [idAlojamiento=" + idAlojamiento +  ", direccion=" + direccion + ", precio=" + precio
-				+ ", dueno=" + dueno + ", v=" + valorAdmin + ", amobaldo=" + amobaldo + "]";
+		return "Apartamentos [idAlojamiento=" + idAlojamiento +  ", direccion=" + direccion +", valorAdmin=" + valorAdmin + ", amobaldo=" + amobaldo + "]";
 	}
 
     

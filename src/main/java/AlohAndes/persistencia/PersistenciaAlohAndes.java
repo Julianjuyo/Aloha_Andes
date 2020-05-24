@@ -535,7 +535,7 @@ public class PersistenciaAlohAndes
 				}	
 			}
 			
-			if(Si && darAlojamientoPorId(idAlojamiento).getHabilitada())
+			if(Si && darAlojamientoPorId(idAlojamiento).getFechaFinDeshabilitada()!=null)
 			{
 				long idReserva = nextval_idReserva();
 				//Date date = Calendar.getInstance().getTime();
@@ -694,7 +694,7 @@ public class PersistenciaAlohAndes
 	 * @param tiempoDias - El número de días que se desea reservar el alojamiento
 	 * @return El objeto Reserva adicionado. null si ocurre alguna Excepción
 	 */
-	public Alojamiento adicionarAlojamiento(Boolean habilitada, Date  fechaInicio, Date fechaFin)
+	public Alojamiento adicionarAlojamiento(long idOperador, Double precio, Date  fechaInicio, Date fechaFin)
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -705,21 +705,13 @@ public class PersistenciaAlohAndes
 			//Date date = Calendar.getInstance().getTime();
 
 
-			String habilitadoString ;
-			if(habilitada == true)
-			{
-				habilitadoString= "Y";
-			}
-			else
-			{
-				habilitadoString= "N";
-			}
+	
 
-			long tuplasInsertadas = sqlAlojamiento.adicionarAlojamiento(pm, idAlojamiento, habilitadoString, fechaInicio, fechaFin);
+			long tuplasInsertadas = sqlAlojamiento.adicionarAlojamiento(pm, idAlojamiento, idOperador, precio, fechaInicio, fechaFin);
 			tx.commit();
 
 			log.trace ("Inserción Alojamiento: " + idAlojamiento + ": " + tuplasInsertadas + " tuplas insertadas");
-			return new Alojamiento (idAlojamiento, habilitada, fechaInicio, fechaFin);
+			return new Alojamiento (idAlojamiento, idOperador, precio, fechaInicio, fechaFin);
 		}
 		catch (Exception e)
 		{
@@ -806,7 +798,7 @@ public class PersistenciaAlohAndes
 	 * @param fechaFin fecha fin habilitado
 	 * @return numero de tuplas modificadas
 	 */
-	public long cambiarhabilitadoDeUnAlojamiento (long idAlojamiento,  String habilitado, Date  fechaInicio, Date fechaFin )
+	public long cambiarhabilitadoDeUnAlojamiento (long idAlojamiento,  Date  fechaInicio, Date fechaFin )
 	{
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
@@ -818,7 +810,7 @@ public class PersistenciaAlohAndes
 			//			DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
 			//			String diaReserva1 = dateFormat.format(date);
 
-			long resp = sqlAlojamiento.cambiarhabilitadoDeUnAlojamiento(pm, idAlojamiento, habilitado, fechaInicio, fechaFin);
+			long resp = sqlAlojamiento.cambiarhabilitadoDeUnAlojamiento(pm, idAlojamiento, fechaInicio, fechaFin);
 			tx.commit();
 			return resp;
 		}
@@ -1015,17 +1007,17 @@ public class PersistenciaAlohAndes
 			tx.begin();
 
 
-			Alojamiento Alojamiento1 = adicionarAlojamiento(habilitada, fechaInicio, fechaFin);
+			Alojamiento Alojamiento1 = adicionarAlojamiento(idOperador, precio,fechaInicio, fechaFin);
 
 			if( darOperadorPorId(idOperador) != null)
 			{
 
 
-				long tuplasInsertadas = sqlHabitacion.adicionarHabitacion(pm, Alojamiento1.getId(), idOperador, direccion, precio, numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
+				long tuplasInsertadas = sqlHabitacion.adicionarHabitacion(pm, Alojamiento1.getId(), direccion, numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
 				tx.commit();
 
 				log.trace ("Inserción Habitacion: " + Alojamiento1.getId() + ": " + tuplasInsertadas + " tuplas insertadas");
-				return new Habitacion(Alojamiento1.getId(), idOperador, direccion, precio, numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
+				return new Habitacion(Alojamiento1.getId(), direccion,  numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
 			}
 			else {
 				return null;
@@ -1130,7 +1122,7 @@ public class PersistenciaAlohAndes
 			tx.begin();
 
 
-			Alojamiento Alojamiento1 = adicionarAlojamiento(habilitada, fechaInicio, fechaFin);
+			Alojamiento Alojamiento1 = adicionarAlojamiento(idOperador,precio, fechaInicio, fechaFin);
 
 			if( darOperadorPorId(idOperador) != null)
 			{
@@ -1146,11 +1138,11 @@ public class PersistenciaAlohAndes
 				else{
 					seguroArrendatarioString= "N";}
 
-				long tuplasInsertadas = sqlViviendaComunidad.adicionarViviendaComunidad(pm, Alojamiento1.getId(), idOperador, direccion, precio, numHabitaciones, menajeString, seguroArrendatarioString, caractSeguro);
+				long tuplasInsertadas = sqlViviendaComunidad.adicionarViviendaComunidad(pm, Alojamiento1.getId(),  direccion,  numHabitaciones, menajeString, seguroArrendatarioString, caractSeguro);
 				tx.commit();
 
 				log.trace ("Inserción ViviendaComunidad: " + Alojamiento1.getId() + ": " + tuplasInsertadas + " tuplas insertadas");
-				return new ViviendaComunidad(Alojamiento1.getId(), idOperador, direccion, precio, numHabitaciones, menaje, seguroArrendatario, caractSeguro);
+				return new ViviendaComunidad(Alojamiento1.getId(), direccion, numHabitaciones, menaje, seguroArrendatario, caractSeguro);
 			}
 			else {
 				return null;
@@ -1255,7 +1247,7 @@ public class PersistenciaAlohAndes
 			tx.begin();
 
 
-			Alojamiento Alojamiento1 = adicionarAlojamiento(habilitada, fechaInicio, fechaFin);
+			Alojamiento Alojamiento1 = adicionarAlojamiento(dueno,precio, fechaInicio, fechaFin);
 
 			if( darOperadorPorId(dueno) != null)
 			{
@@ -1266,11 +1258,11 @@ public class PersistenciaAlohAndes
 					menajeString= "N";}
 
 
-				long tuplasInsertadas = sqlApartamento.adicionarApartamento(pm, Alojamiento1.getId(), direccion, precio, dueno, valorAdmin, amobaldo);
+				long tuplasInsertadas = sqlApartamento.adicionarApartamento(pm, Alojamiento1.getId(), direccion,  valorAdmin, amobaldo);
 				tx.commit();
 
 				log.trace ("Inserción Apartamento: " + Alojamiento1.getId() + ": " + tuplasInsertadas + " tuplas insertadas");
-				return new Apartamento(Alojamiento1.getId(), direccion, precio, dueno, valorAdmin, amobaldo);
+				return new Apartamento(Alojamiento1.getId(), direccion, valorAdmin, amobaldo);
 
 			}
 			else {

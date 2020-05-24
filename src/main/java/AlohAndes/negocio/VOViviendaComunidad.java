@@ -17,20 +17,11 @@ public interface VOViviendaComunidad {
 	 */
 	public long getIdAlojamiento();
 	
-	/**
-	 * @return El idOperador de la vivienda de comunidad
-	 */
-	public long getIdOperador();
-	
+
 	/**
 	 * @return La direccion de la vivienda de comunidad
 	 */
 	public String getDireccion();
-	
-	/**
-	 * @return El precio de la vivienda de comunidad
-	 */
-	public Double getPrecio();
 	
 	/**
 	 * @return El numero de habitaciones de la vivienda de comunidad

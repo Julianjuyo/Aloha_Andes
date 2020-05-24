@@ -108,17 +108,20 @@ public class AlojamientoTest
 			
 			
 			// Lectura de los Alojamientos con un alojamineto adicionado
-			Boolean habi = true;
-			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento(habi, null, null);
+			long id = 1;
+			Double precio =12.0;
+			
+			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento(id, precio, null, null);
 			lista = alohAndes.darVOAlojamiento();
 			assertEquals ("Debe haber un tipo de bebida creado !!", 1, lista.size ());
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Alojamiento1, lista.get (0));
 
 			// Lectura de los Alojamientos con dos Alojamientos adicionados
-			Boolean habi2 = true;
+			long id2 = 2;
+			Double precio2 =15.0;
 			Date f1 = new Date();
 			Date f2 = new Date();
-			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento(habi2, f1, f2);
+			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento(id2, precio2, f1, f2);
 			lista = alohAndes.darVOAlojamiento();
 			assertEquals ("Debe haber dos Alojamientos creados !!", 2, lista.size ());
 			
@@ -183,14 +186,18 @@ public class AlojamientoTest
 			assertEquals ("No debe haber Alojamientos creados!!", 0, lista.size ());
 
 			// Lectura de los Alojamientos con un tipo de bebida adicionado
-			Boolean habi = true;
-			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento(habi, null, null);
+			long id1 = 2;
+			Double precio1 =15.0;
+			Date fechaInicio = null;
+			Date fechaFin = null;
+			VOAlojamiento Alojamiento1 = alohAndes.adicionarAlojamiento(id1, precio1, fechaInicio, fechaFin);
 			assertEquals ("Debe haber un tipo de bebida creado !!", 1, lista.size ());
 
-			Boolean habi2 = true;
+			long id2 = 2;
+			Double precio2 =15.0;
 			Date f1 = new Date();
 			Date f2 = new Date();
-			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento(habi2, f1, f2);
+			VOAlojamiento Alojamiento2 = alohAndes.adicionarAlojamiento(id2, precio2, f1, f2);
 			assertNull ("No puede adicionar dos Alojamientos con el mismo id !!", Alojamiento2);
 			
 			

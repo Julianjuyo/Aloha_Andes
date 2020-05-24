@@ -52,10 +52,10 @@ public class SQLAlojamiento
 	 */
 
 
-	public long adicionarAlojamiento (PersistenceManager pm, long idAlojamiento, String habilitada, Date fechaInicio, Date fechaFin)
+	public long adicionarAlojamiento (PersistenceManager pm, long idAlojamiento,long idOperador , Double precio, Date fechaInicio, Date fechaFin)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(ID, HABILITADO, FECHAINICIODES, FECHAFINDES) values (?, ?, ?, ?)");
-		q.setParameters(idAlojamiento, habilitada, fechaInicio, fechaFin);
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(ID, IDOPERADOR, PRECIO, FECHAINICIODES, FECHAFINDES) values (?, ?,,? ?, ?)");
+		q.setParameters(idAlojamiento, idOperador, precio, fechaInicio, fechaFin);
 		return (long) q.executeUnique();
 	}
 
@@ -115,10 +115,10 @@ public class SQLAlojamiento
 	 * @param fechaFin fecha fin habilitado
 	 * @return El número de tuplas modificadas
 	 */
-	public long cambiarhabilitadoDeUnAlojamiento (PersistenceManager pm, long id, String habilitado, Date fechaInicio, Date fechafin) 
+	public long cambiarhabilitadoDeUnAlojamiento (PersistenceManager pm, long id,  Date fechaInicio, Date fechafin) 
 	{
-		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET HABILITADO = ?, FECHAINICIODES= ?, FECHAFINDES= ? WHERE ID = ?");
-	     q.setParameters(habilitado, fechaInicio, fechafin, id);
+		 Query q = pm.newQuery(SQL, "UPDATE " + pp.darTablaAlojamientos() + " SET FECHAINICIODES= ?, FECHAFINDES= ? WHERE ID = ?");
+	     q.setParameters(fechaInicio, fechafin, id);
 	     return (long) q.executeUnique();      
 	     
 	}

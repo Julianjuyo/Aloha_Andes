@@ -15,20 +15,14 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 	 */
 	private long idAlojamiento;
 	
-	/**
-	 *  El idOperador de la vivienda de comunidad
-	 */
-	private long idOperador;
+
 	
 	/**
 	 *  La direccion de la vivienda de comunidad
 	 */
 	private String direccion;
 	
-	/**
-	 *  El precio de la vivienda de comunidad
-	 */
-	private Double precio;
+
 	
 	/**
 	 *  El numero de habitaciones de la vivienda de comunidad
@@ -61,9 +55,9 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 	public ViviendaComunidad() 
     {
     	this.setIdAlojamiento(0);
-		this.idOperador = 0;
+
 		this.direccion = "";
-		this.precio = 0.0;
+
 		this.numHabitaciones = 0;
 		this.menaje = false;
 		this.seguroArrendatario = false ;
@@ -73,12 +67,12 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 	/**
 	 * Constructor con valores
 	 */
-    public ViviendaComunidad(long idaloja, long idOperador, String direccion, Double precio, int numHabitaciones, Boolean menaje, Boolean seguroArrendatario, String caractSeguro ) 
+    public ViviendaComunidad(long idaloja,  String direccion,  int numHabitaciones, Boolean menaje, Boolean seguroArrendatario, String caractSeguro ) 
     {
     	this.setIdAlojamiento(idaloja);
-		this.idOperador = idOperador;
+
 		this.direccion = direccion;
-		this.precio = precio;
+
 		this.numHabitaciones = numHabitaciones;
 		this.menaje = menaje;
 		this.seguroArrendatario = seguroArrendatario ;
@@ -93,13 +87,7 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 		this.idAlojamiento = idAlojamiento;
 	}
 
-	public long getIdOperador() {
-		return idOperador;
-	}
 
-	public void setIdOperador(long idOperador) {
-		this.idOperador = idOperador;
-	}
 
 	public String getDireccion() {
 		return direccion;
@@ -109,13 +97,7 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 		this.direccion = direccion;
 	}
 
-	public Double getPrecio() {
-		return precio;
-	}
 
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
 
 	public Integer getNumHabitaciones() {
 		return numHabitaciones;
@@ -155,8 +137,7 @@ public class ViviendaComunidad implements VOViviendaComunidad {
 	 */
 	public String toString() 
 	{
-		return "ViviendaComunidad [idAlojamiento=" + idAlojamiento + ", idOperador=" + idOperador + ", direccion=" + direccion + ", precio=" + precio
-				+ ", numHabitaciones=" + numHabitaciones + ", menaje=" + menaje + ", seguroArrendatario=" + seguroArrendatario + ", caractSeguro=" + caractSeguro +"]";
+		return "ViviendaComunidad [idAlojamiento=" + idAlojamiento +  ", direccion=" + direccion +  ", numHabitaciones=" + numHabitaciones + ", menaje=" + menaje + ", seguroArrendatario=" + seguroArrendatario + ", caractSeguro=" + caractSeguro +"]";
 	}
     
 

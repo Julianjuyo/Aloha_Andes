@@ -22,16 +22,6 @@ public interface VOApartamento {
 	 */
 	public String getDireccion();
 	
-	/**
-	 * @return El precio del apartamento
-	 */
-	public Double getPrecio();
-	
-	
-	/**
-	 * @return El dueno del apartamento
-	 */
-	public long getDueno();
 	
 	/**
 	 * @return El valor de la administracion del apartamento

@@ -48,11 +48,11 @@ public class SQLViviendaComunidad
      * @param tiempoDias - El número de días que se desea ViviendaComunidadr el alojamiento
      * @return EL número de tuplas insertadas
      */
-    public long adicionarViviendaComunidad (PersistenceManager pm, long idAlojamietno, long idOperador, String direccion, Double precio, int numHabitaciones, String menajeString, String seguroArrendatarioString, String caractSeguro)
+    public long adicionarViviendaComunidad (PersistenceManager pm, long idAlojamietno, String direccion, int numHabitaciones, String menajeString, String seguroArrendatarioString, String caractSeguro)
 
     {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darTablaViviendaComunidad() + "(IDALOJAMIENTO, IDOPERADOR, DIRECCION, PRECIO, NUMHABITACIONES, MENAJE, SEGUROARRIENDO,CARACTSEGURO  ) values (?, ?, ?, ?, ?, ?,?,?)");
-        q.setParameters(idAlojamietno, idOperador, direccion, precio, numHabitaciones, menajeString, seguroArrendatarioString, caractSeguro);
+        q.setParameters(idAlojamietno, direccion, numHabitaciones, menajeString, seguroArrendatarioString, caractSeguro);
         return (long) q.executeUnique();
     }
 
