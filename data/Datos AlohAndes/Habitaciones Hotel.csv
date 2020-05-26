@@ -1,0 +1,801 @@
+IDALOJAMIENTO,DIRECCION,NUMHABITACION,TIPOHABITACION,TIPOOPHAB
+1,5410 Dexter Drive,6,Estandar,Hotel
+2,363 Sherman Trail,607,Suite,Hotel
+3,8033 Morning Park,8,Semisuite,Hotel
+4,972 Fair Oaks Lane,7928,Semisuite,Hotel
+5,95 Derek Court,364,Semisuite,Hotel
+6,99 Talmadge Street,0,Suite,Hotel
+7,80743 Fair Oaks Street,5,Estandar,Hotel
+8,4 Hooker Avenue,27,Suite,Hotel
+9,33660 Stoughton Crossing,5135,Suite,Hotel
+10,889 Cardinal Pass,27,Suite,Hotel
+11,40029 Goodland Trail,6396,Semisuite,Hotel
+12,39 Park Meadow Hill,92,Suite,Hotel
+13,59 Cambridge Lane,408,Estandar,Hotel
+14,88623 Corben Hill,2,Semisuite,Hotel
+15,610 Dixon Hill,6388,Suite,Hotel
+16,9438 Springview Center,8855,Semisuite,Hotel
+17,4 Sachs Plaza,4516,Suite,Hotel
+18,7635 High Crossing Plaza,3938,Estandar,Hotel
+19,599 Donald Way,9214,Suite,Hotel
+20,752 Gateway Crossing,0,Suite,Hotel
+21,1887 Oneill Trail,79,Estandar,Hotel
+22,2 Mesta Plaza,48346,Estandar,Hotel
+23,97 South Drive,684,Suite,Hotel
+24,83 Forest Dale Junction,987,Estandar,Hotel
+25,12 Donald Drive,8,Suite,Hotel
+26,186 Scofield Place,0,Suite,Hotel
+27,3816 Hintze Circle,3034,Semisuite,Hotel
+28,4293 Portage Hill,0532,Suite,Hotel
+29,6818 John Wall Street,7758,Semisuite,Hotel
+30,47034 Granby Terrace,5366,Semisuite,Hotel
+31,54 Ramsey Parkway,17,Estandar,Hotel
+32,79 Scoville Court,123,Suite,Hotel
+33,7 Towne Street,8,Suite,Hotel
+34,5 Manley Park,68683,Suite,Hotel
+35,530 Maywood Alley,14,Suite,Hotel
+36,671 Ilene Point,89,Suite,Hotel
+37,6 Menomonie Circle,543,Suite,Hotel
+38,7663 Texas Parkway,436,Suite,Hotel
+39,2 Delaware Center,58,Estandar,Hotel
+40,92745 Longview Plaza,2,Estandar,Hotel
+41,1 Declaration Crossing,01623,Suite,Hotel
+42,9 Porter Terrace,5,Estandar,Hotel
+43,67747 Farragut Center,7,Estandar,Hotel
+44,123 Hudson Circle,16170,Estandar,Hotel
+45,6 Parkside Alley,93,Suite,Hotel
+46,242 Tony Point,039,Suite,Hotel
+47,57 Anhalt Drive,778,Suite,Hotel
+48,4205 Alpine Terrace,2,Suite,Hotel
+49,18794 Ilene Terrace,9,Estandar,Hotel
+50,91 Kropf Trail,1,Estandar,Hotel
+51,50470 Forest Dale Trail,723,Estandar,Hotel
+52,898 Wayridge Alley,71690,Semisuite,Hotel
+53,85 Dixon Plaza,6376,Estandar,Hotel
+54,8 Banding Terrace,8903,Suite,Hotel
+55,85 Helena Way,5062,Suite,Hotel
+56,848 Arrowood Circle,1803,Estandar,Hotel
+57,01661 3rd Court,7660,Semisuite,Hotel
+58,204 Victoria Pass,2288,Estandar,Hotel
+59,189 Esker Place,45,Suite,Hotel
+60,394 Reindahl Crossing,188,Estandar,Hotel
+61,1801 Manitowish Crossing,8995,Suite,Hotel
+62,828 Gina Alley,941,Suite,Hotel
+63,35 Cordelia Pass,76,Suite,Hotel
+64,19 Ridge Oak Way,7,Estandar,Hotel
+65,06121 Novick Street,52,Suite,Hotel
+66,2 Raven Place,20,Suite,Hotel
+67,646 Norway Maple Junction,447,Estandar,Hotel
+68,82874 Miller Pass,9,Estandar,Hotel
+69,9325 Kinsman Road,1,Suite,Hotel
+70,9996 Mcbride Avenue,0938,Suite,Hotel
+71,8 Delladonna Trail,28,Suite,Hotel
+72,3 West Court,3726,Semisuite,Hotel
+73,9271 Cardinal Way,89,Suite,Hotel
+74,97313 Manley Park,171,Suite,Hotel
+75,4 Pierstorff Street,64290,Semisuite,Hotel
+76,1014 Rieder Parkway,10697,Suite,Hotel
+77,3772 Waywood Center,479,Estandar,Hotel
+78,37147 Shasta Avenue,3,Suite,Hotel
+79,11 Continental Center,9,Suite,Hotel
+80,08 Talisman Alley,1,Semisuite,Hotel
+81,3356 Goodland Crossing,257,Estandar,Hotel
+82,580 Hazelcrest Alley,2724,Semisuite,Hotel
+83,6 Clarendon Hill,3,Estandar,Hotel
+84,01356 Oriole Plaza,0961,Suite,Hotel
+85,99 Alpine Street,45,Suite,Hotel
+86,65414 Mayer Junction,2,Semisuite,Hotel
+87,71538 Haas Crossing,28,Suite,Hotel
+88,0 International Hill,5323,Estandar,Hotel
+89,37 Meadow Vale Point,18426,Estandar,Hotel
+90,84344 Ruskin Street,3013,Suite,Hotel
+91,842 Ohio Plaza,948,Suite,Hotel
+92,28524 Graedel Lane,487,Estandar,Hotel
+93,6 John Wall Circle,96,Estandar,Hotel
+94,6 Londonderry Center,9401,Suite,Hotel
+95,7534 Hovde Point,280,Estandar,Hotel
+96,697 2nd Point,0437,Semisuite,Hotel
+97,777 Blue Bill Park Pass,2,Semisuite,Hotel
+98,956 Onsgard Junction,619,Suite,Hotel
+99,428 Dennis Way,90239,Suite,Hotel
+100,6 Granby Plaza,25284,Estandar,Hotel
+101,15903 Ridgeview Park,337,Semisuite,Hotel
+102,90 Debs Court,27,Suite,Hotel
+103,487 Fulton Avenue,340,Semisuite,Hotel
+104,5021 5th Point,6211,Suite,Hotel
+105,98554 Butterfield Hill,3,Suite,Hotel
+106,791 Novick Terrace,81,Suite,Hotel
+107,46 Esker Way,14,Suite,Hotel
+108,3695 Center Plaza,2728,Suite,Hotel
+109,5 Goodland Place,9,Estandar,Hotel
+110,7521 Transport Pass,5,Semisuite,Hotel
+111,6 Prairieview Terrace,12,Suite,Hotel
+112,98312 Mosinee Parkway,01514,Semisuite,Hotel
+113,033 Starling Avenue,83,Suite,Hotel
+114,7260 Sunnyside Plaza,228,Suite,Hotel
+115,661 Messerschmidt Plaza,50,Semisuite,Hotel
+116,147 Jana Road,70709,Suite,Hotel
+117,7196 Heath Crossing,1380,Suite,Hotel
+118,5012 Summit Terrace,0706,Semisuite,Hotel
+119,05733 Golf Course Street,7,Suite,Hotel
+120,15023 Milwaukee Point,9,Suite,Hotel
+121,03 Rowland Pass,74486,Suite,Hotel
+122,09 Thompson Avenue,63,Semisuite,Hotel
+123,2687 Sunbrook Lane,1,Estandar,Hotel
+124,70 Manufacturers Plaza,2535,Suite,Hotel
+125,2 Hallows Drive,652,Suite,Hotel
+126,643 Mifflin Hill,04018,Semisuite,Hotel
+127,922 New Castle Center,6,Suite,Hotel
+128,3 Ronald Regan Drive,9,Estandar,Hotel
+129,5 Melody Road,20,Semisuite,Hotel
+130,974 Glacier Hill Road,9,Semisuite,Hotel
+131,17 Logan Way,0,Suite,Hotel
+132,81 Florence Way,22215,Suite,Hotel
+133,583 Melrose Lane,00438,Estandar,Hotel
+134,86578 Onsgard Circle,6746,Suite,Hotel
+135,7 Mandrake Terrace,0,Estandar,Hotel
+136,211 Farmco Lane,2,Semisuite,Hotel
+137,11 Clemons Road,1831,Estandar,Hotel
+138,685 Glacier Hill Circle,5,Suite,Hotel
+139,9333 Maple Parkway,9,Suite,Hotel
+140,6 Derek Drive,20,Suite,Hotel
+141,98698 Dakota Lane,073,Suite,Hotel
+142,1 Maple Wood Park,167,Suite,Hotel
+143,6 Tennessee Trail,614,Estandar,Hotel
+144,1699 Stephen Lane,6039,Semisuite,Hotel
+145,834 Helena Road,25,Semisuite,Hotel
+146,11294 Park Meadow Point,8,Semisuite,Hotel
+147,6 Glendale Street,376,Suite,Hotel
+148,9732 Meadow Vale Junction,37570,Estandar,Hotel
+149,39044 Lakewood Gardens Hill,33,Suite,Hotel
+150,4124 Rigney Lane,689,Estandar,Hotel
+151,55 Spenser Hill,2,Estandar,Hotel
+152,3289 Vermont Junction,05,Suite,Hotel
+153,0485 Dennis Point,6013,Suite,Hotel
+154,59 Independence Avenue,11710,Suite,Hotel
+155,56039 Shopko Alley,49,Suite,Hotel
+156,7740 Linden Trail,241,Suite,Hotel
+157,2 Meadow Ridge Road,381,Suite,Hotel
+158,3430 Columbus Avenue,2,Suite,Hotel
+159,21 Forster Trail,0,Semisuite,Hotel
+160,21082 Rigney Pass,4611,Semisuite,Hotel
+161,04 Lindbergh Pass,56,Estandar,Hotel
+162,61 Evergreen Street,5227,Suite,Hotel
+163,0 Arrowood Center,5196,Suite,Hotel
+164,8700 Forest Road,33,Suite,Hotel
+165,4 Lighthouse Bay Point,925,Suite,Hotel
+166,5763 Daystar Court,502,Estandar,Hotel
+167,1089 Dovetail Pass,04,Suite,Hotel
+168,86 8th Alley,12881,Semisuite,Hotel
+169,62801 Mosinee Street,69274,Suite,Hotel
+170,2 Hooker Park,030,Suite,Hotel
+171,28 Reindahl Place,0652,Semisuite,Hotel
+172,84 Wayridge Avenue,431,Semisuite,Hotel
+173,967 Beilfuss Place,77789,Semisuite,Hotel
+174,976 Pepper Wood Junction,928,Suite,Hotel
+175,4029 Spohn Lane,45,Semisuite,Hotel
+176,78 Maywood Park,3943,Suite,Hotel
+177,28537 Green Ridge Court,48115,Suite,Hotel
+178,87149 Debs Parkway,5,Semisuite,Hotel
+179,21448 Sheridan Street,56278,Estandar,Hotel
+180,95 Riverside Plaza,9,Semisuite,Hotel
+181,98240 Laurel Pass,77627,Suite,Hotel
+182,39 Loomis Point,7511,Semisuite,Hotel
+183,01 Troy Hill,3,Suite,Hotel
+184,25631 Pennsylvania Crossing,22,Suite,Hotel
+185,6608 Artisan Alley,248,Suite,Hotel
+186,6482 Westend Pass,512,Estandar,Hotel
+187,0 Meadow Vale Junction,17086,Semisuite,Hotel
+188,635 Rockefeller Point,86,Suite,Hotel
+189,9521 Rusk Pass,80243,Suite,Hotel
+190,5 Bartelt Point,43506,Suite,Hotel
+191,3552 Novick Hill,072,Suite,Hotel
+192,84 Hagan Place,51584,Suite,Hotel
+193,281 Brown Drive,72338,Semisuite,Hotel
+194,16 Clove Place,5,Semisuite,Hotel
+195,08616 Dunning Park,85250,Semisuite,Hotel
+196,2 Northport Lane,26883,Suite,Hotel
+197,1297 Raven Pass,8,Suite,Hotel
+198,361 Continental Alley,59164,Suite,Hotel
+199,337 3rd Pass,7458,Suite,Hotel
+200,995 Toban Court,2,Semisuite,Hotel
+201,5229 Kingsford Plaza,71299,Estandar,Hotel
+202,9716 American Ash Drive,7,Semisuite,Hotel
+203,12 Muir Lane,5,Suite,Hotel
+204,5527 Northridge Trail,81,Estandar,Hotel
+205,318 Nancy Hill,84,Suite,Hotel
+206,7 Hooker Center,9986,Suite,Hotel
+207,56 Graceland Lane,7156,Semisuite,Hotel
+208,60 Summerview Junction,70,Suite,Hotel
+209,43617 Ronald Regan Crossing,22186,Suite,Hotel
+210,97946 Springs Pass,8,Suite,Hotel
+211,29 Hallows Place,0327,Estandar,Hotel
+212,44 Clemons Pass,1831,Suite,Hotel
+213,3691 Goodland Way,72131,Semisuite,Hotel
+214,727 Fordem Circle,00,Suite,Hotel
+215,444 Starling Junction,5,Estandar,Hotel
+216,74822 Comanche Park,769,Estandar,Hotel
+217,5509 Browning Center,895,Semisuite,Hotel
+218,580 Monument Parkway,179,Semisuite,Hotel
+219,9 Welch Hill,25,Suite,Hotel
+220,96 Duke Place,92393,Semisuite,Hotel
+221,44 Melody Place,695,Suite,Hotel
+222,242 Melody Way,7511,Suite,Hotel
+223,42 Washington Street,17653,Suite,Hotel
+224,3881 Fremont Parkway,76,Semisuite,Hotel
+225,4 Moland Park,976,Suite,Hotel
+226,02 Springview Court,405,Suite,Hotel
+227,1793 Fulton Circle,702,Estandar,Hotel
+228,395 Pond Street,110,Estandar,Hotel
+229,5 Waubesa Avenue,5,Estandar,Hotel
+230,2 Commercial Park,79393,Semisuite,Hotel
+231,7 Harper Circle,2,Suite,Hotel
+232,3 Hermina Hill,12093,Semisuite,Hotel
+233,85423 Carberry Terrace,0,Suite,Hotel
+234,25220 Longview Pass,864,Suite,Hotel
+235,6782 Schlimgen Street,53564,Semisuite,Hotel
+236,0 Eagan Way,1,Suite,Hotel
+237,6 Sullivan Parkway,522,Estandar,Hotel
+238,79 Carberry Court,9304,Semisuite,Hotel
+239,87 Merrick Parkway,1330,Semisuite,Hotel
+240,1 Nancy Lane,9318,Estandar,Hotel
+241,51 Morningstar Point,8069,Suite,Hotel
+242,9 Londonderry Alley,44870,Suite,Hotel
+243,0454 Browning Point,4,Estandar,Hotel
+244,93918 Northwestern Terrace,249,Estandar,Hotel
+245,0 Chinook Crossing,389,Suite,Hotel
+246,817 Randy Way,11,Suite,Hotel
+247,03294 Mariners Cove Circle,03194,Suite,Hotel
+248,87602 Haas Way,9,Semisuite,Hotel
+249,639 Moulton Crossing,4185,Estandar,Hotel
+250,83 Monica Trail,72854,Suite,Hotel
+251,0 Carioca Parkway,37,Estandar,Hotel
+252,20718 Annamark Street,5,Suite,Hotel
+253,8 Lake View Street,573,Suite,Hotel
+254,96198 Leroy Circle,6,Suite,Hotel
+255,6 Mosinee Parkway,2,Semisuite,Hotel
+256,5 Loftsgordon Park,3731,Suite,Hotel
+257,678 Dakota Avenue,7699,Suite,Hotel
+258,832 Monterey Street,3,Suite,Hotel
+259,2 Hayes Point,3,Estandar,Hotel
+260,464 Coolidge Pass,9,Suite,Hotel
+261,483 Pleasure Road,70,Suite,Hotel
+262,6 Brown Point,2,Suite,Hotel
+263,644 Northfield Avenue,7563,Suite,Hotel
+264,05758 Barby Plaza,27,Estandar,Hotel
+265,736 Morning Center,01753,Estandar,Hotel
+266,2 Jay Place,1019,Estandar,Hotel
+267,80233 Ryan Court,9,Suite,Hotel
+268,16035 David Trail,63465,Suite,Hotel
+269,58 Summit Way,9187,Estandar,Hotel
+270,18 Golf View Crossing,895,Estandar,Hotel
+271,3 Center Hill,000,Estandar,Hotel
+272,43 Corscot Lane,4711,Semisuite,Hotel
+273,5 Michigan Park,2418,Semisuite,Hotel
+274,705 Lukken Street,9860,Suite,Hotel
+275,843 Hooker Point,74984,Semisuite,Hotel
+276,01 Fulton Alley,6,Semisuite,Hotel
+277,457 Green Point,223,Suite,Hotel
+278,1 Banding Court,9562,Suite,Hotel
+279,34679 Hoffman Crossing,041,Estandar,Hotel
+280,23036 Debra Place,4525,Estandar,Hotel
+281,97 Montana Parkway,02,Semisuite,Hotel
+282,396 Dexter Court,1,Semisuite,Hotel
+283,6 Maple Wood Court,02,Suite,Hotel
+284,14 Evergreen Hill,520,Estandar,Hotel
+285,54 Coolidge Center,9988,Estandar,Hotel
+286,503 Declaration Road,24,Suite,Hotel
+287,8127 Pennsylvania Lane,82,Suite,Hotel
+288,60 Donald Place,3,Semisuite,Hotel
+289,7 Shelley Lane,055,Estandar,Hotel
+290,85 Eagle Crest Parkway,636,Suite,Hotel
+291,7 Roth Terrace,92,Semisuite,Hotel
+292,1776 Clarendon Avenue,92,Estandar,Hotel
+293,8589 Stuart Avenue,56957,Suite,Hotel
+294,96 Comanche Park,63,Semisuite,Hotel
+295,7689 Melrose Circle,4,Suite,Hotel
+296,6 Towne Alley,7569,Semisuite,Hotel
+297,2 Cardinal Center,6637,Semisuite,Hotel
+298,89 Schurz Street,78418,Suite,Hotel
+299,278 Bashford Alley,42493,Suite,Hotel
+300,702 Manitowish Road,99,Suite,Hotel
+301,345 Di Loreto Plaza,4,Estandar,Hotel
+302,1764 Sugar Drive,02973,Semisuite,Hotel
+303,4864 Independence Way,6488,Estandar,Hotel
+304,7037 Kingsford Road,67702,Suite,Hotel
+305,2 Buell Junction,19,Suite,Hotel
+306,6 Dakota Plaza,8053,Suite,Hotel
+307,8 Transport Circle,422,Suite,Hotel
+308,96714 Lien Point,66,Suite,Hotel
+309,584 International Hill,80,Semisuite,Hotel
+310,96257 Clove Trail,605,Estandar,Hotel
+311,50 Oriole Junction,80407,Semisuite,Hotel
+312,8 Hudson Road,7404,Estandar,Hotel
+313,738 Scofield Avenue,2957,Semisuite,Hotel
+314,1 Transport Park,776,Estandar,Hotel
+315,37616 Hoepker Circle,0,Suite,Hotel
+316,4 Leroy Avenue,201,Suite,Hotel
+317,4 Fairfield Center,21,Suite,Hotel
+318,52 Continental Center,59727,Suite,Hotel
+319,9 Prairie Rose Junction,64608,Suite,Hotel
+320,4155 Dunning Alley,8,Semisuite,Hotel
+321,59 Oakridge Trail,7,Estandar,Hotel
+322,160 Hoepker Place,6396,Estandar,Hotel
+323,55 Magdeline Circle,01729,Suite,Hotel
+324,533 Southridge Terrace,591,Semisuite,Hotel
+325,5628 Mallory Place,52,Suite,Hotel
+326,73927 Coleman Trail,965,Suite,Hotel
+327,9719 Forest Dale Road,038,Suite,Hotel
+328,8580 1st Avenue,60,Suite,Hotel
+329,062 Granby Way,221,Suite,Hotel
+330,45 Park Meadow Center,628,Suite,Hotel
+331,3 Towne Place,065,Suite,Hotel
+332,9 Little Fleur Court,280,Suite,Hotel
+333,6662 Hovde Lane,9236,Suite,Hotel
+334,0484 Butternut Avenue,04299,Suite,Hotel
+335,24847 Basil Road,0715,Suite,Hotel
+336,922 Comanche Road,9760,Suite,Hotel
+337,39 Armistice Pass,098,Estandar,Hotel
+338,772 Springview Terrace,7591,Suite,Hotel
+339,61866 Logan Court,26,Estandar,Hotel
+340,13 Park Meadow Way,6225,Suite,Hotel
+341,74836 Mesta Plaza,67,Suite,Hotel
+342,97 Roth Way,91,Semisuite,Hotel
+343,23 Helena Alley,49,Suite,Hotel
+344,122 Oriole Street,6157,Suite,Hotel
+345,2 Lakeland Lane,914,Semisuite,Hotel
+346,1131 Mitchell Place,99085,Suite,Hotel
+347,77901 Bunting Court,99,Suite,Hotel
+348,3398 Gale Plaza,130,Suite,Hotel
+349,22 Fieldstone Center,5,Suite,Hotel
+350,174 Marcy Alley,1,Semisuite,Hotel
+351,8 Manufacturers Crossing,0,Estandar,Hotel
+352,6541 Bartillon Hill,648,Estandar,Hotel
+353,051 Florence Center,5590,Suite,Hotel
+354,32 Golf View Center,7358,Suite,Hotel
+355,219 Morningstar Trail,71,Suite,Hotel
+356,3 Arrowood Road,11498,Semisuite,Hotel
+357,69533 Clyde Gallagher Center,4853,Suite,Hotel
+358,654 Center Terrace,174,Estandar,Hotel
+359,94091 West Road,248,Suite,Hotel
+360,92 Loeprich Lane,96449,Suite,Hotel
+361,8109 Ohio Circle,24,Suite,Hotel
+362,792 Steensland Hill,7634,Suite,Hotel
+363,57812 Grayhawk Avenue,416,Suite,Hotel
+364,234 Sutteridge Junction,41,Semisuite,Hotel
+365,787 Declaration Lane,89024,Suite,Hotel
+366,4 Twin Pines Place,50786,Suite,Hotel
+367,3876 Crescent Oaks Drive,38989,Semisuite,Hotel
+368,0 Old Shore Crossing,4,Suite,Hotel
+369,48 Garrison Court,903,Estandar,Hotel
+370,2690 Lawn Trail,6872,Semisuite,Hotel
+371,53750 Muir Avenue,16,Suite,Hotel
+372,96 Becker Trail,12,Suite,Hotel
+373,818 Chinook Center,6,Estandar,Hotel
+374,8315 Dorton Parkway,46307,Suite,Hotel
+375,52861 Swallow Avenue,3,Suite,Hotel
+376,3510 Shoshone Hill,12,Suite,Hotel
+377,884 Manley Plaza,1,Suite,Hotel
+378,126 Walton Pass,2701,Estandar,Hotel
+379,574 Drewry Center,418,Suite,Hotel
+380,013 Karstens Place,493,Suite,Hotel
+381,7737 Schurz Street,267,Semisuite,Hotel
+382,99563 Sundown Center,06,Estandar,Hotel
+383,3136 Shoshone Alley,0,Suite,Hotel
+384,11 Sunbrook Junction,867,Semisuite,Hotel
+385,1 Valley Edge Trail,83026,Suite,Hotel
+386,82216 New Castle Plaza,699,Semisuite,Hotel
+387,7897 Talmadge Street,1692,Suite,Hotel
+388,41597 Donald Plaza,254,Suite,Hotel
+389,444 Duke Place,2,Estandar,Hotel
+390,76 Portage Pass,81671,Suite,Hotel
+391,376 Nelson Place,73,Suite,Hotel
+392,2 3rd Road,69621,Estandar,Hotel
+393,97275 Erie Road,4988,Suite,Hotel
+394,813 Oriole Crossing,1,Suite,Hotel
+395,30 Drewry Place,12615,Estandar,Hotel
+396,833 Sutteridge Terrace,912,Semisuite,Hotel
+397,4 Mallory Center,45,Semisuite,Hotel
+398,3036 Daystar Park,05335,Estandar,Hotel
+399,7740 Tomscot Center,5,Suite,Hotel
+400,4000 Lawn Terrace,551,Suite,Hotel
+401,117 Luster Alley,56,Semisuite,Hotel
+402,485 Laurel Drive,46,Suite,Hotel
+403,9591 Oak Valley Court,24,Semisuite,Hotel
+404,6 Old Gate Court,32196,Suite,Hotel
+405,470 Village Terrace,2,Estandar,Hotel
+406,66041 Donald Way,2160,Estandar,Hotel
+407,5 Miller Center,99227,Suite,Hotel
+408,827 Mayfield Pass,0,Suite,Hotel
+409,357 Duke Terrace,4937,Suite,Hotel
+410,71 Oxford Park,551,Suite,Hotel
+411,4 Waywood Point,24275,Estandar,Hotel
+412,852 Daystar Plaza,14388,Suite,Hotel
+413,6 Dovetail Court,589,Semisuite,Hotel
+414,61 Basil Plaza,954,Estandar,Hotel
+415,07710 Graedel Circle,0,Suite,Hotel
+416,2192 Meadow Ridge Plaza,01781,Semisuite,Hotel
+417,8 Hoepker Place,866,Estandar,Hotel
+418,4 Cascade Lane,53,Estandar,Hotel
+419,53527 International Way,65594,Semisuite,Hotel
+420,8 Charing Cross Park,26037,Suite,Hotel
+421,779 Warrior Terrace,8,Estandar,Hotel
+422,73 Little Fleur Alley,6998,Semisuite,Hotel
+423,11681 Waubesa Circle,32719,Estandar,Hotel
+424,00994 Katie Crossing,40,Estandar,Hotel
+425,5 Mcbride Court,8366,Semisuite,Hotel
+426,5228 Roth Lane,93460,Suite,Hotel
+427,8558 Welch Trail,249,Suite,Hotel
+428,55525 Comanche Trail,64,Estandar,Hotel
+429,5068 Warner Way,78835,Semisuite,Hotel
+430,9 Heath Place,09,Suite,Hotel
+431,937 Longview Street,75336,Estandar,Hotel
+432,6246 Anthes Street,30,Suite,Hotel
+433,03 Farwell Road,9900,Semisuite,Hotel
+434,68 Sutteridge Point,3,Suite,Hotel
+435,9263 Sauthoff Parkway,0387,Suite,Hotel
+436,78 Colorado Hill,86361,Semisuite,Hotel
+437,02 Barby Hill,339,Semisuite,Hotel
+438,6 7th Parkway,4,Semisuite,Hotel
+439,671 Vera Street,33,Semisuite,Hotel
+440,606 Lake View Pass,204,Semisuite,Hotel
+441,460 Hagan Center,872,Suite,Hotel
+442,90 Cambridge Court,160,Suite,Hotel
+443,092 Corscot Crossing,84285,Estandar,Hotel
+444,093 Mayfield Circle,45087,Suite,Hotel
+445,09 Kensington Road,14,Suite,Hotel
+446,5 Mitchell Court,38,Semisuite,Hotel
+447,6716 Dovetail Lane,17655,Suite,Hotel
+448,76 Lukken Center,725,Suite,Hotel
+449,9 Basil Road,7122,Estandar,Hotel
+450,0706 High Crossing Center,97690,Semisuite,Hotel
+451,5997 David Alley,739,Suite,Hotel
+452,5 Mayfield Court,42,Suite,Hotel
+453,681 East Drive,72621,Suite,Hotel
+454,1824 Truax Way,08,Semisuite,Hotel
+455,316 Crest Line Avenue,9,Suite,Hotel
+456,34 Spaight Alley,87048,Semisuite,Hotel
+457,3248 Vernon Park,7058,Suite,Hotel
+458,2223 Boyd Lane,3471,Estandar,Hotel
+459,6 Charing Cross Court,55,Semisuite,Hotel
+460,16490 Waywood Street,26672,Estandar,Hotel
+461,36242 Mallory Avenue,972,Estandar,Hotel
+462,9025 Emmet Place,076,Semisuite,Hotel
+463,695 Moland Crossing,667,Estandar,Hotel
+464,624 Hanover Street,6,Suite,Hotel
+465,48 Brown Plaza,2,Semisuite,Hotel
+466,24 Sauthoff Avenue,492,Semisuite,Hotel
+467,6 Gateway Parkway,86,Estandar,Hotel
+468,7009 Del Mar Junction,45,Suite,Hotel
+469,080 Rusk Parkway,0,Semisuite,Hotel
+470,8 Towne Trail,60241,Suite,Hotel
+471,6 Dennis Plaza,06463,Suite,Hotel
+472,2602 Express Hill,40,Estandar,Hotel
+473,0 Arkansas Place,378,Suite,Hotel
+474,36908 Michigan Drive,4,Estandar,Hotel
+475,837 Fremont Center,3428,Suite,Hotel
+476,7 Lindbergh Point,5135,Suite,Hotel
+477,3 Novick Circle,205,Suite,Hotel
+478,6 Kenwood Avenue,8223,Suite,Hotel
+479,31 Lindbergh Way,68,Estandar,Hotel
+480,828 Glendale Street,3573,Estandar,Hotel
+481,473 Blaine Circle,597,Estandar,Hotel
+482,16 Hudson Place,2,Suite,Hotel
+483,6 Sunfield Avenue,99974,Suite,Hotel
+484,00 Center Pass,536,Suite,Hotel
+485,4 2nd Parkway,30,Suite,Hotel
+486,599 Manley Street,8,Semisuite,Hotel
+487,6 Pankratz Lane,76,Semisuite,Hotel
+488,36 Westend Plaza,2206,Estandar,Hotel
+489,7 Shelley Place,2,Suite,Hotel
+490,77376 Aberg Place,31,Estandar,Hotel
+491,418 Spenser Junction,552,Semisuite,Hotel
+492,1516 Monterey Center,7307,Suite,Hotel
+493,8 Schmedeman Road,455,Suite,Hotel
+494,365 Killdeer Crossing,82,Suite,Hotel
+495,50366 Commercial Drive,56,Estandar,Hotel
+496,6984 Hanover Junction,60,Suite,Hotel
+497,82 Portage Hill,08,Suite,Hotel
+498,5548 International Park,901,Suite,Hotel
+499,22100 Morrow Lane,238,Estandar,Hotel
+500,17 Everett Avenue,4675,Semisuite,Hotel
+501,510 Lien Park,1906,Suite,Hotel
+502,059 Oxford Park,3159,Semisuite,Hotel
+503,0274 Esker Trail,3126,Semisuite,Hotel
+504,835 Clemons Junction,08,Suite,Hotel
+505,95837 Hansons Way,741,Semisuite,Hotel
+506,3357 Bultman Point,293,Suite,Hotel
+507,6985 Aberg Parkway,20407,Suite,Hotel
+508,827 Westridge Trail,74,Suite,Hotel
+509,28418 Glendale Center,13,Suite,Hotel
+510,3 Menomonie Plaza,90718,Suite,Hotel
+511,3466 Katie Drive,45230,Suite,Hotel
+512,778 Schmedeman Lane,55,Suite,Hotel
+513,67 Jay Hill,02890,Suite,Hotel
+514,299 Nelson Terrace,3,Estandar,Hotel
+515,1 Utah Alley,24,Estandar,Hotel
+516,06407 Valley Edge Point,9,Estandar,Hotel
+517,598 Gateway Alley,20,Estandar,Hotel
+518,61572 Larry Court,9890,Suite,Hotel
+519,0 7th Place,7,Estandar,Hotel
+520,80 Farmco Drive,178,Suite,Hotel
+521,940 Esch Circle,925,Suite,Hotel
+522,075 Muir Street,86,Suite,Hotel
+523,8 Pierstorff Parkway,8754,Suite,Hotel
+524,4111 Red Cloud Parkway,21,Estandar,Hotel
+525,1909 Fairview Drive,55607,Estandar,Hotel
+526,79041 Rusk Plaza,6,Semisuite,Hotel
+527,43156 Arapahoe Trail,67756,Suite,Hotel
+528,258 Vahlen Hill,61,Estandar,Hotel
+529,467 Parkside Trail,6,Suite,Hotel
+530,465 Stuart Point,3,Estandar,Hotel
+531,94 Loftsgordon Place,1,Estandar,Hotel
+532,75950 Everett Avenue,84604,Suite,Hotel
+533,2677 Becker Hill,7,Semisuite,Hotel
+534,61630 Moland Lane,61,Suite,Hotel
+535,865 Daystar Drive,5,Estandar,Hotel
+536,41375 Petterle Junction,8989,Estandar,Hotel
+537,3122 Lighthouse Bay Trail,6,Estandar,Hotel
+538,17799 Sunnyside Park,15658,Suite,Hotel
+539,2 Pankratz Road,4728,Semisuite,Hotel
+540,1487 Starling Park,69,Suite,Hotel
+541,2 Dwight Street,5,Suite,Hotel
+542,467 Ramsey Trail,82,Suite,Hotel
+543,31 Jenna Plaza,927,Suite,Hotel
+544,51 Thompson Plaza,6,Suite,Hotel
+545,62 Mandrake Alley,6,Estandar,Hotel
+546,647 Bultman Alley,73,Semisuite,Hotel
+547,1324 Oriole Park,87,Suite,Hotel
+548,22195 Walton Center,7048,Suite,Hotel
+549,50252 Farwell Lane,87,Suite,Hotel
+550,01 Loftsgordon Circle,40,Semisuite,Hotel
+551,91 Clemons Street,028,Suite,Hotel
+552,673 Havey Way,39040,Suite,Hotel
+553,3 Fair Oaks Way,41040,Estandar,Hotel
+554,256 Bartelt Circle,27,Estandar,Hotel
+555,53490 Troy Junction,1,Suite,Hotel
+556,00354 Little Fleur Hill,8,Suite,Hotel
+557,5323 Delaware Center,332,Semisuite,Hotel
+558,98948 Warner Junction,2367,Suite,Hotel
+559,4 Jana Point,8992,Estandar,Hotel
+560,804 Summer Ridge Parkway,7229,Suite,Hotel
+561,9118 2nd Point,25452,Suite,Hotel
+562,7 Wayridge Hill,77326,Estandar,Hotel
+563,087 Spenser Terrace,9202,Suite,Hotel
+564,12 Debs Drive,60824,Suite,Hotel
+565,7227 Cherokee Point,3953,Estandar,Hotel
+566,3 Union Street,1,Semisuite,Hotel
+567,8 Shoshone Drive,01466,Semisuite,Hotel
+568,1316 Twin Pines Street,6,Estandar,Hotel
+569,58 Sunfield Circle,94,Suite,Hotel
+570,11 Forster Alley,932,Suite,Hotel
+571,722 Cardinal Court,82,Semisuite,Hotel
+572,7108 Lawn Alley,96,Suite,Hotel
+573,63 Lindbergh Junction,560,Suite,Hotel
+574,27667 Schurz Crossing,0,Suite,Hotel
+575,88850 Utah Hill,6,Suite,Hotel
+576,68153 Mariners Cove Place,9953,Suite,Hotel
+577,98 Quincy Crossing,492,Suite,Hotel
+578,33916 Elmside Road,03875,Estandar,Hotel
+579,72448 Eggendart Park,102,Suite,Hotel
+580,85 Gerald Park,3,Suite,Hotel
+581,625 Mockingbird Plaza,7,Suite,Hotel
+582,1618 Gale Avenue,995,Estandar,Hotel
+583,03 Buell Hill,5,Suite,Hotel
+584,45048 Vidon Junction,119,Suite,Hotel
+585,0 Northview Center,2,Suite,Hotel
+586,759 Randy Drive,414,Suite,Hotel
+587,7829 Kings Drive,533,Semisuite,Hotel
+588,97 Hoepker Road,9931,Estandar,Hotel
+589,4008 Pierstorff Terrace,251,Suite,Hotel
+590,908 Waxwing Court,13864,Estandar,Hotel
+591,699 Holy Cross Terrace,68849,Estandar,Hotel
+592,04 Alpine Plaza,34515,Estandar,Hotel
+593,410 Express Park,229,Estandar,Hotel
+594,95 Vernon Lane,43994,Suite,Hotel
+595,54412 Thackeray Hill,79965,Suite,Hotel
+596,30521 Nevada Circle,14,Semisuite,Hotel
+597,008 Summer Ridge Park,82989,Suite,Hotel
+598,855 Straubel Parkway,17,Suite,Hotel
+599,5 Colorado Place,725,Suite,Hotel
+600,204 Kennedy Trail,14162,Suite,Hotel
+601,1670 Lakewood Gardens Plaza,83,Estandar,Hotel
+602,2 Meadow Ridge Place,5,Suite,Hotel
+603,21130 Ridgeview Junction,64043,Suite,Hotel
+604,2777 Ludington Place,005,Estandar,Hotel
+605,7 Buhler Terrace,70,Semisuite,Hotel
+606,58177 Forest Run Pass,3415,Suite,Hotel
+607,11798 Crowley Alley,038,Estandar,Hotel
+608,073 Lien Hill,65,Suite,Hotel
+609,2 Derek Center,99322,Suite,Hotel
+610,153 Ramsey Drive,667,Suite,Hotel
+611,63901 Holy Cross Plaza,2,Suite,Hotel
+612,844 Columbus Circle,0375,Estandar,Hotel
+613,82 Lighthouse Bay Circle,88,Semisuite,Hotel
+614,62831 Londonderry Junction,8,Estandar,Hotel
+615,28377 Logan Avenue,6224,Estandar,Hotel
+616,794 Onsgard Trail,49,Estandar,Hotel
+617,888 Division Drive,0199,Suite,Hotel
+618,623 Autumn Leaf Center,8,Semisuite,Hotel
+619,2977 Arizona Hill,8,Estandar,Hotel
+620,9 Lakewood Gardens Way,3,Suite,Hotel
+621,90 Holy Cross Street,7,Suite,Hotel
+622,644 David Way,30641,Suite,Hotel
+623,8679 Ridge Oak Drive,186,Suite,Hotel
+624,4 Rockefeller Street,28553,Suite,Hotel
+625,3 Old Shore Circle,7066,Semisuite,Hotel
+626,781 Evergreen Road,1889,Suite,Hotel
+627,38441 Jenifer Junction,6,Suite,Hotel
+628,55995 Summerview Pass,78,Suite,Hotel
+629,2 Almo Street,224,Suite,Hotel
+630,26105 Stephen Drive,3361,Semisuite,Hotel
+631,1 Messerschmidt Point,0335,Estandar,Hotel
+632,1 Sullivan Terrace,7,Suite,Hotel
+633,72310 Eagle Crest Plaza,752,Suite,Hotel
+634,0296 Veith Road,97,Semisuite,Hotel
+635,7 Debs Terrace,4138,Estandar,Hotel
+636,71750 Ridgeway Alley,25387,Suite,Hotel
+637,9 Sherman Crossing,25,Semisuite,Hotel
+638,847 Coolidge Circle,463,Semisuite,Hotel
+639,132 Bowman Road,12,Suite,Hotel
+640,3851 Daystar Alley,33645,Estandar,Hotel
+641,05 Ridgeway Junction,6895,Suite,Hotel
+642,329 Jenna Court,6713,Estandar,Hotel
+643,6 Grayhawk Alley,5,Suite,Hotel
+644,8 Eagan Pass,9374,Suite,Hotel
+645,45 Forster Point,0,Suite,Hotel
+646,5 Gulseth Drive,7166,Suite,Hotel
+647,6252 Raven Crossing,7822,Estandar,Hotel
+648,93 Darwin Avenue,514,Semisuite,Hotel
+649,55 Eagle Crest Road,61410,Estandar,Hotel
+650,0 Warbler Alley,92,Suite,Hotel
+651,1 Merchant Parkway,4,Semisuite,Hotel
+652,07 Spaight Trail,3,Estandar,Hotel
+653,320 Moulton Trail,526,Suite,Hotel
+654,7741 Emmet Parkway,5287,Estandar,Hotel
+655,77 Bluestem Plaza,82279,Semisuite,Hotel
+656,9 Monument Parkway,2,Suite,Hotel
+657,96 Clove Place,42,Estandar,Hotel
+658,88648 David Hill,419,Suite,Hotel
+659,3020 Pond Street,122,Suite,Hotel
+660,9603 Gerald Way,1403,Suite,Hotel
+661,67 Bashford Plaza,445,Suite,Hotel
+662,7 Thackeray Street,9864,Suite,Hotel
+663,59154 Bobwhite Parkway,95,Suite,Hotel
+664,319 1st Avenue,84049,Semisuite,Hotel
+665,54645 Nancy Trail,30,Estandar,Hotel
+666,611 Fair Oaks Avenue,98312,Suite,Hotel
+667,34 Morning Trail,45,Semisuite,Hotel
+668,4 Artisan Lane,3,Suite,Hotel
+669,7475 David Trail,6660,Estandar,Hotel
+670,6499 Jackson Hill,61,Suite,Hotel
+671,6 Pond Trail,19779,Suite,Hotel
+672,97428 Texas Plaza,7,Suite,Hotel
+673,49 Montana Parkway,23,Semisuite,Hotel
+674,15 Maple Wood Court,3682,Suite,Hotel
+675,7 Arizona Avenue,814,Semisuite,Hotel
+676,36240 Grover Terrace,056,Semisuite,Hotel
+677,7405 Nova Center,0,Suite,Hotel
+678,4 Leroy Trail,74569,Suite,Hotel
+679,39 Claremont Pass,9213,Suite,Hotel
+680,1 Superior Court,01,Suite,Hotel
+681,4638 Reinke Avenue,9,Suite,Hotel
+682,1 Oakridge Trail,760,Estandar,Hotel
+683,4770 Sauthoff Way,8145,Suite,Hotel
+684,12 Jana Drive,7,Estandar,Hotel
+685,3 Armistice Circle,5,Suite,Hotel
+686,12147 Bluestem Parkway,9,Estandar,Hotel
+687,7 Brentwood Terrace,0202,Semisuite,Hotel
+688,20556 Summit Parkway,2391,Suite,Hotel
+689,39925 Hazelcrest Terrace,85,Estandar,Hotel
+690,44084 Spenser Drive,28967,Suite,Hotel
+691,6928 Sunbrook Terrace,0,Suite,Hotel
+692,5015 Monica Terrace,036,Suite,Hotel
+693,66444 1st Trail,93,Semisuite,Hotel
+694,58606 Maple Parkway,2,Estandar,Hotel
+695,8434 Charing Cross Court,8944,Suite,Hotel
+696,39 Raven Junction,8,Suite,Hotel
+697,068 Grayhawk Pass,975,Suite,Hotel
+698,8 Caliangt Court,29,Estandar,Hotel
+699,36242 Cottonwood Parkway,33,Suite,Hotel
+700,18 Pearson Center,73240,Semisuite,Hotel
+701,8730 Orin Alley,2,Semisuite,Hotel
+702,122 Carpenter Avenue,7718,Semisuite,Hotel
+703,7 Northridge Alley,4534,Estandar,Hotel
+704,4303 Garrison Circle,6874,Semisuite,Hotel
+705,37389 Gale Center,747,Suite,Hotel
+706,32 Tennessee Street,400,Semisuite,Hotel
+707,662 Vera Plaza,9,Estandar,Hotel
+708,83237 Sauthoff Plaza,954,Suite,Hotel
+709,91 Birchwood Alley,4517,Estandar,Hotel
+710,026 Lyons Alley,0,Suite,Hotel
+711,306 Old Gate Terrace,897,Suite,Hotel
+712,4946 Hanover Hill,0,Suite,Hotel
+713,6600 Ruskin Crossing,8,Suite,Hotel
+714,0 Dottie Avenue,749,Suite,Hotel
+715,4 Merrick Trail,0448,Suite,Hotel
+716,23552 Saint Paul Circle,0,Suite,Hotel
+717,49 Melvin Lane,17,Semisuite,Hotel
+718,99158 Dorton Place,316,Suite,Hotel
+719,9339 Daystar Avenue,5,Semisuite,Hotel
+720,06 Farragut Street,909,Estandar,Hotel
+721,87 Summit Trail,6,Suite,Hotel
+722,1983 Surrey Street,4,Suite,Hotel
+723,4034 Hooker Parkway,52,Suite,Hotel
+724,2885 Tennessee Pass,85,Suite,Hotel
+725,57502 Jenna Lane,720,Suite,Hotel
+726,86 Michigan Road,3705,Semisuite,Hotel
+727,1 Lakeland Circle,82,Semisuite,Hotel
+728,5 Spohn Lane,5859,Semisuite,Hotel
+729,4 Spenser Avenue,551,Suite,Hotel
+730,321 Pawling Trail,80401,Suite,Hotel
+731,9482 Bayside Junction,757,Suite,Hotel
+732,8 Blaine Alley,1472,Suite,Hotel
+733,2248 Sugar Road,66,Suite,Hotel
+734,423 Harper Hill,94,Suite,Hotel
+735,491 Packers Court,8414,Semisuite,Hotel
+736,058 Commercial Lane,72649,Suite,Hotel
+737,91 7th Pass,52690,Semisuite,Hotel
+738,819 Forest Run Lane,79,Semisuite,Hotel
+739,27 Lindbergh Way,1,Suite,Hotel
+740,3640 Dexter Pass,26,Suite,Hotel
+741,2 Eastwood Circle,86,Suite,Hotel
+742,6241 Bowman Drive,2638,Suite,Hotel
+743,2 Farmco Street,14911,Suite,Hotel
+744,04982 Stoughton Crossing,97967,Suite,Hotel
+745,86383 Lakewood Gardens Court,571,Suite,Hotel
+746,30812 Stone Corner Street,20,Suite,Hotel
+747,04989 Jay Lane,9183,Estandar,Hotel
+748,47885 Merchant Circle,64,Estandar,Hotel
+749,12533 Paget Parkway,79,Estandar,Hotel
+750,157 Continental Parkway,671,Estandar,Hotel
+751,54753 Tony Circle,27381,Estandar,Hotel
+752,93 Golden Leaf Avenue,5757,Suite,Hotel
+753,09 Anniversary Trail,92882,Estandar,Hotel
+754,856 Sachs Court,30187,Semisuite,Hotel
+755,61288 Crescent Oaks Pass,70166,Semisuite,Hotel
+756,4 Harper Street,17196,Suite,Hotel
+757,895 Moose Pass,43380,Suite,Hotel
+758,9669 Garrison Pass,7849,Suite,Hotel
+759,4 Hintze Road,25,Semisuite,Hotel
+760,4 Crest Line Plaza,65,Semisuite,Hotel
+761,620 Rieder Park,1,Suite,Hotel
+762,249 Namekagon Place,7433,Suite,Hotel
+763,74 Dayton Alley,614,Estandar,Hotel
+764,2 Goodland Pass,25904,Suite,Hotel
+765,6 Del Sol Parkway,86299,Estandar,Hotel
+766,824 Continental Junction,4,Suite,Hotel
+767,339 Shelley Way,4783,Suite,Hotel
+768,0236 Farragut Terrace,544,Suite,Hotel
+769,99 Eggendart Parkway,472,Suite,Hotel
+770,6 Veith Park,19,Suite,Hotel
+771,131 Goodland Crossing,03110,Semisuite,Hotel
+772,6243 Petterle Avenue,456,Estandar,Hotel
+773,25 Golf Park,559,Semisuite,Hotel
+774,606 Randy Circle,728,Suite,Hotel
+775,41 Boyd Court,0711,Estandar,Hotel
+776,107 Canary Pass,06304,Estandar,Hotel
+777,096 Brickson Park Park,758,Suite,Hotel
+778,36034 Clarendon Pass,87,Suite,Hotel
+779,6364 Sycamore Center,95,Suite,Hotel
+780,305 Sundown Center,71866,Estandar,Hotel
+781,6 Corry Crossing,92,Suite,Hotel
+782,18 Shasta Lane,08069,Suite,Hotel
+783,751 Hovde Avenue,63306,Suite,Hotel
+784,766 Vidon Circle,1,Suite,Hotel
+785,4 Porter Place,780,Suite,Hotel
+786,828 Corscot Way,9813,Estandar,Hotel
+787,8 Clyde Gallagher Drive,2,Suite,Hotel
+788,4066 Bluestem Junction,4,Suite,Hotel
+789,0 Hoepker Alley,8839,Semisuite,Hotel
+790,757 Valley Edge Street,0732,Semisuite,Hotel
+791,67 Clarendon Parkway,6869,Suite,Hotel
+792,239 Sunfield Junction,1258,Suite,Hotel
+793,6 Dottie Court,22,Estandar,Hotel
+794,584 Fieldstone Pass,795,Suite,Hotel
+795,9650 Sunbrook Pass,2312,Semisuite,Hotel
+796,79842 Pennsylvania Plaza,6,Estandar,Hotel
+797,2025 Golf View Park,475,Suite,Hotel
+798,5 Haas Hill,67,Suite,Hotel
+799,6282 Memorial Avenue,31260,Estandar,Hotel
+800,7 Hoard Center,1685,Semisuite,Hotel
