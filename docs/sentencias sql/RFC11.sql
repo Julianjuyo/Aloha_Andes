@@ -10,26 +10,64 @@ mientras que el administrador obtiene toda la información de cualquiera de los 
 
 */
 
+--CUANDO SE ORDENA Y AGRUPA POR ID DEL MIEMBRO
+SELECT *
+FROM MIEM_CO_UNIV miem LEFT JOIN (SELECT  mi.id AS ida , mi.nombre, mi.tipoid, mi.tipomiembro, count(r.numreserva)
+                                         FROM MIEM_CO_UNIV mi , RESERVAS r, ALOJAMIENTOS a
+                                            WHERE mi.id= r.idmiembro
+                                              AND r.idalojamiento = a.id
+                                              AND a.id = 599
+                                              AND r.diareserva  BETWEEN '01-01-18' AND  '12-05-26' 
+                                            GROUP BY mi.id , mi.nombre, mi.tipoid, mi.tipomiembro
+                                            ORDER BY  mi.id)
+                                           
+ON miem.id = ida
+WHERE ida IS NULL;
 
-SELECT count(*) Numreservas, mi.id
-FROM MIEM_CO_UNIV mi  JOIN RESERVAS r ON mi.id = r.idmiembro
-WHERE  r.diareserva NOT BETWEEN '03-02-20' AND  '15-02-20'
-AND r.idalojamiento =1
-GROUP BY mi.id
-ORDER BY mi.id;
+--CUANDO SE ORDENA Y AGRUPA POR IDALOJAMIENTO
+SELECT *
+FROM MIEM_CO_UNIV miem LEFT JOIN (SELECT mi.id AS ida,  r.idalojamiento , count(r.numreserva)
+                                    FROM MIEM_CO_UNIV mi , RESERVAS r, ALOJAMIENTOS a
+                                            WHERE mi.id= r.idmiembro
+                                            AND r.idalojamiento = a.id
+                                            AND a.id = 599
+                                            AND r.diareserva BETWEEN '01-01-17' AND  '30-05-21' 
+                                    GROUP BY  mi.id, r.idalojamiento 
+                                    ORDER BY  mi.id,r.idalojamiento)                          
+ON miem.id = ida
+WHERE ida IS NULL;
 
-SELECT count(*) Numreservas, r.numreserva
-FROM MIEM_CO_UNIV mi  JOIN RESERVAS r ON mi.id = r.idmiembro
-WHERE  r.diareserva NOT BETWEEN '03-02-20' AND  '15-02-20'
-AND r.idalojamiento =1
-GROUP BY r.numreserva
-ORDER BY r.numreserva;
+--CUANDO SE ORDENA Y AGRUPA POR OPERADOR
+SELECT *
+FROM MIEM_CO_UNIV miem LEFT JOIN (SELECT mi.id AS ida ,  op.id, op.tipooperador ,  count(r.numreserva)
+                                    FROM MIEM_CO_UNIV mi , RESERVAS r, ALOJAMIENTOS a, OPERADORES op
+                                            WHERE mi.id= r.idmiembro
+                                            AND r.idalojamiento = a.id
+                                            AND op.id = a.idoperador
+                                            AND a.id = 599
+                                            AND r.diareserva BETWEEN '01-01-17' AND  '30-05-21' 
+                                    GROUP BY mi.id ,op.id, op.tipooperador  
+                                    ORDER BY mi.id,op.id)                                   
+ON miem.id = ida
+WHERE ida IS NULL;
 
-SELECT count(*) Numreservas, mi.id
-FROM MIEM_CO_UNIV mi  JOIN RESERVAS r ON mi.id = r.idmiembro
-WHERE  r.diareserva NOT BETWEEN '03-02-20' AND  '15-02-20'
-GROUP BY mi.id
-ORDER BY mi.id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

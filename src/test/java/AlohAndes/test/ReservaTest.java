@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.io.FileReader;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -111,8 +112,9 @@ public class ReservaTest
 			long idMiembro = 2123;
 			String tipoId = "CC";
 			int tiempoDias = 4;
+			Date diaReservas = new Date();
 			
-			VOReserva Reserva1 = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+			VOReserva Reserva1 = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId,diaReservas, tiempoDias);
 			lista = alohAndes.darVORerserva();
 			assertEquals ("Debe haber una reserva creada creado !!", 1, lista.size ());
 			assertEquals ("El objeto creado y el traido de la BD deben ser iguales !!", Reserva1, lista.get (0));
@@ -123,8 +125,9 @@ public class ReservaTest
 			long idMiembro2 = 3234;
 			String tipoId2 = "CC";
 			int tiempoDias2 = 3;
+			Date diaReservas2 = new Date();
 			
-			VOReserva Reserva2 = alohAndes.adicionarReserva(idAlojamiento2, idMiembro2, tipoId2, tiempoDias2);
+			VOReserva Reserva2 = alohAndes.adicionarReserva(idAlojamiento2, idMiembro2, tipoId2,diaReservas2, tiempoDias2);
 			lista = alohAndes.darVORerserva();
 			assertEquals ("Debe haber dos Reservas creados !!", 2, lista.size ());
 			
@@ -203,11 +206,13 @@ public class ReservaTest
 			long idMiembro = 2123;
 			String tipoId = "CC";
 			int tiempoDias = 4;
-			VOReserva Reserva1 = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+			Date diaReservas2 = new Date();
+			
+			VOReserva Reserva1 = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId,diaReservas2, tiempoDias);
 			lista = alohAndes.darVORerserva();
 			assertEquals ("Debe haber un tipo de bebida creado !!", 1, lista.size ());
 
-			VOReserva Reserva2 = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
+			VOReserva Reserva2 = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId,diaReservas2, tiempoDias);
 			assertNull ("No puede adicionar dos Reservas con el mismo nombre !!", Reserva2);
 		}
 		catch (Exception e)

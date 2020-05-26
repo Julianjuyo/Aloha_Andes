@@ -10,28 +10,44 @@ por ejemplo, por los datos del cliente, por oferta de alojamiento y por tipo de 
 NOTA: Respetando la privacidad de los clientes, cuando un cliente proveedor hace esta consulta obtiene la información de su propia actividad, 
 mientras que el administrador obtiene toda la información de cualquiera de los clientes. Ver RNF1.
 
+Datos de Prueba
+--599,600, 401
 */
 
-
-DEFINE START_DATE = "to_date('03/01/18', 'dd/mm/yy')"
-DEFINE END_DATE = "to_date('01/06/18', 'dd/mm/yy')"
-
-SELECT count(*) Numreservas, mi.id
+--CUANDO SE ORDENA Y AGRUPA POR ID DEL MIEMBRO
+SELECT  mi.id , mi.nombre, mi.tipoid, mi.tipomiembro, count(r.numreserva)
 FROM MIEM_CO_UNIV mi , RESERVAS r, ALOJAMIENTOS a
 WHERE mi.id= r.idmiembro
 AND r.idalojamiento = a.id
-AND a.id = 1
-AND r.diareserva BETWEEN '03-02-20' AND  '15-02-20' 
-GROUP BY mi.id
-ORDER BY mi.id ;
+AND a.id = 599
+AND r.diareserva BETWEEN '01-01-17' AND  '30-05-21' 
+GROUP BY mi.id , mi.nombre, mi.tipoid, mi.tipomiembro
+ORDER BY  mi.id;
 
-SELECT r.numreserva
+
+--CUANDO SE ORDENA Y AGRUPA POR IDALOJAMIENTO
+
+SELECT  r.idalojamiento , count(r.numreserva)
 FROM MIEM_CO_UNIV mi , RESERVAS r, ALOJAMIENTOS a
 WHERE mi.id= r.idmiembro
 AND r.idalojamiento = a.id
-AND a.id = 1
-AND r.diareserva BETWEEN '01-01-19' AND  '01-11-20' 
-GROUP BY r.numreserva
-ORDER BY r.numreserva;
+AND a.id = 599
+AND r.diareserva BETWEEN '01-01-17' AND  '30-05-21' 
+GROUP BY r.idalojamiento 
+ORDER BY r.idalojamiento;
+
+--CUANDO SE ORDENA Y AGRUPA POR OPERADOR
+
+SELECT   op.id, op.tipooperador ,  count(r.numreserva)
+FROM MIEM_CO_UNIV mi , RESERVAS r, ALOJAMIENTOS a, OPERADORES op
+WHERE mi.id= r.idmiembro
+AND r.idalojamiento = a.id
+AND op.id = a.idoperador
+AND a.id = 599
+AND r.diareserva BETWEEN '01-01-17' AND  '30-05-21' 
+GROUP BY op.id, op.tipooperador  
+ORDER BY op.id ;
+
+
 
 
