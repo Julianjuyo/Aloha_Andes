@@ -1390,6 +1390,7 @@ public class AlohAndes
 	 * 		Requerimientos funcionales de consulta
 	 *****************************************************************/
 
+	
 
 	/**
 	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
@@ -1397,41 +1398,14 @@ public class AlohAndes
 	 * Adiciona entradas al log de la aplicación
 	 * @return Una lista de parejas [id, dineroRecibido]
 	 */
-	public List<long []> darRFC1paraHabitaciones ()
+	public List<long []> darRFC1 (String  anoActual , Date fechaActual)
 	{
 		log.info ("Listando Alojamientos y cuantas veces ha sido reservado");
-		List<long []> tuplas = pp.darRFC1paraHabitaciones();
+		List<long []> tuplas = pp.darRFC1(  anoActual , fechaActual);
 		log.info ("Listando Alojamientos y cuantas veces ha sido reservado: Listo!");
 		return tuplas;
 	}
 
-	/**
-	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
-	 *  
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de parejas [id, dineroRecibido]
-	 */
-	public List<long []> darRFC1paraApartamentos ()
-	{
-		log.info ("Listando Alojamientos y cuantas veces ha sido reservado");
-		List<long []> tuplas = pp.darRFC1paraApartamentos();
-		log.info ("Listando Alojamientos y cuantas veces ha sido reservado: Listo!");
-		return tuplas;
-	}
-
-	/**
-	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
-	 *  
-	 * Adiciona entradas al log de la aplicación
-	 * @return Una lista de parejas [id, dineroRecibido]
-	 */
-	public List<long []> darRFC1paraViviendaComunidad ()
-	{
-		log.info ("Listando Alojamientos y cuantas veces ha sido reservado");
-		List<long []> tuplas = pp.darRFC1paraViviendaComunidad();
-		log.info ("Listando Alojamientos y cuantas veces ha sido reservado: Listo!");
-		return tuplas;
-	}
 
 
 	/**

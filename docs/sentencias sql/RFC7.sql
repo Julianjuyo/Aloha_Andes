@@ -1,8 +1,8 @@
---RFC7 - ANALIZAR LA OPERACIÓN DE ALOHANDES--
+--RFC7 - ANALIZAR LA OPERACIï¿½N DE ALOHANDES--
 
 /*Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo
-el tiempo de operación de AloHandes, indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de
-alojamientos ocupados), las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.*/
+el tiempo de operaciï¿½n de AloHandes, indicar cuï¿½les fueron las fechas de mayor demanda (mayor cantidad de
+alojamientos ocupados), las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupaciï¿½n.*/
 
 --Unidad de tiempo mes
 --Tipo alojamiento Hotel
@@ -23,7 +23,7 @@ group by to_char(r.diareserva, 'Month' ), EXTRACT(year FROM r.diareserva)
 order by SUM(a.precio) desc
 FETCH FIRST ROWS ONLY;
 
---Menor ocupación
+--Menor ocupaciï¿½n
 SELECT to_char(r.diareserva, 'Month' ) mes, EXTRACT(year FROM r.diareserva) anio, count(*)
 FROM RESERVAS r, ALOJAMIENTOS a, OPERADORES o
 Where r.idalojamiento = a.id AND a.idoperador = o.id AND o.tipooperador = 'Hotel' AND EXTRACT(year FROM r.diareserva) < 2021

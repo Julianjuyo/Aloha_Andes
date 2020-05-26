@@ -1593,49 +1593,11 @@ public class PersistenciaAlohAndes
 	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
 	 * @return Una lista de arreglos de 2 números. El primero corresponde al identificador del operador, el segundo corresponde al numero de dinero ganado.
 	 */
-	public List<long []> darRFC1paraHabitaciones ()
+	public List<long []> darRFC1 (String  anoActual , Date fechaActual)
 	{
 		List<long []> resp = new LinkedList<long []> ();
 
-		List<Object []> tuplas =  sqlReserva.darRFC1paraHabitaciones(pmf.getPersistenceManager());
-		for ( Object [] tupla : tuplas)
-		{
-			long [] datosResp = new long [2];
-			datosResp [0] = ((BigDecimal) tupla [0]).longValue ();
-			datosResp [1] = ((BigDecimal) tupla [1]).longValue ();
-			resp.add (datosResp);
-		}
-		return resp;
-	}
-
-	/**
-	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
-	 * @return Una lista de arreglos de 2 números. El primero corresponde al identificador del operador, el segundo corresponde al numero de dinero ganado.
-	 */
-	public List<long []> darRFC1paraApartamentos ()
-	{
-		List<long []> resp = new LinkedList<long []> ();
-
-		List<Object []> tuplas =  sqlReserva.darRFC1paraApartamentos(pmf.getPersistenceManager());
-		for ( Object [] tupla : tuplas)
-		{
-			long [] datosResp = new long [2];
-			datosResp [0] = ((BigDecimal) tupla [0]).longValue ();
-			datosResp [1] = ((BigDecimal) tupla [1]).longValue ();
-			resp.add (datosResp);
-		}
-		return resp;
-	}
-
-	/**
-	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
-	 * @return Una lista de arreglos de 2 números. El primero corresponde al identificador del operador, el segundo corresponde al numero de dinero ganado.
-	 */
-	public List<long []> darRFC1paraViviendaComunidad ()
-	{
-		List<long []> resp = new LinkedList<long []> ();
-
-		List<Object []> tuplas =  sqlReserva.darRFC1paraViviendaComunidad(pmf.getPersistenceManager());
+		List<Object []> tuplas =  sqlReserva.darRFC1(pmf.getPersistenceManager(),  anoActual , fechaActual);
 		for ( Object [] tupla : tuplas)
 		{
 			long [] datosResp = new long [2];
@@ -1681,7 +1643,7 @@ public class PersistenciaAlohAndes
 	//	 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
 	//	 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
 	//	 */
-	//	public VOAlojamiento RFC4 ()
+	//	public VOAlojamiento RFC4 ( Date rangoMenor, Date rangoMayor, String[] nombreServicio)
 	//	{
 	//
 	//	}

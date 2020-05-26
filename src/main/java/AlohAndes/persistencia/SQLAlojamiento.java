@@ -54,7 +54,7 @@ public class SQLAlojamiento
 
 	public long adicionarAlojamiento (PersistenceManager pm, long idAlojamiento,long idOperador , Double precio, Date fechaInicio, Date fechaFin)
 	{
-		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(ID, IDOPERADOR, PRECIO, FECHAINICIODES, FECHAFINDES) values (?, ?,,? ?, ?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pp.darSeqIdAlojamiento () + "(ID, IDOPERADOR, PRECIO, FECHAINICIODES, FECHAFINDES) values (?, ?,? ?, ?)");
 		q.setParameters(idAlojamiento, idOperador, precio, fechaInicio, fechaFin);
 		return (long) q.executeUnique();
 	}

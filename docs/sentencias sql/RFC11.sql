@@ -24,6 +24,9 @@ FROM MIEM_CO_UNIV miem LEFT JOIN (SELECT  mi.id AS ida , mi.nombre, mi.tipoid, m
 ON miem.id = ida
 WHERE ida IS NULL;
 
+
+
+
 --CUANDO SE ORDENA Y AGRUPA POR IDALOJAMIENTO
 SELECT *
 FROM MIEM_CO_UNIV miem LEFT JOIN (SELECT mi.id AS ida,  r.idalojamiento , count(r.numreserva)

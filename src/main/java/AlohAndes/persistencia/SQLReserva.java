@@ -152,65 +152,30 @@ public class SQLReserva
 	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un operador,
 	 * 	el segundo elemento representa el número de dinero ganado
 	 */
-	public List<Object []> darRFC1paraHabitaciones (PersistenceManager pm)
+	public List<Object []> darRFC1 (PersistenceManager pm, String  anoActual , Date fechaActual )
 	{
-        String sql = "SELECT op.id,  sum(habi.precio * re.tiempodias) AS dinero_Recibido";
+        String sql = "SELECT idpe, nom, dinero_Recibido_Año_Actual, dinero_Recibido_Añocorrido";
         sql += "FROM"; 
-        sql += pp.darTablaHabitaciones() +"habi, ";
-        sql += pp.darTablaReservas() +"re,";
-        sql += pp.darTablaOperadores()+" op" ;
-       	sql	+= "WHERE";
-       	sql += "op.id = habi.idalojamiento";
-       	sql += "AND habi.idalojamiento= re.idalojamiento";
-       	sql += "GROUP by op.id, op.nombre;";
-       	
+        sql += "(SELECT op.id AS idpe, op.nombre AS nom , sum(alo.precio * re.tiempodias) AS dinero_Recibido_Año_Actual\n"+
+        		"      FROM"+  pp.darTablaAlojamientos()+ "alo,"+  pp.darTablaReservas() +"re,"+ pp.darTablaOperadores()+" op\n"+ 
+        		"           WHERE op.id = alo.idoperador\n" + 
+        		"           AND alo.id = re.idalojamiento\n" + 
+        		"           AND re.diareserva BETWEEN '01/01/"+anoActual+"' AND '31/12/"+anoActual+"'\n" + 
+        		"     GROUP BY op.id, op.nombre\n" + 
+        		"     ORDER BY dinero_Recibido_Año_Actual DESC), ";
+        
+        sql+= " (SELECT op.id, op.nombre , sum(alo.precio * re.tiempodias) AS dinero_Recibido_Añocorrido\n" + 
+        		"     FROM"+  pp.darTablaAlojamientos()+"alo,"+  pp.darTablaReservas() +"re,"+ pp.darTablaOperadores()+" op\n"+ 
+        		"           WHERE op.id = alo.idoperador\n" + 
+        		"           AND alo.id = re.idalojamiento\n" + 
+        		"           AND re.diareserva BETWEEN '01/01/"+anoActual+"' AND "+ fechaActual+"\n" + 
+        		"     GROUP BY op.id, op.nombre\n" + 
+        		"     ORDER BY dinero_Recibido_Añocorrido DESC); ";
+        
 		Query q = pm.newQuery(SQL, sql);
 		return q.executeList();
 	}
-	
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar cuanto gana un provedor de alojamiento
-	 * @param pm - El manejador de persistencia
-	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un operador,
-	 * 	el segundo elemento representa el número de dinero ganado
-	 */
-	public List<Object []> darRFC1paraApartamentos (PersistenceManager pm)
-	{
-        String sql = "SELECT op.id,  sum(habi.precio * re.tiempodias) AS dinero_Recibido";
-        sql += "FROM"; 
-        sql += pp.darTablaApartamentos() +"ap, ";
-        sql += pp.darTablaReservas() +"re,";
-        sql += pp.darTablaOperadores()+" op" ;
-       	sql	+= "WHERE";
-       	sql += "op.id = ap.dueno";
-       	sql += "AND ap.idalojamiento= re.idalojamiento";
-       	sql += "GROUP by op.id, op.nombre;";
-       	
-		Query q = pm.newQuery(SQL, sql);
-		return q.executeList();
-	}
-	
-	/**
-	 * Crea y ejecuta la sentencia SQL para encontrar cuanto gana un provedor de alojamiento
-	 * @param pm - El manejador de persistencia
-	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un operador,
-	 * 	el segundo elemento representa el número de dinero ganado
-	 */
-	public List<Object []> darRFC1paraViviendaComunidad (PersistenceManager pm)
-	{
-        String sql = "SELECT op.id,  sum(vi.precio * re.tiempodias) AS dinero_Recibido";
-        sql += "FROM"; 
-        sql += pp.darTablaViviendaComunidad() +"vi, ";
-        sql += pp.darTablaReservas() +"re,";
-        sql += pp.darTablaOperadores()+" op" ;
-       	sql	+= "WHERE";
-       	sql += "op.id = vi.dueno";
-       	sql += "AND vi.idalojamiento= re.idalojamiento";
-       	sql += "GROUP by op.id, op.nombre;";
-       	
-		Query q = pm.newQuery(SQL, sql);
-		return q.executeList();
-	}
+
 	
 	
 	
