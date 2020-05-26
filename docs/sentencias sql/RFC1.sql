@@ -6,13 +6,13 @@ FROM
      FROM  ALOJAMIENTOS alo,  RESERVAS re, OPERADORES op
            WHERE op.id = alo.idoperador
            AND alo.id = re.idalojamiento
-           AND re.diareserva BETWEEN '01/01/20' AND '31/12/20'
+           AND EXTRACT(YEAR FROM re.diareserva) = 2020
      GROUP BY op.id, op.nombre) INNER JOIN
     (SELECT op.id idpe1, op.nombre nom1, sum(alo.precio * re.tiempodias) AS dinero_Recibido_Aniocorrido
      FROM  ALOJAMIENTOS alo,  RESERVAS re, OPERADORES op
            WHERE op.id = alo.idoperador
            AND alo.id = re.idalojamiento
-           AND re.diareserva BETWEEN '01/01/20' AND '26/05/20'
+           AND EXTRACT(YEAR FROM re.diareserva) = 2019
      GROUP BY op.id, op.nombre)
 ON idpe = idpe1 AND nom = nom1;
 
