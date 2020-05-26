@@ -1,0 +1,5 @@
+ID,IDALOJAMIENTO,DESCRIPCION,NOMBRE,PRECIO,TOMASERVICIO
+1,1,"cuenta con sillas, sala y comedor",amoblado,0,N
+1,1,Se indica si tiene que pagar los servicios publicos,Servicios publicos,50000,N
+1,1,Si cuenta con televisor,TV,0,N
+1,1,Se indica si hay internet,internet,0,N

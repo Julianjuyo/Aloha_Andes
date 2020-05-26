@@ -1,0 +1,14 @@
+ID,IDALOJAMIENTO,DESCRIPCION,NOMBRE,PRECIO,TOMASERVICIO
+1,1,Contiene un amoblado basico,amoblado,0,Y
+2,1,para prepara la comida,Cocineta,0,Y
+3,1,Servicio de internet 24 horas,Internet,0,Y
+4,1,Sintoniza direct tv,TV cable,0,Y
+5,1,"luz, teléfono, agua",Servicios publicos,0,Y
+6,1,con seguridad ecuseguros,Porteria 24 horas,0,Y
+7,1,dos dias a la semana,Servicio de aseo,0,Y
+8,1,en el tercer piso ,Servicio se apoyo social,0,Y
+91,1,se oferen calculos y fisicas,Servicio de apoyo academico,0,Y
+10,1,,Salas de estudio,0,Y
+11,1,,salas de esparcimiento,0,Y
+12,1,,gimnasio,0,Y
+13,1,para las 3 comidas del dia,Restaurante,20000,Y
