@@ -1,0 +1,23 @@
+SELECT COUNT(*) CantidadMiembros
+FROM MIEM_CO_UNIV;
+
+SELECT COUNT(*) CantidadOperadores
+FROM OPERADORES;
+
+SELECT COUNT(*) CantidadAlojamientos
+FROM ALOJAMIENTOS;
+
+SELECT COUNT(*) CantidadServicios
+FROM SERVICIOS;
+
+SELECT COUNT(*) CantidadHabitaciones
+FROM HABITACIONES;
+
+SELECT COUNT(*) CantidadViviendas
+FROM VIVIENDACOMUNIDAD;
+
+SELECT COUNT(*) CantidadApartamentos
+FROM APARTAMENTOS;
+
+SELECT COUNT(*) CantidadReservas
+FROM RESERVAS;
