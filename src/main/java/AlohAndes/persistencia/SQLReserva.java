@@ -160,7 +160,7 @@ public class SQLReserva
         		"      FROM"+  pp.darTablaAlojamientos()+ "alo,"+  pp.darTablaReservas() +"re,"+ pp.darTablaOperadores()+" op\n"+ 
         		"           WHERE op.id = alo.idoperador\n" + 
         		"           AND alo.id = re.idalojamiento\n" + 
-        		"           AND re.diareserva BETWEEN '01/01/"+anoActual+"' AND '31/12/"+anoActual+"'\n" + 
+        		"           AND re.diareserva BETWEEN '01/01/?' AND '31/12/?'\n" + 
         		"     GROUP BY op.id, op.nombre\n" + 
         		"     ORDER BY dinero_Recibido_Año_Actual DESC), ";
         
@@ -168,11 +168,13 @@ public class SQLReserva
         		"     FROM"+  pp.darTablaAlojamientos()+"alo,"+  pp.darTablaReservas() +"re,"+ pp.darTablaOperadores()+" op\n"+ 
         		"           WHERE op.id = alo.idoperador\n" + 
         		"           AND alo.id = re.idalojamiento\n" + 
-        		"           AND re.diareserva BETWEEN '01/01/"+anoActual+"' AND "+ fechaActual+"\n" + 
+        		"           AND re.diareserva BETWEEN '01/01/?' AND ?\n" + 
         		"     GROUP BY op.id, op.nombre\n" + 
         		"     ORDER BY dinero_Recibido_Añocorrido DESC); ";
         
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(anoActual,anoActual,anoActual,fechaActual);
+		
 		return q.executeList();
 	}
 

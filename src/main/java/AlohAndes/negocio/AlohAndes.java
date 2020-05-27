@@ -64,29 +64,29 @@ public class AlohAndes
 	public void DeshabilitarAlojamiento( long idAlojamiento, Date fechaInicio, Date fechaFin)
 	{
 
-		
+
 		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, fechaInicio, fechaFin);
-		
-		
+
+
 		List<Reserva> reAntigua = pp.darReservasPorIdAlojamiento(idAlojamiento);
-		
+
 		for (int i = 0; i < reAntigua.size(); i++) {
 
-			
+
 			Date FechaInicioYAHecha = reAntigua.get(i).getDiaReserva();
 			Date FechaFinYAHecha = pp.sumarDiasFecha(FechaInicioYAHecha, reAntigua.get(i).getTiempoDias());
-			
+
 			if(fechaInicio.after(FechaFinYAHecha) || fechaFin.before(FechaInicioYAHecha)){ 
 				log.info ("Esta reserva no se vio afectada");  
 			}
 			else {
-				
+
 				ProcesoDeRelocalizacion(reAntigua.get(i));
-				
+
 			}
 		}
-		
-		
+
+
 	}
 
 	/**
@@ -122,26 +122,26 @@ public class AlohAndes
 
 	public void habilitarAlojamiento( long idAlojamiento)
 	{
-		
+
 		pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, null, null);
 
 
 	}
 
 
-		public void  ProcesoDeRelocalizacion (Reserva re)
-		{
-			String tipo=  darTipo(re.getIdAlojamiento());
-			
-			LinkedList<Integer> ids =  idDisponibles(tipo);
-			
-			long idNuevo = ids.getFirst();
-			
-			adicionarReserva(idNuevo , re.getIdMiembro(), re.getTipoID(), re.getDiaReserva(), re.getTiempoDias());
-			
-			eliminarReservaPorId(re.getIdAlojamiento());
-			
-		}
+	public void  ProcesoDeRelocalizacion (Reserva re)
+	{
+		String tipo=  darTipo(re.getIdAlojamiento());
+
+		LinkedList<Integer> ids =  idDisponibles(tipo);
+
+		long idNuevo = ids.getFirst();
+
+		adicionarReserva(idNuevo , re.getIdMiembro(), re.getTipoID(), re.getDiaReserva(), re.getTiempoDias());
+
+		eliminarReservaPorId(re.getIdAlojamiento());
+
+	}
 
 
 
@@ -403,7 +403,7 @@ public class AlohAndes
 
 	}
 
-	
+
 	/**
 	 * Adiciona de manera persistente las reservas colectivas.
 	 * Adiciona entradas al log de la aplicación
@@ -615,7 +615,7 @@ public class AlohAndes
 		log.info ("Buscando operador por Id: " + operador != null ? operador : "NO EXISTE");
 		return operador;
 	}
-	
+
 	/**
 	 * Encuentra una operador y su información básica, según su identificador
 	 * @param nombre - El nombre de la operador buscada
@@ -629,7 +629,7 @@ public class AlohAndes
 		log.info ("Buscando operador por Id: " + operador != null ? operador : "NO EXISTE");
 		return operador;
 	}
-	
+
 
 	/**
 	 * Encuentra todas las Operadors en Parranderos
@@ -638,12 +638,12 @@ public class AlohAndes
 	 */
 	public List<Operador> darOperadores ()
 	{
-        log.info ("Consultando Operadores");
-        List<Operador> Operadores = pp.darOperadores ();	
-        log.info ("Consultando Operadores: " + Operadores.size() + " Operadores existentes");
-        return Operadores;
+		log.info ("Consultando Operadores");
+		List<Operador> Operadores = pp.darOperadores ();	
+		log.info ("Consultando Operadores: " + Operadores.size() + " Operadores existentes");
+		return Operadores;
 	}
-	
+
 	/**
 	 * Encuentra todos las Operadores en AlohAndes y los devuelve como una lista de VOoperador
 	 * Adiciona entradas al log de la aplicación
@@ -662,7 +662,7 @@ public class AlohAndes
 		log.info ("Generando los VO de operadores: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
+
 
 
 
@@ -713,7 +713,7 @@ public class AlohAndes
 		log.info ("Buscando reserva por Id: " + reserva != null ? reserva : "NO EXISTE");
 		return reserva;
 	}
-	
+
 	/**
 	 * Encuentra las reservas y su información básica, según su identificador de alojamiento
 	 * @param idReserva - El identificador de la reserva buscada
@@ -727,7 +727,7 @@ public class AlohAndes
 		log.info ("Buscando reserva por Id: " + reservas != null ? reservas : "NO EXISTE");
 		return reservas;
 	}
-	
+
 	/**
 	 * Encuentra todas las Reservas en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -735,12 +735,12 @@ public class AlohAndes
 	 */
 	public List<Reserva> darReservas ()
 	{
-        log.info ("Consultando Reservas");
-        List<Reserva> Reservas = pp.darReservas ();	
-        log.info ("Consultando Reservas: " + Reservas.size() + " Reservas existentes");
-        return Reservas;
+		log.info ("Consultando Reservas");
+		List<Reserva> Reservas = pp.darReservas ();	
+		log.info ("Consultando Reservas: " + Reservas.size() + " Reservas existentes");
+		return Reservas;
 	}
-	
+
 
 	/**
 	 * Encuentra todos los tipos de Reserva en Parranderos y los devuelve como una lista de VOTipoReserva
@@ -760,8 +760,8 @@ public class AlohAndes
 		log.info ("Generando los VO de Reservas: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
-	
+
+
 	/**
 	 * Cambiar reserva dado su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -775,12 +775,12 @@ public class AlohAndes
 	 */
 	public long cambiarUnaReserva (long idReserva, long idAlojamiento, long idMiembro, String tipoId, Date diaReserva, int tiempoDias)
 	{
-        log.info ("Cambiando reserva numero: " + idReserva );
-        long cambios = pp.cambiarUnaReserva(idReserva, idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);
-        return cambios;
+		log.info ("Cambiando reserva numero: " + idReserva );
+		long cambios = pp.cambiarUnaReserva(idReserva, idAlojamiento, idMiembro, tipoId, diaReserva, tiempoDias);
+		return cambios;
 	}
-	
-	
+
+
 
 	/* ****************************************************************
 	 * 			Métodos para manejar los ALOJAMIENTOS
@@ -840,7 +840,7 @@ public class AlohAndes
 		log.info ("Generando los VO de Alojamientos: " + voTipo.size() + " existentes");
 		return voTipo;
 	}
-	
+
 	/**
 	 * Encuentra todas las Alojamientos en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -848,12 +848,12 @@ public class AlohAndes
 	 */
 	public List<Alojamiento> darAlojamientos ()
 	{
-        log.info ("Consultando Alojamientos");
-        List<Alojamiento> Alojamientos = pp.darAlojamientos ();	
-        log.info ("Consultando Alojamientos: " + Alojamientos.size() + " Alojamientos existentes");
-        return Alojamientos;
+		log.info ("Consultando Alojamientos");
+		List<Alojamiento> Alojamientos = pp.darAlojamientos ();	
+		log.info ("Consultando Alojamientos: " + Alojamientos.size() + " Alojamientos existentes");
+		return Alojamientos;
 	}
-	
+
 	/**
 	 * Cambiar Alojamiento dado su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -867,14 +867,14 @@ public class AlohAndes
 	 */
 	public long cambiarUnaAlojamiento ( long idAlojamiento,  Date  fechaInicio, Date fechaFin)
 	{
-        log.info ("Cambiando Alojamiento numero: " + idAlojamiento );
-        long cambios = pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, fechaInicio, fechaFin);
-        return cambios;
+		log.info ("Cambiando Alojamiento numero: " + idAlojamiento );
+		long cambios = pp.cambiarhabilitadoDeUnAlojamiento(idAlojamiento, fechaInicio, fechaFin);
+		return cambios;
 	}
-	
 
-	
-	
+
+
+
 
 
 	/* ****************************************************************
@@ -899,8 +899,8 @@ public class AlohAndes
 
 		return miembroComunidadUniversitaria;
 	}
-	
-	
+
+
 	/**
 	 * Elimina una MiembroComunidadUniversitaria por su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -929,7 +929,7 @@ public class AlohAndes
 		return MiembroComunidadUniversitaria;
 	}
 
-	
+
 	/**
 	 * Encuentra todas las MiembroComunidadUniversitarias en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -937,16 +937,16 @@ public class AlohAndes
 	 */
 	public List<MiembroComunidadUniversitaria> darMiembrosComunidadUniversitaria ()
 	{
-        log.info ("Consultando MiembroComunidadUniversitarias");
-        List<MiembroComunidadUniversitaria> MiembroComunidadUniversitarias = pp.darMiembrosComunidadUniversitaria ();	
-        log.info ("Consultando MiembroComunidadUniversitarias: " + MiembroComunidadUniversitarias.size() + " MiembroComunidadUniversitarias existentes");
-        return MiembroComunidadUniversitarias;
+		log.info ("Consultando MiembroComunidadUniversitarias");
+		List<MiembroComunidadUniversitaria> MiembroComunidadUniversitarias = pp.darMiembrosComunidadUniversitaria ();	
+		log.info ("Consultando MiembroComunidadUniversitarias: " + MiembroComunidadUniversitarias.size() + " MiembroComunidadUniversitarias existentes");
+		return MiembroComunidadUniversitarias;
 	}
-	
 
 
-	
-	
+
+
+
 	/**
 	 * Cambiar MiembroComunidadUniversitaria dado su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -956,9 +956,9 @@ public class AlohAndes
 	 */
 	public long cambiarUnaMiembroComunidadUniversitaria (long idMiembroComunidadUniversitaria,  String id)
 	{
-        log.info ("Cambiando MiembroComunidadUniversitaria numero: " + idMiembroComunidadUniversitaria );
-        long cambios = pp.cambiarIdDeUnMiembroComunidadUniversitaria(idMiembroComunidadUniversitaria, id);
-        return cambios;
+		log.info ("Cambiando MiembroComunidadUniversitaria numero: " + idMiembroComunidadUniversitaria );
+		long cambios = pp.cambiarIdDeUnMiembroComunidadUniversitaria(idMiembroComunidadUniversitaria, id);
+		return cambios;
 	}
 
 
@@ -997,7 +997,7 @@ public class AlohAndes
 	 * @return El objeto Habitacion adicionado. null si ocurre alguna Excepción
 	 */
 	public Habitacion adicionarHabitacion (Boolean habilitada, Date  fechaInicio, Date fechaFin, long idOperador, String direccion, Double precio, String numHabitacion, String tipoHabitacion, String tipoOperadorHabitacion)
-{
+	{
 		log.info ("Adicionando Habitacion del alojamiento: ");
 		Habitacion Habitacion = pp.adicionarHabitacion(habilitada, fechaInicio, fechaFin, idOperador, direccion, precio, numHabitacion, tipoHabitacion, tipoOperadorHabitacion);
 		log.info ("Adicionanda Habitacion: " + Habitacion);
@@ -1031,8 +1031,8 @@ public class AlohAndes
 		log.info ("Buscando Habitacion por Id: " + Habitacion != null ? Habitacion : "NO EXISTE");
 		return Habitacion;
 	}
-	
-	
+
+
 	/**
 	 * Encuentra todas las Habitaciones en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -1040,13 +1040,13 @@ public class AlohAndes
 	 */
 	public List<Habitacion> darHabitaciones ()
 	{
-        log.info ("Consultando Habitaciones");
-        List<Habitacion> Habitaciones = pp.darHabitaciones ();	
-        log.info ("Consultando Habitaciones: " + Habitaciones.size() + " Habitaciones existentes");
-        return Habitaciones;
+		log.info ("Consultando Habitaciones");
+		List<Habitacion> Habitaciones = pp.darHabitaciones ();	
+		log.info ("Consultando Habitaciones: " + Habitaciones.size() + " Habitaciones existentes");
+		return Habitaciones;
 	}
-	
-	
+
+
 	/**
 	 * Encuentra todos las Habitaciones en AlohAndes y los devuelve como una lista de VOHabitacion
 	 * Adiciona entradas al log de la aplicación
@@ -1070,7 +1070,7 @@ public class AlohAndes
 	 * 		Meotodos para la clase de Vivienda comunidad
 	 *****************************************************************/
 
-	
+
 
 	/**
 	 * Adiciona de manera persistente una ViviendaComunidad
@@ -1116,8 +1116,8 @@ public class AlohAndes
 		log.info ("Buscando ViviendaComunidad por Id: " + ViviendaComunidad != null ? ViviendaComunidad : "NO EXISTE");
 		return ViviendaComunidad;
 	}
-	
-	
+
+
 	/**
 	 * Encuentra todas las darViviendaComunidades en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -1125,13 +1125,13 @@ public class AlohAndes
 	 */
 	public List<ViviendaComunidad> dardarViviendaComunidades ()
 	{
-        log.info ("Consultando darViviendaComunidades");
-        List<ViviendaComunidad> darViviendaComunidades = pp.darViviendaComunidades ();	
-        log.info ("Consultando darViviendaComunidades: " + darViviendaComunidades.size() + " darViviendaComunidades existentes");
-        return darViviendaComunidades;
+		log.info ("Consultando darViviendaComunidades");
+		List<ViviendaComunidad> darViviendaComunidades = pp.darViviendaComunidades ();	
+		log.info ("Consultando darViviendaComunidades: " + darViviendaComunidades.size() + " darViviendaComunidades existentes");
+		return darViviendaComunidades;
 	}
-	
-	
+
+
 	/**
 	 * Encuentra todos las darViviendaComunidades en AlohAndes y los devuelve como una lista de VOViviendaComunidad
 	 * Adiciona entradas al log de la aplicación
@@ -1157,7 +1157,7 @@ public class AlohAndes
 	 * 		Meotodos para la clase de Apartamentos
 	 *****************************************************************/
 
-	
+
 
 	/**
 	 * Adiciona de manera persistente una Apartamento
@@ -1203,8 +1203,8 @@ public class AlohAndes
 		log.info ("Buscando Apartamento por Id: " + Apartamento != null ? Apartamento : "NO EXISTE");
 		return Apartamento;
 	}
-	
-	
+
+
 	/**
 	 * Encuentra todas las Apartamentos en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -1212,13 +1212,13 @@ public class AlohAndes
 	 */
 	public List<Apartamento> darApartamentos ()
 	{
-        log.info ("Consultando Apartamentos");
-        List<Apartamento> Apartamentos = pp.darApartamentos ();	
-        log.info ("Consultando Apartamentos: " + Apartamentos.size() + " Apartamentos existentes");
-        return Apartamentos;
+		log.info ("Consultando Apartamentos");
+		List<Apartamento> Apartamentos = pp.darApartamentos ();	
+		log.info ("Consultando Apartamentos: " + Apartamentos.size() + " Apartamentos existentes");
+		return Apartamentos;
 	}
-	
-	
+
+
 	/**
 	 * Encuentra todos las Apartamentos en AlohAndes y los devuelve como una lista de VOApartamento
 	 * Adiciona entradas al log de la aplicación
@@ -1238,14 +1238,14 @@ public class AlohAndes
 		return voTipos;
 	}
 
-	
-	
+
+
 	/* ****************************************************************
 	 * 			Métodos para manejar las SERVICIOS
 	 *****************************************************************/
-	
-	
-	
+
+
+
 	/**
 	 * Adiciona de manera persistente una Servicio
 	 * Adiciona entradas al log de la aplicación
@@ -1290,7 +1290,7 @@ public class AlohAndes
 		log.info ("Buscando Servicio por Id: " + Servicio != null ? Servicio : "NO EXISTE");
 		return Servicio;
 	}
-	
+
 	/**
 	 * Encuentra las Servicios y su información básica, según su identificador de alojamiento
 	 * @param idServicio - El identificador de la Servicio buscada
@@ -1304,7 +1304,7 @@ public class AlohAndes
 		log.info ("Buscando Servicio por Id: " + Servicios != null ? Servicios : "NO EXISTE");
 		return Servicios;
 	}
-	
+
 	/**
 	 * Encuentra todas las Servicios en Parranderos
 	 * Adiciona entradas al log de la aplicación
@@ -1312,12 +1312,12 @@ public class AlohAndes
 	 */
 	public List<Servicio> darServicios ()
 	{
-        log.info ("Consultando Servicios");
-        List<Servicio> Servicios = pp.darServicios ();	
-        log.info ("Consultando Servicios: " + Servicios.size() + " Servicios existentes");
-        return Servicios;
+		log.info ("Consultando Servicios");
+		List<Servicio> Servicios = pp.darServicios ();	
+		log.info ("Consultando Servicios: " + Servicios.size() + " Servicios existentes");
+		return Servicios;
 	}
-	
+
 
 	/**
 	 * Encuentra todos los tipos de Servicio en Parranderos y los devuelve como una lista de VOTipoServicio
@@ -1337,8 +1337,8 @@ public class AlohAndes
 		log.info ("Generando los VO de Servicios: " + voTipos.size() + " existentes");
 		return voTipos;
 	}
-	
-	
+
+
 	/**
 	 * Cambiar Servicio dado su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -1348,12 +1348,12 @@ public class AlohAndes
 	 */
 	public long cambiarLaDescripcionDeUnServicio (long idServicio,  String Descripcion )
 	{
-        log.info ("Cambiando Servicio numero: " + idServicio );
-        long cambios = pp.cambiarLaDescripcionDeUnServicio(idServicio, Descripcion);
-        return cambios;
+		log.info ("Cambiando Servicio numero: " + idServicio );
+		long cambios = pp.cambiarLaDescripcionDeUnServicio(idServicio, Descripcion);
+		return cambios;
 	}
-	
-	
+
+
 	/**
 	 * Cambiar Servicio dado su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -1363,11 +1363,11 @@ public class AlohAndes
 	 */
 	public long cambiarElPrecioDeUnServicio (long idServicio,  Double precio )
 	{
-        log.info ("Cambiando el precio de un Servicio: " + idServicio );
-        long cambios = pp.cambiarElPrecioDeUnServicio(idServicio, precio);
-        return cambios;
+		log.info ("Cambiando el precio de un Servicio: " + idServicio );
+		long cambios = pp.cambiarElPrecioDeUnServicio(idServicio, precio);
+		return cambios;
 	}
-	
+
 	/**
 	 * Cambiar Servicio dado su identificador
 	 * Adiciona entradas al log de la aplicación
@@ -1377,12 +1377,12 @@ public class AlohAndes
 	 */
 	public long cambiarTomaServicio (long idServicio,  Boolean toma )
 	{
-        log.info ("Cambiando Servicio numero: " + idServicio );
-        long cambios = pp.cambiarTomaServicio(idServicio, toma);
-        return cambios;
+		log.info ("Cambiando Servicio numero: " + idServicio );
+		long cambios = pp.cambiarTomaServicio(idServicio, toma);
+		return cambios;
 	}
-	
-	
+
+
 
 
 
@@ -1390,7 +1390,7 @@ public class AlohAndes
 	 * 		Requerimientos funcionales de consulta
 	 *****************************************************************/
 
-	
+
 
 	/**
 	 * RFC1 - MOSTRAR EL DINERO RECIBIDO POR CADA PROVEEDOR DE ALOJAMIENTO DURANTE EL AÑO ACTUAL Y EL AÑO CORRIDO
@@ -1423,70 +1423,188 @@ public class AlohAndes
 		return tuplas;
 	}
 
-	//	/*
-	//	 * RFC3- MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS OFERTAS DE ALOJAMIENTO REGISTRADAS
-	//	 */
-	//	public double RFC3 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
-	//	 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
-	//	 */
-	//	public VOAlojamiento RFC4 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
-	//	 */
-	//	public double RFC5 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC6- MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO (NÚMERO DE NOCHES O MESES CONTRATADOS, CARACTERÍSTICAS DEL ALOJAMIENTO UTILIZADO, DINERO PAGADO.
-	//	 */
-	//	public double RFC6 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC7- ANALIZAR LA OPERACIÓN DE ALOHANDES
-	//	 * Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo el tiempo de operación de AloHandes, 
-	//	 * indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
-	//	 * las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
-	//	 */
-	//	public double RFC7 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC8- ENCONTRAR LOS CLIENTES FRECUENTES
-	//		Para un alojamiento dado, encontrar la información de sus clientes frecuentes. 
-	//		se considera frecuente a un cliente si ha utilizado (o tiene reservado) 
-	//		ese alojamiento por lo menos en tres ocasiones o por lo menos 15 noches, durante todo el periodo de operación de AlohAndes.
-	//	 */
-	//	public double RFC8 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC9- ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
-	//	 * 	Encontrar las ofertas de alojamiento que no han recibido clientes en periodos superiores a 
-	//	 * 1 mes, durante todo el periodo de operación de AlohAndes.
-	//	 */
-	//	public double RFC9 ()
-	//	{
-	//
-	//	}
+	/*
+	 * RFC3- MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS OFERTAS DE ALOJAMIENTO REGISTRADAS
+	 */
+	public List<Object[]> RFC3 ()
+	{
+		log.info ("Listando Bebedores y cuántas visitas ha realizado");
+		List<Object []> tuplas = pp.darRFC3();
+		log.info ("Listando Bebedores y cuántas visitas ha realizado: Listo!");
+		return tuplas;
+
+	}
+
+	/*
+	 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
+	 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
+	 */
+	public List<Object[]> RFC4 (Date rangoMenor, Date rangoMayor, String[] nombreServicio)
+	{
+
+		log.info ("Listando Bebedores y cuántas visitas ha realizado");
+		List<Object []> tuplas = pp.darRFC4(rangoMenor, rangoMayor, nombreServicio);
+		log.info ("Listando Bebedores y cuántas visitas ha realizado: Listo!");
+		return tuplas;
+	}
+
+	/*
+	 * RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
+	 */
+	public List<Object[]> RFC5 ()
+	{
+		log.info ("MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD");
+		List<Object []> tuplas = pp.darRFC5();
+
+		log.info ("MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD: Listo!");
+		return tuplas;
+
+	}
+
+	/*
+	 * RFC6- MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO (NÚMERO DE NOCHES O MESES CONTRATADOS, CARACTERÍSTICAS DEL ALOJAMIENTO UTILIZADO, DINERO PAGADO.
+	 */
+	public List<Object[]> RFC6 (long id)
+	{
+		log.info ("MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO");
+		List<Object []> tuplas = pp.darRFC6(id);
+		log.info ("MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO: Listo!");
+		return tuplas;
+
+	}
+
+	/*
+	 * RFC7- ANALIZAR LA OPERACIÓN DE ALOHANDES
+	 * Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo el tiempo de operación de AloHandes, 
+	 * indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
+	 * las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
+	 */
+	public List<Object[]> RFC7 ()
+	{
+		log.info ("ANALIZAR LA OPERACIÓN DE ALOHANDES");
+		List<Object []> tuplas = pp.darRFC7();
+
+		log.info ("ANALIZAR LA OPERACIÓN DE ALOHANDES: Listo!");
+		return tuplas;
+
+	}
+
+	/*
+	 * RFC8- ENCONTRAR LOS CLIENTES FRECUENTES
+			Para un alojamiento dado, encontrar la información de sus clientes frecuentes. 
+			se considera frecuente a un cliente si ha utilizado (o tiene reservado) 
+			ese alojamiento por lo menos en tres ocasiones o por lo menos 15 noches, durante todo el periodo de operación de AlohAndes.
+	 */
+	public List<Object[]> RFC8 ()
+	{
+		log.info (" ENCONTRAR LOS CLIENTES FRECUENTES");
+		List<Object []> tuplas = pp.darRFC8();
+		log.info (" ENCONTRAR LOS CLIENTES FRECUENTES: Listo!");
+		return tuplas;
+
+	}
+
+	/*
+	 * RFC9- ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * 	Encontrar las ofertas de alojamiento que no han recibido clientes en periodos superiores a 
+	 * 1 mes, durante todo el periodo de operación de AlohAndes.
+	 */
+	public List<Object[]> RFC9 ()
+	{
+		log.info ("ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA");
+		List<Object []> tuplas = pp.darRFC9();
+		log.info ("ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA: Listo!");
+		return tuplas;
+
+	}
+
+
+
+	/**
+	 * RFC10-CONSULTAR CONSUMO EN ALOHANDES
+	 * Se quiere conocer la información de los usuarios que realizaron al menos una reserva de una determinada oferta de alojamiento en un rango de fechas. 
+	 * Los resultados deben ser clasificados según un criterio deseado por quien realiza la consulta. 
+	 * En la clasificación debe ofrecerse la posibilidad de agrupamiento 
+	 * y ordenamiento de las respuestas según los intereses del usuario que consulta como, 
+	 * por ejemplo, por los datos del cliente, por oferta de alojamiento y por tipo de alojamiento.
+	 * 
+	 * @return Una lista de arreglos
+	 */
+	public  List<Object[]> darRFC10 (long idAlojamiento, String TipoAgrupamiento, Date FechaMenor, Date FechaMayor)
+	{
+		log.info ("Colsultar consumo de AlohAndes para las reservas que estan entre las fechas");
+		List<Object []> tuplas = pp.darRFC10(idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor);
+		log.info ("Colsultar consumo de AlohAndes para las reservas que estan entre las fechas: Listo!");
+		return tuplas;
+
+	}
+
+
+
+	/**
+	 * RFC11 - CONSULTAR CONSUMO EN ALOHANDES – RFC10-V2
+	 * Se quiere conocer la información de los usuarios QUE NO realizaron al menos una 
+	 * reserva de una determinada oferta de alojamiento en un rango de fechas. 
+	 * En la clasificación debe ofrecerse la posibilidad de agrupamiento y ordenamiento 
+	 * de las respuestas según los intereses del usuario que consulta como, por ejemplo, 
+	 * por los datos del cliente, por oferta de alojamiento y por tipo de alojamiento.
+	 * 
+	 * @return lista con las tuplas
+	 */
+	public  List<Object[]> darRFC11 (long idAlojamiento, String TipoAgrupamiento, Date FechaMenor, Date FechaMayor)
+	{
+		log.info ("Colsultar consumo de AlohAndes para los que no estan entre las fechas");
+		List<Object []> tuplas = pp.darRFC11(idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor);
+		log.info ("Colsultar consumo de AlohAndes para los que no estan entre las fechas: Listo!");
+		return tuplas;
+
+	}
+
+	/**
+	 *  --RFC12 - CONSULTAR FUNCIONAMIENTO--
+	 *  Muestra, para cada semana del año, la oferta de alojamiento con más ocupación, la oferta de alojamiento con
+	 *  menos ocupación, los operadores más solicitados y los operadores menos solicitados. Las respuestas deben
+	 *  ser sustentadas por el detalle de las ofertas de alojamiento y operadores correspondientes. Esta operación es
+	 *  realizada el gerente general de AlohAndes
+	 * 
+	 * @param Anio
+	 * @return lista con las tuplas de la consulta
+	 */
+	public  List<Object[]> darRFC12O (String Anio)
+	{
+		log.info ("Consultando Funcionamiento de AlohAndes");
+		List<Object []> tuplas = pp.darRFC12OfertaMasOcupacion(Anio);
+		tuplas.addAll(pp.darRFC12OfertaMenosOcupacion(Anio));
+		tuplas.addAll(pp.darRFC12OperadoresMasSolicitados(Anio));
+		tuplas.addAll(pp.darRFC12OperadoresMenosSolicitados(Anio));
+		log.info ("Consultando Funcionamiento de AlohAndes: Listo!");
+		return tuplas;
+
+	}
+
+
+	/**
+	 * RFC13- BUenos clientes
+	 *  
+	 * Los buenos clientes son de tres tipos: aquellos que hacen reservas en AlohAndes al menos una vez al mes,
+	 * aquellos que siempre reservan alojamientos costosos (Entiendase costoso, por ejemplo, como mayor a USD
+	 * 150 por noche) y aquellos que siempre reservan suites. Esta consulta retorna toda la informaci�n de dichos
+	 * clientes, incluyendo la que justifica su calificaci�n como buenos clientes. Esta operaci�n es realizada
+	 * unicamente por el gerente general de AlohAndes
+	 * 
+	 * @return lista con las tuplas de la consulta
+	 */
+	public  List<Object[]> darRFC13BuenosClientesTipo1 ()
+	{
+		log.info ("Listando Buenos clientes ");
+		List<Object []> tuplas = pp.darRFC13BuenosClientesTipo1();
+		tuplas.addAll(pp.darRFC13BuenosClientesTipo2());
+		tuplas.addAll(pp.darRFC13BuenosClientesTipo3());
+		log.info ("Listando Buenos clientes: Listo!");
+		return tuplas;
+
+	}
+
 
 
 

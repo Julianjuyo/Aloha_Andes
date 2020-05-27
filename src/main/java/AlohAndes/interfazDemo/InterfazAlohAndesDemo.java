@@ -407,7 +407,80 @@ public class InterfazAlohAndesDemo extends JFrame implements ActionListener
 
 
 
+	/* ****************************************************************
+	 * 			Rquerimientos Funcionales
+	 *****************************************************************/
 
+	/**
+     * Demostración de la consulta: Dar la información de los bebedores y del número de bares que visita cada uno
+     * Incluye el manejo de los bares
+     * Incuye el manejo de la relación visitan
+     * Muestra la traza de la ejecución en el panelDatos
+     * 
+     * Pre: La base de datos está vacía
+     * Post: La base de datos está vacía
+     */
+    public void demoRFC10 ( )
+    {
+		try 
+		{
+    		// Ejecución de la demo y recolección de los resultados
+			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+			VOBar bar1 = parranderos.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
+			VOBar bar2 = parranderos.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
+			VOBar bar3 = parranderos.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
+			VOBar bar4 = parranderos.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
+			VOBebedor bdor1 = parranderos.adicionarBebedor ("Pepito", "Bogotá", "Alto");
+			VOBebedor bdor2 = parranderos.adicionarBebedor ("Juanito", "Bogotá", "Alto");
+			VOBebedor bdor3 = parranderos.adicionarBebedor ("Carlitos", "Medellín", "Alto");
+			VOBebedor bdor4 = parranderos.adicionarBebedor ("Luis", "Cartagena", "Medio");
+			parranderos.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
+			parranderos.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "nocturno");
+			parranderos.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "todos");
+			parranderos.adicionarVisitan (bdor1.getId (), bar2.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
+			parranderos.adicionarVisitan (bdor1.getId (), bar3.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
+			parranderos.adicionarVisitan (bdor2.getId (), bar3.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
+			parranderos.adicionarVisitan (bdor2.getId (), bar4.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
+
+			List<VOBar> bares = parranderos.darVOBares();
+			List<VOBebedor> bebedores = parranderos.darVOBebedores();
+			List<VOVisitan> visitan = parranderos.darVOVisitan ();
+			List<Object []> bebedoresYNumVisitas = parranderos.darBebedoresYNumVisitasRealizadas ();
+
+			long [] elimBdor1 = parranderos.eliminarBebedorYVisitas_v1 (bdor1.getId ());
+			long [] elimBdor2 = parranderos.eliminarBebedorYVisitas_v1 (bdor2.getId ());
+			long [] elimBdor3 = parranderos.eliminarBebedorYVisitas_v1 (bdor3.getId ());
+			long [] elimBdor4 = parranderos.eliminarBebedorYVisitas_v1 (bdor4.getId ());
+			long baresEliminados = parranderos.eliminarBarPorNombre ("Los Amigos1");
+			baresEliminados += parranderos.eliminarBarPorNombre ("Los Amigos2");
+			baresEliminados += parranderos.eliminarBarPorNombre ("Los Amigos3");
+			baresEliminados += parranderos.eliminarBarPorNombre ("Los Amigos4");
+
+			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
+			String resultado = "Demo de dar bebedores y cuántas visitan han realizado\n\n";
+			resultado += "\n\n************ Generando datos de prueba ************ \n";
+			resultado += "\n" + listarBares (bares);
+			resultado += "\n" + listarBebedores (bebedores);
+			resultado += "\n" + listarVisitan (visitan);
+			resultado += "\n\n************ Ejecutando la demo ************ \n";
+			resultado += "\n" + listarBebedorYNumVisitas (bebedoresYNumVisitas);
+			resultado += "\n\n************ Limpiando la base de datos ************ \n";
+			resultado += elimBdor1 [0] + " Bebedores eliminados y " + elimBdor1 [1] +" Visitas eliminadas\n";
+			resultado += elimBdor2 [0] + " Bebedores eliminados y " + elimBdor2 [1] +" Visitas eliminadas\n";
+			resultado += elimBdor3 [0] + " Bebedores eliminados y " + elimBdor3 [1] +" Visitas eliminadas\n";
+			resultado += elimBdor4 [0] + " Bebedores eliminados y " + elimBdor4 [1] +" Visitas eliminadas\n";
+			resultado += baresEliminados + " Bares eliminados\n";
+			resultado += "\n Demo terminada";
+   
+			panelDatos.actualizarInterfaz(resultado);
+		} 
+		catch (Exception e) 
+		{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 
 
 
