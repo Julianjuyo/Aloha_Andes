@@ -1594,7 +1594,7 @@ public class AlohAndes
 	 * 
 	 * @return lista con las tuplas de la consulta
 	 */
-	public  List<Object[]> darRFC13BuenosClientesTipo1 ()
+	public  List<Object[]> darRFC13BuenosClientes ()
 	{
 		log.info ("Listando Buenos clientes ");
 		List<Object []> tuplas = pp.darRFC13BuenosClientesTipo1();

@@ -402,19 +402,18 @@ class SQLUtil
 		}
 
 		
+
+		
         String sql = "SELECT *";
-        sql+= "FROM"+ pp.darTablaMiemCoUniv() +"miem LEFT JOIN";
-        sql += "	(SELECT" + ResultadoSelect +",count(r.numreserva) ";
+        sql+= "FROM"+ pp.darTablaMiemCoUniv() +"miem  minus";
+        sql += "	(SELECT" + ResultadoSelect;
         sql += " 		FROM" + pp.darTablaMiemCoUniv() +"mi ,"+ pp.darTablaReservas() +"r,"+ pp.darTablaAlojamientos() +"a";
         sql	+= " 		WHERE mi.id= r.idmiembro	";
        	sql += " 		AND r.idalojamiento = a.id ";
        	sql += " 		AND a.id = ?";
        	sql += " 		AND r.diareserva BETWEEN '?' AND  '?' ";
        	sql += " 		GROUP BY"+GroupBY;
-       	sql += " 		ORDER BY"+OrderBy+")";
-       	sql += " ON miem.id = ida";
-       	sql += " WHERE ida IS NULL;";
-
+       	sql += " 		ORDER BY"+OrderBy+");";
        	
 		Query q = pm.newQuery(SQL, sql);
 		q.setParameters(idAlojamiento, FechaMenor,FechaMayor);

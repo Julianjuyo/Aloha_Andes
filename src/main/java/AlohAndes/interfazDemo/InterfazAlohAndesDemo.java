@@ -27,6 +27,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.JDODataStoreException;
@@ -240,90 +242,8 @@ public class InterfazAlohAndesDemo extends JFrame implements ActionListener
 		setJMenuBar ( menuBar );	
 	}
 
-	/* ****************************************************************
-	 * 			Demos de Alojamnetos
-	 *****************************************************************/
-	
-
-	/**
-	 * Borra de la base de datos el Alojamineto con el identificador dado po el usuario
-	 * Cuando dicho alojamiento no existe, se indica que se borraron 0 registros de la base de datos
-	 */
-	public void EliminarAlojamiento( )
-	{
-		try 
-		{
-			String idTipoStr = JOptionPane.showInputDialog (this, "Id del tipo del alojamiento?", "Borrar un alojamiento por Id", JOptionPane.QUESTION_MESSAGE);
-
-			if (idTipoStr != null)
-			{
-				long idTipo = Long.valueOf (idTipoStr);
-				long tbEliminados = alohAndes.eliminarAlojamiento(idTipo);
-
-				String resultado = "En eliminar Alojamiento\n\n";
-				resultado += tbEliminados + " Tipos de Alojamiento eliminados\n";
-				resultado += "\n Operación terminada";
-				panelDatos.actualizarInterfaz(resultado);
-			}
-			else
-			{
-				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-			}
-		} 
-		catch (Exception e) 
-		{
-			//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	}
-
-	/* ****************************************************************
-	 * 			Demos de Reserva 
-	 *****************************************************************/
 
 
-	/**
-	 * Adiciona una reserva con la información dada por el usuario
-	 * Se crea una nueva tupla de reserva en la base de datos, si una reserva  con ese id no existía
-	 */
-	public void adicionarReserva( )
-	{
-		try 
-		{
-			String idAlojamientoStr = JOptionPane.showInputDialog (this, "Id del alojamiento?", "Adicionar la reserva", JOptionPane.QUESTION_MESSAGE);
-			String idMiembroStr = JOptionPane.showInputDialog (this, "Id del miembro?", "Adicionar la reserva", JOptionPane.QUESTION_MESSAGE);
-
-			String tipoId = JOptionPane.showInputDialog (this, "tipo del Id?", "Adicionar la reserva", JOptionPane.QUESTION_MESSAGE);
-			String tiempoDiaStr = JOptionPane.showInputDialog (this, "tiempo en dias?", "Adicionar la reserva", JOptionPane.QUESTION_MESSAGE);
-
-
-
-			if (idAlojamientoStr != null&& idMiembroStr != null && tipoId != null && tiempoDiaStr != null)
-			{
-				long idAlojamiento = Long.valueOf (idAlojamientoStr);
-				long idMiembro = Long.valueOf (idMiembroStr);
-				int tiempoDias = Integer.valueOf (tiempoDiaStr);
-
-				VOReserva tb = alohAndes.adicionarReserva(idAlojamiento, idMiembro, tipoId, tiempoDias);
-				if (tb == null)
-				{
-					throw new Exception ("No se pudo crear una reserva con id: " + idAlojamiento);
-				}
-				String resultado = "En adicionarReserva\n\n";
-				resultado += "Recerva adicionado exitosamente: " + tb;
-				resultado += "\n Operación terminada";
-				panelDatos.actualizarInterfaz(resultado);
-			} else
-				panelDatos.actualizarInterfaz("Operación cancelada por el usuario");
-		} 
-		catch (Exception e) 
-		{
-			//			e.printStackTrace();
-			String resultado = generarMensajeError(e);
-			panelDatos.actualizarInterfaz(resultado);
-		}
-	}
 
 	/**
 	 * Consulta en la base de datos los tipos de bebida existentes y los muestra en el panel de datos de la aplicación
@@ -426,53 +346,20 @@ public class InterfazAlohAndesDemo extends JFrame implements ActionListener
 		{
     		// Ejecución de la demo y recolección de los resultados
 			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
-			VOBar bar1 = parranderos.adicionarBar ("Los Amigos1", "Bogotá", "Bajo", 2);
-			VOBar bar2 = parranderos.adicionarBar ("Los Amigos2", "Bogotá", "Bajo", 3);
-			VOBar bar3 = parranderos.adicionarBar ("Los Amigos3", "Bogotá", "Bajo", 4);
-			VOBar bar4 = parranderos.adicionarBar ("Los Amigos4", "Medellín", "Bajo", 5);
-			VOBebedor bdor1 = parranderos.adicionarBebedor ("Pepito", "Bogotá", "Alto");
-			VOBebedor bdor2 = parranderos.adicionarBebedor ("Juanito", "Bogotá", "Alto");
-			VOBebedor bdor3 = parranderos.adicionarBebedor ("Carlitos", "Medellín", "Alto");
-			VOBebedor bdor4 = parranderos.adicionarBebedor ("Luis", "Cartagena", "Medio");
-			parranderos.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
-			parranderos.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "nocturno");
-			parranderos.adicionarVisitan (bdor1.getId (), bar1.getId (), new Timestamp (System.currentTimeMillis()), "todos");
-			parranderos.adicionarVisitan (bdor1.getId (), bar2.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
-			parranderos.adicionarVisitan (bdor1.getId (), bar3.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
-			parranderos.adicionarVisitan (bdor2.getId (), bar3.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
-			parranderos.adicionarVisitan (bdor2.getId (), bar4.getId (), new Timestamp (System.currentTimeMillis()), "diurno");
 
-			List<VOBar> bares = parranderos.darVOBares();
-			List<VOBebedor> bebedores = parranderos.darVOBebedores();
-			List<VOVisitan> visitan = parranderos.darVOVisitan ();
-			List<Object []> bebedoresYNumVisitas = parranderos.darBebedoresYNumVisitasRealizadas ();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:ii:ss");
+			
+			String stringFechaConHora = "2017-01-01 12:00:00";
+			Date FechaMenor = sdf.parse(stringFechaConHora);
+			
+			String stringFechaConHora2 = "20121-05-30 15:03:23";
+			Date FechaMayor = sdf.parse(stringFechaConHora2);
 
-			long [] elimBdor1 = parranderos.eliminarBebedorYVisitas_v1 (bdor1.getId ());
-			long [] elimBdor2 = parranderos.eliminarBebedorYVisitas_v1 (bdor2.getId ());
-			long [] elimBdor3 = parranderos.eliminarBebedorYVisitas_v1 (bdor3.getId ());
-			long [] elimBdor4 = parranderos.eliminarBebedorYVisitas_v1 (bdor4.getId ());
-			long baresEliminados = parranderos.eliminarBarPorNombre ("Los Amigos1");
-			baresEliminados += parranderos.eliminarBarPorNombre ("Los Amigos2");
-			baresEliminados += parranderos.eliminarBarPorNombre ("Los Amigos3");
-			baresEliminados += parranderos.eliminarBarPorNombre ("Los Amigos4");
+			List<Object []> RFC10 = alohAndes.darRFC10(599, "Cliente", FechaMenor, FechaMayor);
 
-			// Generación de la cadena de caracteres con la traza de la ejecución de la demo
-			String resultado = "Demo de dar bebedores y cuántas visitan han realizado\n\n";
-			resultado += "\n\n************ Generando datos de prueba ************ \n";
-			resultado += "\n" + listarBares (bares);
-			resultado += "\n" + listarBebedores (bebedores);
-			resultado += "\n" + listarVisitan (visitan);
-			resultado += "\n\n************ Ejecutando la demo ************ \n";
-			resultado += "\n" + listarBebedorYNumVisitas (bebedoresYNumVisitas);
-			resultado += "\n\n************ Limpiando la base de datos ************ \n";
-			resultado += elimBdor1 [0] + " Bebedores eliminados y " + elimBdor1 [1] +" Visitas eliminadas\n";
-			resultado += elimBdor2 [0] + " Bebedores eliminados y " + elimBdor2 [1] +" Visitas eliminadas\n";
-			resultado += elimBdor3 [0] + " Bebedores eliminados y " + elimBdor3 [1] +" Visitas eliminadas\n";
-			resultado += elimBdor4 [0] + " Bebedores eliminados y " + elimBdor4 [1] +" Visitas eliminadas\n";
-			resultado += baresEliminados + " Bares eliminados\n";
-			resultado += "\n Demo terminada";
-   
-			panelDatos.actualizarInterfaz(resultado);
+			
+			System.out.println(RFC10);
+
 		} 
 		catch (Exception e) 
 		{
@@ -482,6 +369,102 @@ public class InterfazAlohAndesDemo extends JFrame implements ActionListener
 		}
     }
 
+    
+	/**
+     * Demostración de la consulta: Dar la información de los bebedores y del número de bares que visita cada uno
+     * Incluye el manejo de los bares
+     * Incuye el manejo de la relación visitan
+     * Muestra la traza de la ejecución en el panelDatos
+     * 
+     * Pre: La base de datos está vacía
+     * Post: La base de datos está vacía
+     */
+    public void demoRFC11 ( )
+    {
+		try 
+		{
+    		// Ejecución de la demo y recolección de los resultados
+			// ATENCIÓN: En una aplicación real, los datos JAMÁS están en el código
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:ii:ss");
+			
+			String stringFechaConHora = "2017-01-01 12:00:00";
+			Date FechaMenor = sdf.parse(stringFechaConHora);
+			
+			String stringFechaConHora2 = "20121-05-30 15:03:23";
+			Date FechaMayor = sdf.parse(stringFechaConHora2);
+
+			List<Object []> RFC10 = alohAndes.darRFC11(599, "Cliente", FechaMenor, FechaMayor);
+
+			
+			System.out.println(RFC10);
+
+		} 
+		catch (Exception e) 
+		{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+	/**
+     * Demostración de la consulta: Dar la información de los bebedores y del número de bares que visita cada uno
+     * Incluye el manejo de los bares
+     * Incuye el manejo de la relación visitan
+     * Muestra la traza de la ejecución en el panelDatos
+     * 
+     * Pre: La base de datos está vacía
+     * Post: La base de datos está vacía
+     */
+    public void demoRFC12 ( )
+    {
+		try 
+		{
+			
+			String Anio = "2019";
+
+			List<Object []> RFC10 = alohAndes.darRFC12O(Anio);
+
+			
+			System.out.println(RFC10);
+
+		} 
+		catch (Exception e) 
+		{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
+    
+	/**
+     * Demostración de la consulta: Dar la información de los bebedores y del número de bares que visita cada uno
+     * Incluye el manejo de los bares
+     * Incuye el manejo de la relación visitan
+     * Muestra la traza de la ejecución en el panelDatos
+     * 
+     * Pre: La base de datos está vacía
+     * Post: La base de datos está vacía
+     */
+    public void demoRFC13 ( )
+    {
+		try 
+		{
+
+			List<Object []> RFC10 = alohAndes.darRFC13BuenosClientes();
+
+			
+			System.out.println(RFC10);
+
+		} 
+		catch (Exception e) 
+		{
+//			e.printStackTrace();
+			String resultado = generarMensajeError(e);
+			panelDatos.actualizarInterfaz(resultado);
+		}
+    }
 
 
 
