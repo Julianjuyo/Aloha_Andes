@@ -5,9 +5,12 @@ POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
 
 */
 SELECT a.id
-FROM  ALOJAMIENTOS a , RESERVAS r , SERVICIOS s
-WHERE r.idalojamiento = a.id
-AND  a.id= s.idalojamiento
-AND r.diareserva BETWEEN TO_DATE ('31/01/20')AND TO_DATE ('31/10/20')
+FROM  ALOJAMIENTOS a , SERVICIOS s
+WHERE a.id= s.idalojamiento
 AND s.nombre ='Jacuzzi'
-AND s.tomaservicio = 'Y' ;
+AND s.tomaservicio = 'Y'
+MINUS
+(SELECT a.id idaloj
+ FROM  ALOJAMIENTOS a , reservas r
+ WHERE r.idalojamiento = a.id
+ AND r.diareserva BETWEEN TO_DATE ('1/02/20') AND TO_DATE('28/03/20'));
