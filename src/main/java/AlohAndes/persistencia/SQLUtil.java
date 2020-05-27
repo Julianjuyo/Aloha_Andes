@@ -148,15 +148,16 @@ class SQLUtil
         sql += " FROM " +  pp.darTablaAlojamientos()+ "a,"+  pp.darTablaReservas() +"r,"+ pp.darTablaServicios()+" s\n" ;
        	sql	+= " WHERE r.idalojamiento = a.id";
        	sql += " AND  a.id= s.idalojamiento";
-       	sql += " AND r.diareserva BETWEEN TO_DATE ("+rangoMenor+")AND TO_DATE ("+rangoMayor+")";
+       	sql += " AND r.diareserva BETWEEN TO_DATE (?)AND TO_DATE (?)";
        	
        	for (int i = 0; i < nombreServicio.length; i++) {
        		
-       		sql += " AND s.nombre ='"+nombreServicio+"'";			
+       		sql += " AND s.nombre ='?'";			
 		}
        	
     	sql += " AND s.tomaservicio = 'Y' ;";
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(rangoMenor,  rangoMayor, nombreServicio);
 		return q.executeList();
 	}
 	
@@ -191,9 +192,10 @@ class SQLUtil
        	sql	+= " WHERE mi.id = r.idmiembro";
        	sql += " AND r.numreserva = a.id";
        	sql += " AND op.id = a.idoperador";
-       	sql += " AND mi.id ="+idUsuario;
+       	sql += " AND mi.id = ?";
        	sql += " GROUP BY mi.id , mi.tipoid, op.tipooperador ;";
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(idUsuario);
 		return q.executeList();
 	}
 	
@@ -209,12 +211,13 @@ class SQLUtil
         sql += " FROM"+ pp.darTablaReservas() +"r ,"+ pp.darTablaAlojamientos() +"a,"+ pp.darTablaOperadores() +"o";
        	sql	+= " Where r.idalojamiento = a.id "
        		  + "AND a.idoperador = o.id "
-       		  + "AND o.tipooperador = '"+tipo+"' "
-       		  + "AND EXTRACT(year FROM r.diareserva) <"+ tiempo;
+       		  + "AND o.tipooperador = '?' "
+       		  + "AND EXTRACT(year FROM r.diareserva) < ? ";
        	sql += " group by to_char(r.diareserva, 'Month' ), EXTRACT(year FROM r.diareserva)";
        	sql += " order by count(*) desc";
        	sql += " FETCH FIRST ROWS ONLY;";
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(tipo, tiempo);
 		return q.executeList();
 	}
 	
@@ -230,12 +233,13 @@ class SQLUtil
         sql += " FROM"+ pp.darTablaReservas() +"r ,"+ pp.darTablaAlojamientos() +"a,"+ pp.darTablaOperadores() +"o";
        	sql	+= " Where r.idalojamiento = a.id "
        		  + "AND a.idoperador = o.id "
-       		  + "AND o.tipooperador = '"+tipo+"' "
-       		  + "AND EXTRACT(year FROM r.diareserva) <"+ tiempo;
+       		  + "AND o.tipooperador = '?' "
+       		  + "AND EXTRACT(year FROM r.diareserva) <?";
        	sql += " group by to_char(r.diareserva, 'Month' ), EXTRACT(year FROM r.diareserva)";
        	sql += " order by SUM(a.precio) desc";
        	sql += " FETCH FIRST ROWS ONLY;";
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(tipo, tiempo);
 		return q.executeList();
 	}
 	
@@ -251,12 +255,13 @@ class SQLUtil
         sql += " FROM"+ pp.darTablaReservas() +"r ,"+ pp.darTablaAlojamientos() +"a,"+ pp.darTablaOperadores() +"o";
        	sql	+= " Where r.idalojamiento = a.id "
        		  + "AND a.idoperador = o.id "
-       		  + "AND o.tipooperador = '"+tipo+"' "
-       		  + "AND EXTRACT(year FROM r.diareserva) <"+ tiempo;
+       		  + "AND o.tipooperador = '?' "
+       		  + "AND EXTRACT(year FROM r.diareserva) <?";
        	sql += " group by to_char(r.diareserva, 'Month' ), EXTRACT(year FROM r.diareserva)";
        	sql += " order by count(*) desc";
        	sql += " FETCH FIRST ROWS ONLY;";
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(tipo, tiempo);
 		return q.executeList();
 	}
 	
@@ -347,13 +352,14 @@ class SQLUtil
         sql += " FROM"+ pp.darTablaMiemCoUniv() +"mi ,"+ pp.darTablaReservas() +"r,"+ pp.darTablaAlojamientos() +"a";
         sql	+= " WHERE mi.id= r.idmiembro	";
        	sql += " AND r.idalojamiento = a.id ";
-       	sql += " AND a.id ="+idAlojamiento;
-       	sql += " AND r.diareserva BETWEEN '"+FechaMenor+"' AND  '"+FechaMayor+"' ";
+       	sql += " AND a.id = ? ";
+       	sql += " AND r.diareserva BETWEEN '?' AND  '?' ";
        	sql += " GROUP BY"+GroupBY;
        	sql += " ORDER BY"+OrderBy+";";
 
        	
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(idAlojamiento, FechaMenor,FechaMayor);
 		return q.executeList();
 	}
 	
@@ -402,8 +408,8 @@ class SQLUtil
         sql += " 		FROM" + pp.darTablaMiemCoUniv() +"mi ,"+ pp.darTablaReservas() +"r,"+ pp.darTablaAlojamientos() +"a";
         sql	+= " 		WHERE mi.id= r.idmiembro	";
        	sql += " 		AND r.idalojamiento = a.id ";
-       	sql += " 		AND a.id ="+idAlojamiento;
-       	sql += " 		AND r.diareserva BETWEEN '"+FechaMenor+"' AND  '"+FechaMayor+"' ";
+       	sql += " 		AND a.id = ?";
+       	sql += " 		AND r.diareserva BETWEEN '?' AND  '?' ";
        	sql += " 		GROUP BY"+GroupBY;
        	sql += " 		ORDER BY"+OrderBy+")";
        	sql += " ON miem.id = ida";
@@ -411,12 +417,218 @@ class SQLUtil
 
        	
 		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(idAlojamiento, FechaMenor,FechaMayor);
+		return q.executeList();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC12OfertaMasOcupacion (PersistenceManager pm, String Anio)
+	{
+		
+		
+        String sql = " SELECT Semana, TipoAlojamiento, FIRST_VALUE(cantidadOcupados) OVER (PARTITION BY Semana ORDER BY cantidadOcupados DESC) cantidadOcupados\n" + 
+        		" 	   	FROM (SELECT to_char(r.diareserva, 'WW') Semana, o.tipooperador TipoAlojamiento, count(r.numreserva) cantidadOcupados\n" + 
+        		"         		FROM RESERVAS r, ALOJAMIENTOS a, OPERADORES o\n" + 
+        		"        	    WHERE r.idalojamiento = a.id AND a.idoperador = o.id AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		"               GROUP BY to_char(r.diareserva, 'WW'), o.tipooperador)\n" + 
+        		" 	   INTERSECT\n" + 
+        		" 	   SELECT to_char(r.diareserva, 'WW') Semana, o.tipooperador TipoAlojamiento, count(r.numreserva) cantidadOcupados\n" + 
+        		" 	   FROM RESERVAS r, ALOJAMIENTOS a, OPERADORES o\n" + 
+        		" 	   WHERE r.idalojamiento = a.id AND a.idoperador = o.id AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		" 	   GROUP BY to_char(r.diareserva, 'WW'), o.tipooperador\n" + 
+        		"      ORDER BY Semana ASC; ";
+    
+		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(Anio);
+		return q.executeList();
+	}
+	
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC12OfertaMenosOcupacion (PersistenceManager pm, String Anio)
+	{
+		
+		
+        String sql = "SELECT Semana, TipoAlojamiento, FIRST_VALUE(cantidadOcupados) OVER (PARTITION BY Semana ORDER BY cantidadOcupados ASC) cantidadOcupados\n" + 
+        		" FROM (SELECT to_char(r.diareserva, 'WW') Semana, o.tipooperador TipoAlojamiento, count(r.numreserva) cantidadOcupados\n" + 
+        		"         FROM"+ pp.darTablaReservas()+" r,"+ pp.darTablaAlojamientos() +"a," +pp.darTablaOperadores()+" o\n" + 
+        		"         WHERE r.idalojamiento = a.id "+ 
+        	 	"         AND a.idoperador = o.id "+ 
+        		"         AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		"         GROUP BY to_char(r.diareserva, 'WW'), o.tipooperador)\n" + 
+        		" INTERSECT\n" + 
+        		" SELECT to_char(r.diareserva, 'WW') Semana, o.tipooperador TipoAlojamiento, count(r.numreserva) cantidadOcupados\n" + 
+        		" FROM"+ pp.darTablaReservas()+" r,"+ pp.darTablaAlojamientos() +"a," +pp.darTablaOperadores()+" o\n" + 
+        		" WHERE r.idalojamiento = a.id "
+        		+ "AND a.idoperador = o.id "
+        		+ "AND EXTRACT(YEAR FROM r.diareserva)= ? \n" + 
+        		" GROUP BY to_char(r.diareserva, 'WW'), o.tipooperador\n" + 
+        		" ORDER BY Semana ASC; ";
+    
+		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(Anio);
+		return q.executeList();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC12OperadoresMasSolicitados (PersistenceManager pm, String Anio)
+	{
+		
+		
+        String sql = " SELECT Semana, Operador, FIRST_VALUE(cantidadOcupados) OVER (PARTITION BY Semana ORDER BY cantidadOcupados DESC) cantidadOcupados\n" + 
+        		" FROM (SELECT to_char(r.diareserva, 'WW') Semana, o.nombre Operador, count(r.numreserva) cantidadOcupados\n" + 
+        		"         FROM"+ pp.darTablaReservas()+" r,"+ pp.darTablaAlojamientos() +"a," +pp.darTablaOperadores()+" o\n" +  
+        		"         WHERE r.idalojamiento = a.id AND a.idoperador = o.id AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		"         GROUP BY to_char(r.diareserva, 'WW'), o.nombre)\n" + 
+        		" INTERSECT\n" + 
+        		" SELECT to_char(r.diareserva, 'WW') Semana, o.nombre Operador, count(r.numreserva) cantidadOcupados\n" + 
+        		" FROM "+ pp.darTablaReservas()+" r,"+ pp.darTablaAlojamientos() +"a," +pp.darTablaOperadores()+" o\n" + 
+        		" WHERE r.idalojamiento = a.id AND a.idoperador = o.id AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		" GROUP BY to_char(r.diareserva, 'WW'), o.nombre\n" + 
+        		" ORDER BY Semana ASC; ";
+    
+		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(Anio);
+		return q.executeList();
+	}
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC12OperadoresMenosSolicitados (PersistenceManager pm, String Anio)
+	{
+		
+		
+        String sql = " SELECT Semana, Operador, FIRST_VALUE(cantidadOcupados) OVER (PARTITION BY Semana ORDER BY cantidadOcupados ASC) cantidadOcupados\n" + 
+        		" FROM (SELECT to_char(r.diareserva, 'WW') Semana, o.nombre Operador, count(r.numreserva) cantidadOcupados\n" + 
+        		"         FROM"+ pp.darTablaReservas()+" r,"+ pp.darTablaAlojamientos() +"a," +pp.darTablaOperadores()+" o\n" + 
+        		"         WHERE r.idalojamiento = a.id AND a.idoperador = o.id AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		"         GROUP BY to_char(r.diareserva, 'WW'), o.nombre)\n" + 
+        		" INTERSECT\n" + 
+        		" SELECT to_char(r.diareserva, 'WW') Semana, o.nombre Operador, count(r.numreserva) cantidadOcupados\n" + 
+        		" FROM"+ pp.darTablaReservas()+" r,"+ pp.darTablaAlojamientos() +"a," +pp.darTablaOperadores()+" o\n" + 
+        		" WHERE r.idalojamiento = a.id AND a.idoperador = o.id AND EXTRACT(YEAR FROM r.diareserva) = ? \n" + 
+        		" GROUP BY to_char(r.diareserva, 'WW'), o.nombre\n" + 
+        		" ORDER BY Semana ASC;  ";
+    
+		Query q = pm.newQuery(SQL, sql);
+		q.setParameters(Anio);
+		return q.executeList();
+	}
+	
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC13BuenosClientesTipo1 (PersistenceManager pm)
+	{
+		
+		
+        String sql = " SELECT m.*, cantidadMesesReservados\n" + 
+        		"FROM (SELECT miembro, count(mes) cantidadMesesReservados\n" + 
+        		"        FROM (SELECT r.idmiembro miembro, EXTRACT(MONTH FROM r.diareserva) mes, count(r.numreserva)\n" + 
+        		"                FROM"+ pp.darTablaReservas() +" r\n" + 
+        		"                GROUP BY r.idmiembro, EXTRACT(MONTH FROM r.diareserva)),"+ pp.darTablaMiemCoUniv() +"m\n" + 
+        		"        WHERE miembro = m.id\n" + 
+        		"        GROUP BY miembro), "+ pp.darTablaMiemCoUniv() +" m\n" + 
+        		"WHERE miembro = m.id AND cantidadMesesReservados >= 11; ";
+    
+		Query q = pm.newQuery(SQL, sql);
+		return q.executeList();
+	}
+	
+
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC13BuenosClientesTipo2 (PersistenceManager pm)
+	{
+		
+		
+        String sql = " SELECT m.*, cantidadBaratos, cantidadCostosos\n" + 
+        		"FROM (SELECT r.idmiembro miembro, COUNT(r.numreserva) cantidadBaratos,NULL  cantidadCostosos\n" + 
+        		"        FROM"+pp.darTablaReservas()+" r,"+pp.darTablaAlojamientos()+" a\n" + 
+        		"        WHERE r.idalojamiento = a.id AND a.precio <= 200000\n" + 
+        		"        GROUP BY r.idmiembro\n" + 
+        		"        UNION\n" + 
+        		"        SELECT r.idmiembro,NULL cantidadBaratos,COUNT(r.numreserva)  cantidadCostosos\n" + 
+        		"        FROM "+pp.darTablaReservas()+" r,"+pp.darTablaAlojamientos()+" a\n" + 
+        		"        WHERE r.idalojamiento = a.id AND a.precio >= 200000\n" + 
+        		"        GROUP BY r.idmiembro),"+pp.darTablaMiemCoUniv()+" m\n" + 
+        		"WHERE m.id = miembro AND cantidadBaratos IS NULL AND cantidadCostosos IS NOT NULL; ";
+    
+		Query q = pm.newQuery(SQL, sql);
+		return q.executeList();
+	}
+	
+	
+	/**
+	 * Crea y ejecuta la sentencia SQL para ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+	 * @param pm - El manejador de persistencia
+	 * @return Una lista de parejas de objetos, el primer elemento de cada pareja representa el identificador de un alojamiento,
+	 * 	el segundo elemento representa el número de reservas que ha tenido
+	 */
+	public List<Object []> darRFC13BuenosClientesTipo3 (PersistenceManager pm)
+	{
+		
+		
+        String sql = " SELECT m.*, cantidadReservasSuite, cantidadReservasSemisuite, cantidadReservasEstandar\n" + 
+        		"	    FROM (SELECT r.idmiembro miembro, count(r.numreserva) cantidadReservasSuite, NULL cantidadReservasSemisuite, NULL cantidadReservasEstandar\n" + 
+        		"        		FROM"+pp.darTablaReservas()+"r,"+pp.darTablaHabitaciones()+" h\n" + 
+        		"        		WHERE r.idalojamiento = h.idalojamiento AND h.tipohabitacion = 'Suite'\n" + 
+        		"        		GROUP BY r.idmiembro, h.tipoophab\n" + 
+        		"        	 UNION\n" + 
+        		"        	  SELECT r.idmiembro miembro, NULL cantidadReservasSuite, count(r.numreserva) cantidadReservasSemisuite, NULL cantidadReservasEstandar\n" + 
+        		"        	  	FROM"+pp.darTablaReservas()+"r,"+pp.darTablaHabitaciones()+" h\n" + 
+        		"        	  	WHERE r.idalojamiento = h.idalojamiento AND h.tipohabitacion = 'Semisuite'\n" + 
+        		"        	 	 GROUP BY r.idmiembro, h.tipoophab\n" + 
+        		"       	 UNION\n" + 
+        		"        	  SELECT r.idmiembro miembro, NULL cantidadReservasSuite, NULL cantidadReservasSemisuite, count(r.numreserva) cantidadReservasEstandar\n" + 
+        		"        		FROM"+pp.darTablaReservas()+"r,"+pp.darTablaHabitaciones()+" h\n" + 
+        		"        		WHERE r.idalojamiento = h.idalojamiento AND h.tipohabitacion = 'Estandar'\n" + 
+        		"        		GROUP BY r.idmiembro, h.tipoophab),"+ 
+        					pp.darTablaMiemCoUniv() +" m\n" + 
+        		"		WHERE m.id = miembro AND cantidadReservasSemisuite IS NULL AND cantidadReservasEstandar IS NULL;";
+    
+		Query q = pm.newQuery(SQL, sql);
 		return q.executeList();
 	}
 	
 	
 	
 	
+	
+	
+
+
+	
+
 	
 	
 	

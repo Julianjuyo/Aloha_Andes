@@ -1631,70 +1631,594 @@ public class PersistenciaAlohAndes
 	}
 
 
-	//	/*
-	//	 * RFC3- MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS OFERTAS DE ALOJAMIENTO REGISTRADAS
-	//	 */
-	//	public double RFC3 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
-	//	 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
-	//	 */
-	//	public VOAlojamiento RFC4 ( Date rangoMenor, Date rangoMayor, String[] nombreServicio)
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
-	//	 */
-	//	public double RFC5 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC6- MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO (NÚMERO DE NOCHES O MESES CONTRATADOS, CARACTERÍSTICAS DEL ALOJAMIENTO UTILIZADO, DINERO PAGADO.
-	//	 */
-	//	public double RFC6 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC7- ANALIZAR LA OPERACIÓN DE ALOHANDES
-	//	 * Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo el tiempo de operación de AloHandes, 
-	//	 * indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
-	//	 * las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
-	//	 */
-	//	public double RFC7 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC8- ENCONTRAR LOS CLIENTES FRECUENTES
-	//		Para un alojamiento dado, encontrar la información de sus clientes frecuentes. 
-	//		se considera frecuente a un cliente si ha utilizado (o tiene reservado) 
-	//		ese alojamiento por lo menos en tres ocasiones o por lo menos 15 noches, durante todo el periodo de operación de AlohAndes.
-	//	 */
-	//	public double RFC8 ()
-	//	{
-	//
-	//	}
-	//
-	//	/*
-	//	 * RFC9- ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
-	//	 * 	Encontrar las ofertas de alojamiento que no han recibido clientes en periodos superiores a 
-	//	 * 1 mes, durante todo el periodo de operación de AlohAndes.
-	//	 */
-	//	public double RFC9 ()
-	//	{
-	//
-	//	}
+		/*
+		 * RFC3- MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS OFERTAS DE ALOJAMIENTO REGISTRADAS
+		 */
+		public List<Object[]> darRFC3 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC3(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+						
+				Object [] datosRESP = new Object[2] ;
+				
+				datosRESP[0] = (String) tupla[0];
+				datosRESP[1] = (Double) tupla[1];
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+	
+		/*
+		 * RFC4 - MOSTRAR LOS ALOJAMIENTOS DISPONIBLES EN UN RANGO DE FECHAS, QUE CUMPLEN CON UN CONJUNTO DE REQUERIMIENTOS DE DOTACIÓN O SERVICIOS. 
+		 * 		  POR EJEMPLO, COCINETA, TV CABLE, INTERNET, SALA.
+		 */
+		public  List<Object[]> darRFC4 ( Date rangoMenor, Date rangoMayor, String[] nombreServicio)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC4(pmf.getPersistenceManager(), rangoMenor, rangoMayor, nombreServicio);
+			
+			for ( Object[] tupla : tuplas)
+			{
+						
+				Object [] datosRESP = new Object[1] ;
+				
+				datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+	
+		/*
+		 * RFC5- MOSTRAR EL USO DE ALOHANDES PARA CADA TIPO DE USUARIO DE LA COMUNIDAD
+		 */
+		public  List<Object[]> darRFC5 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC5(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+						
+				Object [] datosRESP = new Object[2] ;
+				
+				datosRESP[0] = (String) tupla[0];
+				datosRESP[1] = (int) tupla[1];
+
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+	
+	
+		/*
+		 * RFC6- MOSTRAR EL USO DE ALOHANDES PARA UN USUARIO DADO (NÚMERO DE NOCHES O MESES CONTRATADOS, CARACTERÍSTICAS DEL ALOJAMIENTO UTILIZADO, DINERO PAGADO.
+		 */
+		public  List<Object[]> darRFC6 (long id)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC6(pmf.getPersistenceManager(),id);
+			
+			for ( Object[] tupla : tuplas)
+			{
+						
+				Object [] datosRESP = new Object[5] ;
+				
+				datosRESP[0] = (long) tupla[0];
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (int) tupla[2];
+				datosRESP[3] = (Double) tupla[3];
+				datosRESP[4] = (String) tupla[4];
+				
+				
+
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+			
+		}
+	
+		/*
+		 * RFC7- ANALIZAR LA OPERACIÓN DE ALOHANDES
+		 * Para una unidad de tiempo definido (por ejemplo, semana o mes) y un tipo de alojamiento, considerando todo el tiempo de operación de AloHandes, 
+		 * indicar cuáles fueron las fechas de mayor demanda (mayor cantidad de alojamientos ocupados), 
+		 * las de mayores ingresos (mayor cantidad de dinero recibido) y las de menor ocupación.
+		 */
+		public  List<Object[]> darRFC7 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC8(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+						
+				Object [] datosRESP = new Object[1] ;
+				
+				MiembroComunidadUniversitaria miembro = darMiembroComunidadUniversitariaPorId(((BigDecimal) tupla[0]).longValue());				
+				
+				datosRESP[1] = miembro;
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+
+			
+		}
+	
+		/*
+		 * RFC8- ENCONTRAR LOS CLIENTES FRECUENTES
+			Para un alojamiento dado, encontrar la información de sus clientes frecuentes. 
+			se considera frecuente a un cliente si ha utilizado (o tiene reservado) 
+			ese alojamiento por lo menos en tres ocasiones o por lo menos 15 noches, durante todo el periodo de operación de AlohAndes.
+		 */
+		public  List<Object[]> darRFC8 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC8(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+						
+				Object [] datosRESP = new Object[1] ;
+				
+				MiembroComunidadUniversitaria miembro = darMiembroComunidadUniversitariaPorId(((BigDecimal) tupla[0]).longValue());				
+				
+				datosRESP[1] = miembro;
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+	
+		/**
+		 * RFC9- ENCONTRAR LAS OFERTAS DE ALOJAMIENTO QUE NO TIENEN MUCHA DEMANDA
+		 * 	Encontrar las ofertas de alojamiento que no han recibido clientes en periodos superiores a 
+		 * 1 mes, durante todo el periodo de operación de AlohAndes.
+		 */
+		public  List<Object[]> darRFC9 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC9(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+				
+				Object [] datosRESP = new Object[1] ;
+				
+				datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+				
+				
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+		
+		/**
+		 * RFC10-CONSULTAR CONSUMO EN ALOHANDES
+		 * Se quiere conocer la información de los usuarios que realizaron al menos una reserva de una determinada oferta de alojamiento en un rango de fechas. 
+		 * Los resultados deben ser clasificados según un criterio deseado por quien realiza la consulta. 
+		 * En la clasificación debe ofrecerse la posibilidad de agrupamiento 
+		 * y ordenamiento de las respuestas según los intereses del usuario que consulta como, 
+		 * por ejemplo, por los datos del cliente, por oferta de alojamiento y por tipo de alojamiento.
+		 * 
+		 * @return Una lista de arreglos
+		 */
+		public  List<Object[]> darRFC10 (long idAlojamiento, String TipoAgrupamiento, Date FechaMenor, Date FechaMayor)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+			
+			if(TipoAgrupamiento.equals("Cliente"))
+			{
+
+				List<Object []> tuplas =  sqlUtil.darRFC10(pmf.getPersistenceManager(), idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor );
+				
+				for ( Object[] tupla : tuplas)
+				{
+					
+					Object [] datosRESP = new Object[5] ;
+					
+					datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+					datosRESP[1] = (String) tupla[1];
+					datosRESP[2] = (String) tupla[2];
+					datosRESP[3] = (String) tupla[3];
+					datosRESP[4] = (int) tupla[4];
+					
+					
+					resp.add (datosRESP);
+				}
+				return resp;
+					
+			}
+			else if(TipoAgrupamiento.equals("Alojamiento"))
+			{
+				List<Object []> tuplas =  sqlUtil.darRFC10(pmf.getPersistenceManager(), idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor );
+				
+				for ( Object[] tupla : tuplas)
+				{
+					
+					Object [] datosRESP = new Object[2] ;
+					
+					datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+					datosRESP[1] = (int) tupla[1];
+					
+					
+					resp.add (datosRESP);
+				}
+				return resp;
+				
+				
+			}
+			else if(TipoAgrupamiento.equals("TipoAlojamiento"))
+			{
+				List<Object []> tuplas =  sqlUtil.darRFC10(pmf.getPersistenceManager(), idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor );
+				
+				for ( Object[] tupla : tuplas)
+				{
+					
+					Object [] datosRESP = new Object[2] ;
+					
+					datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+					datosRESP[1] = (String) tupla[1];
+					datosRESP[2] = (int) tupla[2];
+					
+					
+					
+					resp.add (datosRESP);
+				}
+				return resp;
+						
+			}
+			else {
+				return null;
+			}
+	
+		}
+		
+		/**
+		 * RFC11 - CONSULTAR CONSUMO EN ALOHANDES – RFC10-V2
+		 * Se quiere conocer la información de los usuarios QUE NO realizaron al menos una 
+		 * reserva de una determinada oferta de alojamiento en un rango de fechas. 
+		 * En la clasificación debe ofrecerse la posibilidad de agrupamiento y ordenamiento 
+		 * de las respuestas según los intereses del usuario que consulta como, por ejemplo, 
+		 * por los datos del cliente, por oferta de alojamiento y por tipo de alojamiento.
+		 * 
+		 * @return lista con las tuplas
+		 */
+		public  List<Object[]> darRFC11 (long idAlojamiento, String TipoAgrupamiento, Date FechaMenor, Date FechaMayor)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+			
+			if(TipoAgrupamiento.equals("Cliente"))
+			{
+
+				List<Object []> tuplas =  sqlUtil.darRFC11(pmf.getPersistenceManager(), idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor );
+				
+				for ( Object[] tupla : tuplas)
+				{
+					
+					Object [] datosRESP = new Object[4] ;
+					
+					datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+					datosRESP[1] = (String) tupla[1];
+					datosRESP[2] = (String) tupla[2];
+					datosRESP[3] = (String) tupla[3];
+					
+					
+					resp.add (datosRESP);
+				}
+				return resp;
+					
+			}
+			else if(TipoAgrupamiento.equals("Alojamiento"))
+			{
+				List<Object []> tuplas =  sqlUtil.darRFC11(pmf.getPersistenceManager(), idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor );
+				
+				for ( Object[] tupla : tuplas)
+				{
+					
+					Object [] datosRESP = new Object[4] ;
+					
+					datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+					datosRESP[1] = (String) tupla[1];
+					datosRESP[2] = (String) tupla[2];
+					datosRESP[3] = (String) tupla[3];
+					
+					
+					resp.add (datosRESP);
+				}
+				return resp;
+				
+				
+			}
+			else if(TipoAgrupamiento.equals("TipoAlojamiento"))
+			{
+				List<Object []> tuplas =  sqlUtil.darRFC11(pmf.getPersistenceManager(), idAlojamiento, TipoAgrupamiento, FechaMenor, FechaMayor );
+				
+				for ( Object[] tupla : tuplas)
+				{
+					
+					Object [] datosRESP = new Object[4] ;
+					
+					datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+					datosRESP[1] = (String) tupla[1];
+					datosRESP[2] = (String) tupla[2];
+					datosRESP[3] = (String) tupla[3];
+					
+					
+					
+					resp.add (datosRESP);
+				}
+				return resp;
+						
+			}
+			else {
+				return null;
+			}
+	
+	
+		}
+		
+		/**
+		 *  --RFC12 - CONSULTAR FUNCIONAMIENTO--
+		 *  Muestra, para cada semana del año, la oferta de alojamiento con más ocupación, la oferta de alojamiento con
+		 *  menos ocupación, los operadores más solicitados y los operadores menos solicitados. Las respuestas deben
+		 *  ser sustentadas por el detalle de las ofertas de alojamiento y operadores correspondientes. Esta operación es
+		 *  realizada el gerente general de AlohAndes
+		 * 
+		 * @param Anio
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC12OfertaMasOcupacion (String Anio)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC12OfertaMasOcupacion(pmf.getPersistenceManager() , Anio);
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[3] ;
+				
+				datosRESP[0] = (String) tupla[0];
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (int) tupla[2];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+		
+
+		/**
+		 *  --RFC12 - CONSULTAR FUNCIONAMIENTO--
+		 *  Muestra, para cada semana del año, la oferta de alojamiento con más ocupación, la oferta de alojamiento con
+		 *  menos ocupación, los operadores más solicitados y los operadores menos solicitados. Las respuestas deben
+		 *  ser sustentadas por el detalle de las ofertas de alojamiento y operadores correspondientes. Esta operación es
+		 *  realizada el gerente general de AlohAndes
+		 * 
+		 * @param Anio
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC12OfertaMenosOcupacion (String Anio)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC12OfertaMenosOcupacion(pmf.getPersistenceManager() , Anio);
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[3] ;
+				
+				datosRESP[0] = (String) tupla[0];
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (int) tupla[2];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+		
+		
+		/**
+		 *  --RFC12 - CONSULTAR FUNCIONAMIENTO--
+		 *  Muestra, para cada semana del año, la oferta de alojamiento con más ocupación, la oferta de alojamiento con
+		 *  menos ocupación, los operadores más solicitados y los operadores menos solicitados. Las respuestas deben
+		 *  ser sustentadas por el detalle de las ofertas de alojamiento y operadores correspondientes. Esta operación es
+		 *  realizada el gerente general de AlohAndes
+		 * 
+		 * @param Anio
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC12OperadoresMasSolicitados (String Anio)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC12OperadoresMasSolicitados(pmf.getPersistenceManager() , Anio);
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[3] ;
+				
+				datosRESP[0] = (String) tupla[0];
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (int) tupla[2];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+		
+		/**
+		 *  --RFC12 - CONSULTAR FUNCIONAMIENTO--
+		 *  Muestra, para cada semana del año, la oferta de alojamiento con más ocupación, la oferta de alojamiento con
+		 *  menos ocupación, los operadores más solicitados y los operadores menos solicitados. Las respuestas deben
+		 *  ser sustentadas por el detalle de las ofertas de alojamiento y operadores correspondientes. Esta operación es
+		 *  realizada el gerente general de AlohAndes
+		 * 
+		 * @param Anio
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC12OperadoresMenosSolicitados (String Anio)
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC12OperadoresMenosSolicitados(pmf.getPersistenceManager() , Anio);
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[3] ;
+				
+				datosRESP[0] = (String) tupla[0];
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (int) tupla[2];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+
+		
+		/**
+		 * RFC13- BUenos clientes
+		 * 
+		 * --Buenos clientes tipo 1: Hacen reservas en AlohAndes al menos una vez al mes.--
+		 *  
+		 * Los buenos clientes son de tres tipos: aquellos que hacen reservas en AlohAndes al menos una vez al mes,
+		 * aquellos que siempre reservan alojamientos costosos (Entiendase costoso, por ejemplo, como mayor a USD
+		 * 150 por noche) y aquellos que siempre reservan suites. Esta consulta retorna toda la informaci�n de dichos
+		 * clientes, incluyendo la que justifica su calificaci�n como buenos clientes. Esta operaci�n es realizada
+		 * unicamente por el gerente general de AlohAndes
+		 * 
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC13BuenosClientesTipo1 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC13BuenosClientesTipo1(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[5] ;
+				
+				datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (String) tupla[2];
+				datosRESP[3] = (String) tupla[3];
+				datosRESP[4] = (int) tupla[4];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+		
+
+		/**
+		 * RFC13- BUenos clientes
+		 * 
+		 * --Buenos clientes tipo 2: Siempre reservan alojamientos costosos.--
+		 *  
+		 * Los buenos clientes son de tres tipos: aquellos que hacen reservas en AlohAndes al menos una vez al mes,
+		 * aquellos que siempre reservan alojamientos costosos (Entiendase costoso, por ejemplo, como mayor a USD
+		 * 150 por noche) y aquellos que siempre reservan suites. Esta consulta retorna toda la informaci�n de dichos
+		 * clientes, incluyendo la que justifica su calificaci�n como buenos clientes. Esta operaci�n es realizada
+		 * unicamente por el gerente general de AlohAndes
+		 * 
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC13BuenosClientesTipo2 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC13BuenosClientesTipo2(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[6] ;
+				
+				datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (String) tupla[2];
+				datosRESP[3] = (String) tupla[3];
+				datosRESP[4] = (int) tupla[4];
+				datosRESP[5] = (int) tupla[5];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+		
+
+		/**
+		 * RFC13- BUenos clientes
+		 * 
+		 * ---Buenos clientes tipo 3: Siempre reservan Suites--
+		 *  
+		 * Los buenos clientes son de tres tipos: aquellos que hacen reservas en AlohAndes al menos una vez al mes,
+		 * aquellos que siempre reservan alojamientos costosos (Entiendase costoso, por ejemplo, como mayor a USD
+		 * 150 por noche) y aquellos que siempre reservan suites. Esta consulta retorna toda la informaci�n de dichos
+		 * clientes, incluyendo la que justifica su calificaci�n como buenos clientes. Esta operaci�n es realizada
+		 * unicamente por el gerente general de AlohAndes
+		 * 
+		 * @return lista con las tuplas de la consulta
+		 */
+		public  List<Object[]> darRFC13BuenosClientesTipo3 ()
+		{
+			List<Object []> resp = new LinkedList<Object []> ();
+
+			List<Object []> tuplas =  sqlUtil.darRFC13BuenosClientesTipo3(pmf.getPersistenceManager());
+			
+			for ( Object[] tupla : tuplas)
+			{
+					
+				Object [] datosRESP = new Object[7] ;
+				
+				datosRESP[0] = ((BigDecimal) tupla[0]).longValue();
+				datosRESP[1] = (String) tupla[1];
+				datosRESP[2] = (String) tupla[2];
+				datosRESP[3] = (String) tupla[3];
+				datosRESP[4] = (int) tupla[4];
+				datosRESP[5] = (int) tupla[5];
+				datosRESP[6] = (int) tupla[6];
+
+				resp.add (datosRESP);
+			}
+			return resp;
+	
+		}
+			
+	
+		
 	
 	
 	
